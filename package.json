@@ -46,6 +46,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"embla-carousel": "^8.3.1",
 		"embla-carousel-autoplay": "^8.3.1"
 	}
 }

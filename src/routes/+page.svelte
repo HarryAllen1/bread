@@ -1,6 +1,8 @@
 <script lang="ts">
-	import * as Carousel from '$lib/components/ui/carousel';
-	import Autoplay from 'embla-carousel-autoplay';
+	import { Button } from '$lib/components/ui/button';
+	import BreadCarousel from './BreadCarousel.svelte';
+	import Offerings from './Offerings.svelte';
+	import WhyBread from './WhyBread.svelte';
 </script>
 
 <div class="container my-8">
@@ -10,21 +12,12 @@
 	<p class="leading-7 [&:not(:first-child)]:mt-6 text-center mb-6">
 		the world's premier vegetarian bread restaurant
 	</p>
-	<Carousel.Root
-		opts={{
-			loop: true,
-		}}
-		plugins={[Autoplay()]}
-	>
-		<Carousel.Content>
-			<Carousel.Item>
-				<enhanced:img src="./carousel/challah.jpg" alt="Challah bread" />
-			</Carousel.Item>
-			<Carousel.Item>
-				<enhanced:img src="./carousel/banana-bread.jpg" alt="Banana bread" />
-			</Carousel.Item>
-		</Carousel.Content>
-		<Carousel.Previous />
-		<Carousel.Next />
-	</Carousel.Root>
+
+	<div class="w-full flex justify-center mb-6">
+		<Button size="lg" class="text-lg" href="/menu">order bread</Button>
+	</div>
+
+	<BreadCarousel />
+	<WhyBread />
 </div>
+<Offerings />
