@@ -1,6 +1,8 @@
 <script lang="ts">
 	import * as Carousel from '$lib/components/ui/carousel';
 	import Autoplay from 'embla-carousel-autoplay';
+	import challah from './carousel/challah.jpg?enhanced';
+	import bananaBread from './carousel/banana-bread.jpg?enhanced';
 </script>
 
 <Carousel.Root
@@ -11,10 +13,10 @@
 >
 	<Carousel.Content>
 		<Carousel.Item>
-			<enhanced:img src="./carousel/challah.jpg" alt="Challah bread" />
+			<enhanced:img src={challah} alt="Challah bread" />
 		</Carousel.Item>
 		<Carousel.Item>
-			<enhanced:img src="./carousel/banana-bread.jpg" alt="Banana bread" />
+			<enhanced:img src={bananaBread} alt="Banana bread" />
 		</Carousel.Item>
 	</Carousel.Content>
 	<Carousel.Previous />
