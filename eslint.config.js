@@ -54,8 +54,11 @@ export default tseslint.config(
 				},
 			],
 			'@typescript-eslint/unbound-method': 'off',
+			// its broken
+			'unicorn/expiring-todo-comments': 'off',
 			'unicorn/no-array-reduce': 'off',
 			'unicorn/no-await-expression-member': 'off',
+			'unicorn/no-null': 'off',
 			'unicorn/filename-case': 'off',
 			'unicorn/prevent-abbreviations': [
 				'error',
@@ -105,6 +108,7 @@ export default tseslint.config(
 			'src/lib/gibberish.js',
 			'static',
 			'vite.config.ts.timestamp-*',
+			'src/database.types.ts',
 		],
 	},
 );
