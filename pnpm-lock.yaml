@@ -15,8 +15,8 @@ importers:
         specifier: ^2.46.1
         version: 2.47.2
       bits-ui:
-        specifier: 1.0.0-next.67
-        version: 1.0.0-next.67(svelte@5.9.0)
+        specifier: 1.0.0-next.68
+        version: 1.0.0-next.68(svelte@5.9.0)
       embla-carousel:
         specifier: ^8.4.0
         version: 8.5.1
@@ -990,8 +990,8 @@ packages:
   bindings@1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
 
-  bits-ui@1.0.0-next.67:
-    resolution: {integrity: sha512-UDsAY8dHJ41h9KdNebRtXNjvjgRATr+b9PAakfvO6ojKxpPPZxilIFq1xmdThX2RmqmmD+suRgN1UIARSNoTGg==}
+  bits-ui@1.0.0-next.68:
+    resolution: {integrity: sha512-0LkGJWnWiYds7+r7aRNPUdZ4Lg/rS0f+DXP8n4ZaJ9Cvu2ZgkEuKNDWPFaUskPO5AZBWvREU82GhESwqYKaDug==}
     engines: {node: '>=18', pnpm: '>=8.7.0'}
     peerDependencies:
       svelte: ^5.0.0-next.1
@@ -3011,7 +3011,7 @@ snapshots:
     dependencies:
       file-uri-to-path: 1.0.0
 
-  bits-ui@1.0.0-next.67(svelte@5.9.0):
+  bits-ui@1.0.0-next.68(svelte@5.9.0):
     dependencies:
       '@floating-ui/core': 1.6.8
       '@floating-ui/dom': 1.6.12
