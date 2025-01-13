@@ -4,7 +4,11 @@ interface Page {
 }
 export const pages: Page[] = [
 	{
+		href: '/menu',
+		title: 'menu',
+	},
+	{
 		href: '/references',
-		title: 'References',
+		title: 'references',
 	},
 ];

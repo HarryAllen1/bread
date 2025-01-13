@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { page as pageStore } from '$app/stores';
+	import { page as pageStore } from '$app/state';
 	import Logo from '$lib/Logo.svelte';
 	import { cn } from '$lib/utils.js';
 	import { pages } from './pages';
@@ -15,7 +15,7 @@
 				href={page.href}
 				class={cn(
 					'hover:text-primary-foreground/80 transition-colors',
-					$pageStore.url.pathname === page.href
+					pageStore.url.pathname === page.href
 						? 'text-primary-foreground'
 						: 'text-primary-foreground/60',
 				)}

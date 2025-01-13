@@ -37,25 +37,31 @@ export type Database = {
 					created_at: string;
 					description: string | null;
 					id: number;
-					image_id: string | null;
+					image_bucket_id: string | null;
+					image_name: string | null;
 					name: string;
 					price: number;
+					slug: string;
 				};
 				Insert: {
 					created_at?: string;
 					description?: string | null;
 					id?: number;
-					image_id?: string | null;
+					image_bucket_id?: string | null;
+					image_name?: string | null;
 					name: string;
 					price?: number;
+					slug: string;
 				};
 				Update: {
 					created_at?: string;
 					description?: string | null;
 					id?: number;
-					image_id?: string | null;
+					image_bucket_id?: string | null;
+					image_name?: string | null;
 					name?: string;
 					price?: number;
+					slug?: string;
 				};
 				Relationships: [];
 			};

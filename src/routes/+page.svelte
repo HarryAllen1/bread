@@ -14,7 +14,7 @@
 	</p>
 
 	<div class="w-full flex justify-center mb-6">
-		<Button size="lg" class="text-lg" href="/menu">order bread</Button>
+		<Button size="lg" class="text-lg" href="/menu">order online</Button>
 	</div>
 
 	<BreadCarousel />

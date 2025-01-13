@@ -1,8 +1,12 @@
 <script lang="ts">
 	import { buttonVariants } from '$lib/components/ui/button';
 	import { cn } from '$lib/utils.js';
-	import { InstagramLogo } from 'phosphor-svelte';
+	import ShoppingCart from 'lucide-svelte/icons/shopping-cart';
 	import MainNav from './MainNav.svelte';
+	import { Badge } from '$lib/components/ui/badge';
+	import { cart } from '$lib/cart';
+
+	let cartSize = $derived($cart.reduce((accumulator, item) => accumulator + item.quantity, 0));
 </script>
 
 <header
@@ -13,19 +17,27 @@
 		<!-- <MobileNav /> -->
 		<div class="flex flex-1 items-center justify-between space-x-2 md:justify-end">
 			<nav class="flex items-center">
-				<a href="https://www.instagram.com/nationaltsa/" target="_blank" rel="noreferrer">
+				<a href="/cart" target="_blank" rel="noreferrer" class="relative">
 					<div
 						class={cn(
 							buttonVariants({
 								size: 'sm',
 								variant: 'ghost',
 							}),
-							'size-8 px-0',
+							'size-10 p-0',
 						)}
 					>
-						<InstagramLogo class="size-3 fill-current" />
-						<span class="sr-only">Instagram</span>
+						<ShoppingCart class="size-6 fill-current" />
+						<span class="sr-only">Cart</span>
 					</div>
+					{#if cartSize > 0}
+						<Badge
+							variant="destructive"
+							class="aspect-square size-4 absolute -bottom-1 -right-1 p-1"
+						>
+							{cartSize}
+						</Badge>
+					{/if}
 				</a>
 			</nav>
 		</div>

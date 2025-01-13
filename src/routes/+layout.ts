@@ -3,6 +3,8 @@ import { createBrowserClient, createServerClient, isBrowser } from '@supabase/ss
 import type { Database } from '../database.types';
 import type { LayoutLoad } from './$types';
 
+export const ssr = true;
+
 export const load = (async ({ data, depends, fetch }) => {
 	/**
 	 * Declare a dependency so the layout can be invalidated, for example, on
