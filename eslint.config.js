@@ -60,22 +60,7 @@ export default tseslint.config(
 			'unicorn/no-await-expression-member': 'off',
 			'unicorn/no-null': 'off',
 			'unicorn/filename-case': 'off',
-			'unicorn/prevent-abbreviations': [
-				'error',
-				{
-					allowList: {
-						// arguments is often an illegal variable name
-						args: true,
-						$$Props: true,
-						Props: true,
-						props: true,
-						i: true,
-						src: true,
-						ref: true,
-						Ref: true,
-					},
-				},
-			],
+			'unicorn/prevent-abbreviations': 'off',
 			eqeqeq: 'error',
 			'func-style': ['error', 'expression', { allowArrowFunctions: true }],
 			'no-console': ['warn', { allow: ['warn', 'error'] }],

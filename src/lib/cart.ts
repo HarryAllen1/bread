@@ -23,3 +23,18 @@ export const addToCart = (id: number): void => {
 		});
 	}
 };
+
+/** Removes a single item of `id` from the cart */
+export const removeFromCart = (id: number): void => {
+	const item = get(cart).find((item) => item.id === id);
+	if (item) {
+		cart.update((cart) => {
+			const index = cart.findIndex((item) => item.id === id);
+			cart[index].quantity -= 1;
+			if (cart[index].quantity <= 0) {
+				cart.splice(index, 1);
+			}
+			return cart;
+		});
+	}
+};

@@ -17,7 +17,7 @@
 		<!-- <MobileNav /> -->
 		<div class="flex flex-1 items-center justify-between space-x-2 md:justify-end">
 			<nav class="flex items-center">
-				<a href="/cart" target="_blank" rel="noreferrer" class="relative">
+				<a href="/cart" class="relative">
 					<div
 						class={cn(
 							buttonVariants({
