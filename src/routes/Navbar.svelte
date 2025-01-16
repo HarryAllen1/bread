@@ -5,6 +5,7 @@
 	import MainNav from './MainNav.svelte';
 	import { Badge } from '$lib/components/ui/badge';
 	import { cart } from '$lib/cart';
+	import MobileNav from './MobileNav.svelte';
 
 	let cartSize = $derived($cart.reduce((accumulator, item) => accumulator + item.quantity, 0));
 </script>
@@ -14,8 +15,9 @@
 >
 	<div class="container flex h-16 max-w-screen-2xl items-center">
 		<MainNav />
-		<!-- <MobileNav /> -->
-		<div class="flex flex-1 items-center justify-between space-x-2 md:justify-end">
+		<MobileNav />
+		<div class="grow"></div>
+		<div class="flex items-center justify-between space-x-2 md:justify-end">
 			<nav class="flex items-center">
 				<a href="/cart" class="relative">
 					<div

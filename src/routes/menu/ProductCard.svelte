@@ -16,6 +16,9 @@
 		<a href="/menu/{product.slug}">
 			<Card.Title>{product.name}</Card.Title>
 		</a>
+		<Card.Description>
+			${product.price}
+		</Card.Description>
 	</Card.Header>
 	<Card.Content>
 		<a href="/menu/{product.slug}">
@@ -30,6 +33,6 @@
 		>
 			add to cart
 		</Button>
-		<Button variant="outline">view details</Button>
+		<Button variant="outline" href="/menu/{product.slug}">view details</Button>
 	</Card.Footer>
 </Card.Root>

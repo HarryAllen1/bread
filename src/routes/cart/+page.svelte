@@ -41,6 +41,13 @@
 			</div>
 		{/if}
 	{:else}
-		<p class="text-lg">Your cart is empty</p>
+		<p class="leading-7 [&:not(:first-child)]:mt-6">
+			Your cart is empty, but it doesn't have to be! Check out our <a
+				href="/menu"
+				class="text-primary font-medium underline underline-offset-4"
+			>
+				menu
+			</a> to find something you like.
+		</p>
 	{/each}
 </div>

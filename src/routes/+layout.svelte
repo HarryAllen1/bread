@@ -5,6 +5,7 @@
 	import '../app.css';
 	import type { PageData } from './$types';
 	import { invalidate } from '$app/navigation';
+	import { Toaster } from '$lib/components/ui/sonner';
 
 	interface Props {
 		children: Snippet;
@@ -30,3 +31,5 @@
 {@render children()}
 
 <Footer />
+
+<Toaster theme="light" />

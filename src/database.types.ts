@@ -34,6 +34,7 @@ export type Database = {
 			};
 			products: {
 				Row: {
+					allergens: string | null;
 					created_at: string;
 					description: string | null;
 					id: number;
@@ -44,6 +45,7 @@ export type Database = {
 					slug: string;
 				};
 				Insert: {
+					allergens?: string | null;
 					created_at?: string;
 					description?: string | null;
 					id?: number;
@@ -54,6 +56,7 @@ export type Database = {
 					slug: string;
 				};
 				Update: {
+					allergens?: string | null;
 					created_at?: string;
 					description?: string | null;
 					id?: number;

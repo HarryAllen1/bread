@@ -8,6 +8,12 @@ export const load = (async ({ locals: { supabase }, params }) => {
 		.single();
 
 	return {
-		productDetails,
+		productDetails: {
+			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+			...productDetails!,
+			image_url: supabase.storage
+				.from(productDetails?.image_bucket_id ?? '')
+				.getPublicUrl(productDetails?.image_name ?? '').data.publicUrl,
+		},
 	};
 }) satisfies PageServerLoad;
