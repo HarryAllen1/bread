@@ -1,3 +1,7 @@
+<svelte:head>
+	<title>references - bread</title>
+</svelte:head>
+
 <div class="container my-8">
 	<h1 class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">reference page</h1>
 
