@@ -35,7 +35,7 @@
 
 	<ul class="my-6 ml-6 list-disc [&>li]:mt-2">
 		<li>
-			Icons: <a href="https://phosphoricons.com/" target="_blank">Phosphor Icons</a>
+			Icons: <a href="https://lucide.dev/" target="_blank">Lucide</a>
 		</li>
 	</ul>
 
@@ -49,6 +49,27 @@
 			<a href="https://www.pexels.com/photo/a-flatlay-of-a-freshly-baked-banana-bread-6829493/"
 				>Banana bread</a
 			>
+		</li>
+	</ul>
+
+	<h3 class="scroll-m-20 text-2xl font-semibold tracking-tight">menu/products</h3>
+
+	<ul class="my-6 ml-6 list-disc [&>li]:mt-2">
+		<li>
+			<a href="https://www.pexels.com/photo/brown-bread-on-wooden-tray-6605301/">Challah bread</a>
+		</li>
+		<li>
+			<a href="https://www.pexels.com/photo/slice-of-bread-1586947/">Multigrain bread</a>
+		</li>
+		<li>
+			<a href="https://www.pexels.com/photo/a-flatlay-of-a-freshly-baked-banana-bread-6829493/">
+				Banana bread
+			</a>
+		</li>
+		<li>
+			<a href="https://www.pexels.com/photo/a-pita-bread-over-a-ceramic-tile-6419738/">
+				Pita bread
+			</a>
 		</li>
 	</ul>
 </div>
