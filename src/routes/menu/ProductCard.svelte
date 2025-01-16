@@ -2,6 +2,7 @@
 	import { addToCart } from '$lib/cart';
 	import { Button } from '$lib/components/ui/button';
 	import * as Card from '$lib/components/ui/card';
+	import { toast } from 'svelte-sonner';
 	import type { PageData } from './$types';
 
 	interface Props {
@@ -29,6 +30,7 @@
 		<Button
 			onclick={() => {
 				addToCart(product.id);
+				toast.success('Added to cart!');
 			}}
 		>
 			add to cart

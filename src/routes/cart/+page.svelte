@@ -1,6 +1,11 @@
 <script lang="ts">
 	import { addToCart, cart, removeFromCart } from '$lib/cart';
+	import { Button } from '$lib/components/ui/button';
 	import type { PageData } from './$types';
+	import Plus from 'lucide-svelte/icons/plus';
+	import Minus from 'lucide-svelte/icons/minus';
+	import Trash from 'lucide-svelte/icons/trash';
+	import { toast } from 'svelte-sonner';
 
 	interface Props {
 		data: PageData;
@@ -20,21 +25,30 @@
 					<img src={item.image_url} alt={item.name} class="w-16 h-16 object-cover rounded-lg" />
 					<div class="ml-4">
 						<p class="text-lg font-semibold">{item.name}</p>
-						<p class="text-sm text-gray-500">${item.price}</p>
+						<p class="text-sm text-gray-500">${item.price} each</p>
 					</div>
 				</div>
 
 				<div class="flex items-center">
-					<button class="text-gray-500" onclick={() => removeFromCart(item.id)}>-</button>
+					<Button size="icon" variant="outline" onclick={() => removeFromCart(item.id)}>
+						<Minus />
+					</Button>
 					<p class="mx-4">{cartItem.quantity}</p>
-					<button class="text-gray-500" onclick={() => addToCart(item.id)}>+</button>
+					<Button size="icon" variant="outline" onclick={() => addToCart(item.id)}>
+						<Plus />
+					</Button>
 
-					<button
-						class="ml-4 text-red-500"
-						onclick={() => ($cart = $cart.filter((value) => value.id !== item.id))}
+					<Button
+						onclick={() => {
+							$cart = $cart.filter((value) => value.id !== item.id);
+							toast.success('Removed from cart!');
+						}}
+						variant="outline"
+						size="icon"
+						class="text-red-500 ml-4"
 					>
-						Remove
-					</button>
+						<Trash />
+					</Button>
 
 					<p class="ml-4 text-lg font-semibold">${item.price * cartItem.quantity}</p>
 				</div>
@@ -50,4 +64,7 @@
 			</a> to find something you like.
 		</p>
 	{/each}
+	{#if $cart.length}
+		<Button href="/checkout" class="mt-8">checkout</Button>
+	{/if}
 </div>
