@@ -10,10 +10,10 @@ importers:
     dependencies:
       '@supabase/ssr':
         specifier: ^0.5.2
-        version: 0.5.2(@supabase/supabase-js@2.47.15)
+        version: 0.5.2(@supabase/supabase-js@2.47.16)
       '@supabase/supabase-js':
         specifier: ^2.46.1
-        version: 2.47.15
+        version: 2.47.16
       embla-carousel:
         specifier: ^8.4.0
         version: 8.5.2
@@ -644,8 +644,8 @@ packages:
   '@supabase/storage-js@2.7.1':
     resolution: {integrity: sha512-asYHcyDR1fKqrMpytAS1zjyEfvxuOIp1CIXX7ji4lHHcJKqyk+sLl/Vxgm4sN6u8zvuUtae9e4kDxQP2qrwWBA==}
 
-  '@supabase/supabase-js@2.47.15':
-    resolution: {integrity: sha512-Ufeqya/8L7Y1CDmpo7HquoHaF/MiRGHhnPE7Djz43ExL0hQnnrzUfu5bBeFXkzQ3uiuaA+fbGMaWlXaSbqKJ7g==}
+  '@supabase/supabase-js@2.47.16':
+    resolution: {integrity: sha512-FnoV0miLnYUL8ZTS94tSIyn+ogCwh5DB5f1fj1n4wHGNAqJSKFb8OQzLVlRFAH7cB9TKQ5eon3/n2lXUWY7GfA==}
 
   '@sveltejs/adapter-vercel@5.5.2':
     resolution: {integrity: sha512-6NpumKJ3m9Y6mkSFw4Z8YnaJZc42OWLkSFCk5hD6pLrS4f+b9JVBaXpKB/xkxf1Kf7JpzZtNZKbAaoRrTtJ+Hw==}
@@ -2556,9 +2556,9 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  '@supabase/ssr@0.5.2(@supabase/supabase-js@2.47.15)':
+  '@supabase/ssr@0.5.2(@supabase/supabase-js@2.47.16)':
     dependencies:
-      '@supabase/supabase-js': 2.47.15
+      '@supabase/supabase-js': 2.47.16
       '@types/cookie': 0.6.0
       cookie: 0.7.2
 
@@ -2566,7 +2566,7 @@ snapshots:
     dependencies:
       '@supabase/node-fetch': 2.6.15
 
-  '@supabase/supabase-js@2.47.15':
+  '@supabase/supabase-js@2.47.16':
     dependencies:
       '@supabase/auth-js': 2.67.3
       '@supabase/functions-js': 2.4.4
