@@ -71,6 +71,9 @@
 				Pita bread
 			</a>
 		</li>
+		<li>
+			<a href="https://www.pexels.com/photo/six-baked-breads-461060/"> Baguette </a>
+		</li>
 	</ul>
 </div>
 

@@ -7,9 +7,10 @@
 
 	interface Props {
 		product: PageData['products'][number];
+		cartMode?: boolean;
 	}
 
-	let { product }: Props = $props();
+	let { product, cartMode = false }: Props = $props();
 </script>
 
 <Card.Root>
@@ -23,7 +24,11 @@
 	</Card.Header>
 	<Card.Content>
 		<a href="/menu/{product.slug}">
-			<img src={product.image_url} alt={product.name} />
+			<img
+				src={product.image_url}
+				alt={product.name}
+				class={[cartMode && 'max-w-screen-sm w-56 h-auto']}
+			/>
 		</a>
 	</Card.Content>
 	<Card.Footer class="gap-4">
@@ -35,6 +40,8 @@
 		>
 			add to cart
 		</Button>
-		<Button variant="outline" href="/menu/{product.slug}">view details</Button>
+		{#if !cartMode}
+			<Button variant="outline" href="/menu/{product.slug}">view details</Button>
+		{/if}
 	</Card.Footer>
 </Card.Root>

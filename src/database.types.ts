@@ -43,6 +43,7 @@ export type Database = {
 					name: string;
 					price: number;
 					slug: string;
+					price_id?: string | null;
 				};
 				Insert: {
 					allergens?: string | null;
@@ -54,6 +55,7 @@ export type Database = {
 					name: string;
 					price?: number;
 					slug: string;
+					price_id?: string | null;
 				};
 				Update: {
 					allergens?: string | null;
@@ -65,6 +67,7 @@ export type Database = {
 					name?: string;
 					price?: number;
 					slug?: string;
+					price_id?: string | null;
 				};
 				Relationships: [];
 			};
