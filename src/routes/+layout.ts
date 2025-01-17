@@ -1,7 +1,13 @@
+import { dev } from '$app/environment';
 import { PUBLIC_SUPABASE_ANON_KEY, PUBLIC_SUPABASE_URL } from '$env/static/public';
 import { createBrowserClient, createServerClient, isBrowser } from '@supabase/ssr';
+import { injectAnalytics } from '@vercel/analytics/sveltekit';
 import type { Database } from '../database.types';
 import type { LayoutLoad } from './$types';
+
+if (!dev) {
+	injectAnalytics();
+}
 
 export const ssr = true;
 
