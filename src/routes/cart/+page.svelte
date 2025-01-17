@@ -22,9 +22,13 @@
 		{#if item}
 			<div class="flex items-center justify-between my-4">
 				<div class="flex items-center">
-					<img src={item.image_url} alt={item.name} class="w-16 h-16 object-cover rounded-lg" />
+					<a href="/menu/{item.slug}">
+						<img src={item.image_url} alt={item.name} class="w-16 h-16 object-cover rounded-lg" />
+					</a>
 					<div class="ml-4">
-						<p class="text-lg font-semibold">{item.name}</p>
+						<a class="text-lg font-semibold" href="/menu/{item.slug}">
+							{item.name}
+						</a>
 						<p class="text-sm text-gray-500">${item.price} each</p>
 					</div>
 				</div>
@@ -65,6 +69,16 @@
 		</p>
 	{/each}
 	{#if $cart.length}
+		<h3 class="mt-8 scroll-m-20 text-2xl font-semibold tracking-tight">subtotal</h3>
+		<p class="leading-7 [&:not(:first-child)]:mt-4">
+			${$cart.reduce((acc, cartItem) => {
+				const item = data.products.find((currentItem) => currentItem.id === cartItem.id);
+				if (item) {
+					return acc + item.price * cartItem.quantity;
+				}
+				return acc;
+			}, 0)}
+		</p>
 		<Button href="/checkout" class="mt-8">checkout</Button>
 	{/if}
 </div>
