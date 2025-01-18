@@ -11,11 +11,13 @@
 		statement of originality
 	</h2>
 
-	<p>
+	<p class="leading-7 [&:not(:first-child)]:mt-6">
 		This site was built using <a href="https://svelte.dev" target="_blank">Svelte</a> and
 		<a href="https://svelte.dev/docs/kit/introduction" target="_blank">SvelteKit</a>. We used UI
-		components from <a href="https://www.shadcn-svelte.com/">shadcn-svelte</a> which were modified and
-		themed for this site.
+		components from <a href="https://www.shadcn-svelte.com/">shadcn-svelte</a> which were modified
+		and themed for this site. The checkout page uses
+		<a href="https://stripe.com" target="_blank">Stripe</a> for payment processing. For the checkout
+		UI, only the card-input section is created by Stripe (for security reasons).
 	</p>
 
 	<p class="leading-7 [&:not(:first-child)]:mt-6">
@@ -46,9 +48,9 @@
 			<a href="https://www.pexels.com/photo/brown-bread-on-wooden-tray-6605301/">Challah bread</a>
 		</li>
 		<li>
-			<a href="https://www.pexels.com/photo/a-flatlay-of-a-freshly-baked-banana-bread-6829493/"
-				>Banana bread</a
-			>
+			<a href="https://www.pexels.com/photo/a-flatlay-of-a-freshly-baked-banana-bread-6829493/">
+				Banana bread
+			</a>
 		</li>
 	</ul>
 

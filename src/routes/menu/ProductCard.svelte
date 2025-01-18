@@ -4,6 +4,7 @@
 	import * as Card from '$lib/components/ui/card';
 	import { toast } from 'svelte-sonner';
 	import type { PageData } from './$types';
+	import { goto } from '$app/navigation';
 
 	interface Props {
 		product: PageData['products'][number];
@@ -35,7 +36,14 @@
 		<Button
 			onclick={() => {
 				addToCart(product.id);
-				toast.success('Added to cart!');
+				toast.success('Added to cart!', {
+					action: {
+						label: 'View Cart',
+						onClick: () => {
+							goto('/cart');
+						},
+					},
+				});
 			}}
 		>
 			add to cart

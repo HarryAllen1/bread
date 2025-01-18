@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { addToCart } from '$lib/cart';
 	import { Button } from '$lib/components/ui/button';
+	import { toast } from 'svelte-sonner';
 	import type { PageData } from './$types';
+	import { goto } from '$app/navigation';
 
 	interface Props {
 		data: PageData;
@@ -42,6 +44,14 @@
 				class="mt-4"
 				onclick={() => {
 					addToCart(data.productDetails.id);
+					toast.success('Added to cart!', {
+						action: {
+							label: 'View Cart',
+							onClick: () => {
+								goto('/cart');
+							},
+						},
+					});
 				}}
 			>
 				add to cart

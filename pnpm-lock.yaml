@@ -27,8 +27,8 @@ importers:
         specifier: ^8.4.0
         version: 8.5.2(embla-carousel@8.5.2)
       stripe:
-        specifier: ^17.5.0
-        version: 17.5.0
+        specifier: 17.6.0-beta.2
+        version: 17.6.0-beta.2
       svelte-persisted-store:
         specifier: ^0.12.0
         version: 0.12.0(svelte@5.19.0)
@@ -713,9 +713,6 @@ packages:
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
 
-  '@types/node@22.10.5':
-    resolution: {integrity: sha512-F8Q+SeGimwOo86fiovQh8qiXfFEh2/ocYv7tU5pJ3EXMSSxk1Joj5wefpFK2fHTf/N6HKGSxIDBT9f3gCxXPkQ==}
-
   '@types/node@22.10.7':
     resolution: {integrity: sha512-V09KvXxFiutGp6B7XkpaDXlNadZxrzajcY50EuoLIpQ6WWYCSvf19lVIazzfIzQvhUN2HjX12spLojTnhuKlGg==}
 
@@ -1159,9 +1156,6 @@ packages:
     peerDependenciesMeta:
       jiti:
         optional: true
-
-  esm-env@1.2.1:
-    resolution: {integrity: sha512-U9JedYYjCnadUlXk7e1Kr+aENQhtUaoaV9+gZm1T8LC/YBAPJx3NSPIAurFOC0U5vrdSevnUJS2/wUVxGwPhng==}
 
   esm-env@1.2.2:
     resolution: {integrity: sha512-Epxrv+Nr/CaL4ZcFGPJIYLWFom+YeV1DqMLHJoEd9SYRxNbaFruBwfEX/kkHUJf55j2+TUbmDcmuilbP1TmXHA==}
@@ -1922,8 +1916,8 @@ packages:
     resolution: {integrity: sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==}
     engines: {node: '>=8'}
 
-  stripe@17.5.0:
-    resolution: {integrity: sha512-kcyeAkDFjGsVl17FqnG7q/+xIjt0ZjOo9Dm+q8deAvs2Xe4iAHrhxyoP4etUVFc+/LZJANjIPVR+ZOnt9hr/Ug==}
+  stripe@17.6.0-beta.2:
+    resolution: {integrity: sha512-OAjGKERm+ozD4TJrT+cgdhaN1t9EW/aJJXD3Y9j2UkI2RgBjr6hVcDVMMscjpkc18A+6WhfgIXsamu12kEGiEg==}
     engines: {node: '>=12.*'}
 
   style-to-object@1.0.8:
@@ -2689,10 +2683,6 @@ snapshots:
 
   '@types/json-schema@7.0.15': {}
 
-  '@types/node@22.10.5':
-    dependencies:
-      undici-types: 6.20.0
-
   '@types/node@22.10.7':
     dependencies:
       undici-types: 6.20.0
@@ -2881,7 +2871,7 @@ snapshots:
       '@floating-ui/core': 1.6.8
       '@floating-ui/dom': 1.6.12
       '@internationalized/date': 3.5.6
-      esm-env: 1.2.1
+      esm-env: 1.2.2
       runed: 0.22.0(svelte@5.19.0)
       svelte: 5.19.0
       svelte-toolbelt: 0.7.0(svelte@5.19.0)
@@ -3187,8 +3177,6 @@ snapshots:
       jiti: 1.21.7
     transitivePeerDependencies:
       - supports-color
-
-  esm-env@1.2.1: {}
 
   esm-env@1.2.2: {}
 
@@ -3770,12 +3758,12 @@ snapshots:
 
   runed@0.20.0(svelte@5.19.0):
     dependencies:
-      esm-env: 1.2.1
+      esm-env: 1.2.2
       svelte: 5.19.0
 
   runed@0.22.0(svelte@5.19.0):
     dependencies:
-      esm-env: 1.2.1
+      esm-env: 1.2.2
       svelte: 5.19.0
 
   sade@1.8.1:
@@ -3902,9 +3890,9 @@ snapshots:
 
   strip-json-comments@3.1.1: {}
 
-  stripe@17.5.0:
+  stripe@17.6.0-beta.2:
     dependencies:
-      '@types/node': 22.10.5
+      '@types/node': 22.10.7
       qs: 6.13.1
 
   style-to-object@1.0.8:

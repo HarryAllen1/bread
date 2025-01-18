@@ -27,7 +27,7 @@
 		{@const item = data.products.find((currentItem) => currentItem.id === cartItem.id)}
 		{#if item}
 			<div class="flex md:items-center justify-center flex-row my-4">
-				<div class="flex md:items-center">
+				<div class="flex md:items-center min-w-16">
 					<a href="/menu/{item.slug}">
 						<img
 							src={item.image_url}
