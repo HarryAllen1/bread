@@ -235,7 +235,7 @@
 								}
 							}}
 						>
-							Apply
+							apply
 						</Button>
 					{/if}
 				</div>
