@@ -6,6 +6,7 @@
 	import type { PageData } from './$types';
 	import { invalidate } from '$app/navigation';
 	import { Toaster } from '$lib/components/ui/sonner';
+	import Confirm from '$lib/Confirm.svelte';
 
 	interface Props {
 		children: Snippet;
@@ -32,4 +33,5 @@
 
 <Footer />
 
+<Confirm />
 <Toaster theme="light" />

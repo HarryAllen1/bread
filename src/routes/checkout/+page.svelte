@@ -12,6 +12,7 @@
 	import { onMount } from 'svelte';
 	import defaultTheme from 'tailwindcss/defaultTheme';
 	import type { PageData } from './$types';
+	import { fancyConfirm } from '$lib/confirm';
 
 	interface Props {
 		data: PageData;
@@ -240,8 +241,8 @@
 				</div>
 				<div class="text-red-500">{promoCodeErrors}</div>
 				<strong>Note:</strong> Please use the promo code "<strong>TSA</strong>" for a 100% discount.
-				This site will actually charge you otherwise. Use the Cash App Pay or Amazon Pay to bypass
-				the actual payment requirements.
+				This site will actually charge you otherwise. Use Cash App Pay or Amazon Pay to bypass the
+				actual payment requirements.
 			</div>
 			<div>
 				<Button
@@ -251,6 +252,14 @@
 						if (!email) {
 							emailErrors = 'Email is required';
 							submitErrors = 'Please fix the errors above';
+							return;
+						}
+						if (
+							!(await fancyConfirm(
+								'Are you sure?',
+								'By continuing, you understand that you will not be getting any bread or anything purchased on this site. If you put in actual payment information without a coupon code, you will actually be charged money.',
+							))
+						) {
 							return;
 						}
 						const result = await checkout.confirm();
