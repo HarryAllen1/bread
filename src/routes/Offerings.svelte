@@ -4,7 +4,11 @@
 
 		<p class="leading-7 [&:not(:first-child)]:mt-6">
 			our restaurant offers a wide variety of breads and sandwiches, celebrating the diversity of
-			bread.
+			bread. to make our offerings more accessible, we only offer vegetarian options for our
+			sandwiches.
+		</p>
+		<p class="leading-7 [&:not(:first-child)]:mt-6">
+			currently, we only take online orders as we are still preparing our physical location.
 		</p>
 	</div>
 </div>
