@@ -217,10 +217,11 @@
 									promoCodeErrors = result.error.message;
 								} else {
 									appliedPromoCode = '';
+									session = checkout.session();
 								}
 							}}
 						>
-							Remove
+							remove
 						</Button>
 					{:else}
 						<Button
