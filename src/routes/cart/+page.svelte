@@ -21,7 +21,7 @@
 </script>
 
 <div class="container my-8">
-	<h1 class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">cart</h1>
+	<h1 class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">Cart</h1>
 
 	{#each $cart as cartItem}
 		{@const item = data.products.find((currentItem) => currentItem.id === cartItem.id)}

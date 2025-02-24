@@ -1,23 +1,23 @@
 <svelte:head>
-	<title>references - bread</title>
+	<title>References - bread</title>
 </svelte:head>
 
 <div class="container my-8">
-	<h1 class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">reference page</h1>
+	<h1 class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">References</h1>
 
 	<h2
 		class="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors mt-4"
 	>
-		statement of originality
+		Statement of Originality
 	</h2>
 
 	<p class="leading-7 [&:not(:first-child)]:mt-6">
-		This site was built using <a href="https://svelte.dev" target="_blank">Svelte</a> and
-		<a href="https://svelte.dev/docs/kit/introduction" target="_blank">SvelteKit</a>. We used UI
-		components from <a href="https://www.shadcn-svelte.com/">shadcn-svelte</a> which were modified
-		and themed for this site. The checkout page uses
-		<a href="https://stripe.com" target="_blank">Stripe</a> for payment processing. For the checkout
-		UI, only the card-input section is created by Stripe (for security reasons).
+		This website was developed using <a href="https://svelte.dev" target="_blank">Svelte</a> and
+		<a href="https://svelte.dev/docs/kit/introduction" target="_blank">SvelteKit</a>. The user interface
+		components were sourced from <a href="https://www.shadcn-svelte.com/">shadcn-svelte</a> and have been
+		customized to match our design aesthetic. Payment processing is handled securely through
+		<a href="https://stripe.com" target="_blank">Stripe</a>, with only the card input section being
+		provided by their service for maximum security.
 	</p>
 
 	<p class="leading-7 [&:not(:first-child)]:mt-6">
@@ -30,56 +30,54 @@
 	<h2
 		class="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors mt-4"
 	>
-		sources
+		Sources
 	</h2>
 
-	<h3 class="scroll-m-20 text-2xl font-semibold tracking-tight">site-wide</h3>
+	<h3 class="scroll-m-20 text-2xl font-semibold tracking-tight">Site-Wide Elements</h3>
 
 	<ul class="my-6 ml-6 list-disc [&>li]:mt-2">
 		<li>
-			Icons: <a href="https://lucide.dev/" target="_blank">Lucide</a>
+			Icon Library: <a href="https://lucide.dev/" target="_blank">Lucide</a>
 		</li>
 	</ul>
 
-	<h3 class="scroll-m-20 text-2xl font-semibold tracking-tight">home</h3>
+	<h3 class="scroll-m-20 text-2xl font-semibold tracking-tight">Homepage Assets</h3>
 
 	<ul class="my-6 ml-6 list-disc [&>li]:mt-2">
 		<li>
-			<a href="https://www.pexels.com/photo/brown-bread-on-wooden-tray-6605301/">Challah bread</a>
+			<a href="https://www.pexels.com/photo/brown-bread-on-wooden-tray-6605301/">Challah Bread Image</a>
 		</li>
 		<li>
 			<a href="https://www.pexels.com/photo/a-flatlay-of-a-freshly-baked-banana-bread-6829493/">
-				Banana bread
+				Banana Bread Image
 			</a>
 		</li>
 	</ul>
 
-	<h3 class="scroll-m-20 text-2xl font-semibold tracking-tight">menu/products</h3>
+	<h3 class="scroll-m-20 text-2xl font-semibold tracking-tight">Product Photography</h3>
 
 	<ul class="my-6 ml-6 list-disc [&>li]:mt-2">
 		<li>
-			<a href="https://www.pexels.com/photo/brown-bread-on-wooden-tray-6605301/">Challah bread</a>
+			<a href="https://www.pexels.com/photo/brown-bread-on-wooden-tray-6605301/">Challah Bread</a>
 		</li>
 		<li>
-			<a href="https://www.pexels.com/photo/slice-of-bread-1586947/">Multigrain bread</a>
+			<a href="https://www.pexels.com/photo/slice-of-bread-1586947/">Multigrain Bread</a>
 		</li>
 		<li>
 			<a href="https://www.pexels.com/photo/a-flatlay-of-a-freshly-baked-banana-bread-6829493/">
-				Banana bread
+				Banana Bread
 			</a>
 		</li>
 		<li>
 			<a href="https://www.pexels.com/photo/a-pita-bread-over-a-ceramic-tile-6419738/">
-				Pita bread
+				Pita Bread
 			</a>
 		</li>
 		<li>
-			<a href="https://www.pexels.com/photo/six-baked-breads-461060/"> Baguette </a>
+			<a href="https://www.pexels.com/photo/six-baked-breads-461060/">Baguette</a>
 		</li>
 		<li>
-			<a
-				href="https://www.pexels.com/photo/plate-with-delicious-breakfast-on-wooden-table-5490385/"
-			>
+			<a href="https://www.pexels.com/photo/plate-with-delicious-breakfast-on-wooden-table-5490385/">
 				Sandwich
 			</a>
 		</li>

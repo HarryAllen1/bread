@@ -1,14 +1,14 @@
-interface Page {
+export interface Page {
 	title: string;
 	href: string;
 }
 export const pages: Page[] = [
 	{
 		href: '/menu',
-		title: 'menu',
+		title: 'Menu',
 	},
 	{
 		href: '/references',
-		title: 'references',
+		title: 'References',
 	},
 ];

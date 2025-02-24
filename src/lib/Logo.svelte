@@ -18,6 +18,6 @@
 </script>
 
 <div class={cn('flex flex-col items-center w-fit', className)} bind:this={ref} {...props}>
-	<img src={Icon} class={iconClass} alt="bread" />
-	<span class={cn('font-bold no-underline', textClass)}>bread</span>
+	<img src={Icon} class={iconClass} alt="Bread" />
+	<span class={cn('font-bold no-underline', textClass)}>Bread</span>
 </div>
