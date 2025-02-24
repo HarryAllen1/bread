@@ -36,7 +36,7 @@
 			/>
 			<div
 				class="absolute inset-0 bg-linear-to-t from-black/50 to-transparent opacity-0 transition-opacity hover:opacity-100"
-			/>
+			></div>
 			<Croissant
 				class="absolute bottom-4 right-4 size-8 text-white opacity-0 transition-opacity hover:opacity-100 animate-float"
 			/>

@@ -90,6 +90,8 @@
 </div>
 
 <style>
+	@reference "../../app.css";
+
 	a {
 		@apply text-primary font-medium underline underline-offset-4;
 	}

@@ -1,13 +1,13 @@
 <script lang="ts">
-	import { onMount, type Snippet } from 'svelte';
-	import Footer from './Footer.svelte';
-	import Navbar from './Navbar.svelte';
-	import '../app.css';
-	import type { PageData } from './$types';
 	import { invalidate } from '$app/navigation';
 	import { Toaster } from '$lib/components/ui/sonner';
 	import Confirm from '$lib/Confirm.svelte';
 	import { theme } from '$lib/stores/theme';
+	import { onMount, type Snippet } from 'svelte';
+	import '../app.css';
+	import type { PageData } from './$types';
+	import Footer from './Footer.svelte';
+	import Navbar from './Navbar.svelte';
 
 	interface Props {
 		children: Snippet;
