@@ -6,10 +6,8 @@
 </script>
 
 <div class="container my-8">
-	<h1 class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
-		Join Our Waitlist
-	</h1>
-	
+	<h1 class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">Join Our Waitlist</h1>
+
 	<div class="mt-8 max-w-2xl">
 		<Card.Root>
 			<Card.Header>
@@ -20,7 +18,8 @@
 			</Card.Header>
 			<Card.Content>
 				<p class="text-muted-foreground mb-4">
-					We're working hard to bring you the best bread experience. In the meantime, you can order online!
+					We're working hard to bring you the best bread experience. In the meantime, you can order
+					online!
 				</p>
 				<div class="space-y-4">
 					<div>

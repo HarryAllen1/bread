@@ -31,13 +31,13 @@
 			/>
 		</div>
 		<div class="md:px-6 mt-4 md:mt-0">
-			<p class="leading-7 [&:not(:first-child)]:mt-6">{data.productDetails.description}</p>
+			<p class="leading-7 not-first:mt-6">{data.productDetails.description}</p>
 			{#if data.productDetails.allergens}
-				<p class="leading-7 [&:not(:first-child)]:mt-6 font-bold">
+				<p class="leading-7 not-first:mt-6 font-bold">
 					Allergens: {data.productDetails.allergens}
 				</p>
 			{/if}
-			<p class="leading-7 [&:not(:first-child)]:mt-6 font-bold">
+			<p class="leading-7 not-first:mt-6 font-bold">
 				${data.productDetails.price}
 			</p>
 			<Button

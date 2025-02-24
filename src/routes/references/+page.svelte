@@ -11,19 +11,20 @@
 		Statement of Originality
 	</h2>
 
-	<p class="leading-7 [&:not(:first-child)]:mt-6">
+	<p class="leading-7 not-first:mt-6">
 		This website was developed using <a href="https://svelte.dev" target="_blank">Svelte</a> and
-		<a href="https://svelte.dev/docs/kit/introduction" target="_blank">SvelteKit</a>. The user interface
-		components were sourced from <a href="https://www.shadcn-svelte.com/">shadcn-svelte</a> and have been
-		customized to match our design aesthetic. Payment processing is handled securely through
+		<a href="https://svelte.dev/docs/kit/introduction" target="_blank">SvelteKit</a>. The user
+		interface components were sourced from
+		<a href="https://www.shadcn-svelte.com/">shadcn-svelte</a>
+		and have been customized to match our design aesthetic. Payment processing is handled securely through
 		<a href="https://stripe.com" target="_blank">Stripe</a>, with only the card input section being
 		provided by their service for maximum security.
 	</p>
 
-	<p class="leading-7 [&:not(:first-child)]:mt-6">
+	<p class="leading-7 not-first:mt-6">
 		<a href="/copyright-checklist.pdf" target="_blank">Student Copyright Checklist</a>
 	</p>
-	<p class="leading-7 [&:not(:first-child)]:mt-6">
+	<p class="leading-7 not-first:mt-6">
 		<a href="/work-log.pdf" target="_blank">Work Log</a>
 	</p>
 
@@ -45,7 +46,9 @@
 
 	<ul class="my-6 ml-6 list-disc [&>li]:mt-2">
 		<li>
-			<a href="https://www.pexels.com/photo/brown-bread-on-wooden-tray-6605301/">Challah Bread Image</a>
+			<a href="https://www.pexels.com/photo/brown-bread-on-wooden-tray-6605301/"
+				>Challah Bread Image</a
+			>
 		</li>
 		<li>
 			<a href="https://www.pexels.com/photo/a-flatlay-of-a-freshly-baked-banana-bread-6829493/">
@@ -77,7 +80,9 @@
 			<a href="https://www.pexels.com/photo/six-baked-breads-461060/">Baguette</a>
 		</li>
 		<li>
-			<a href="https://www.pexels.com/photo/plate-with-delicious-breakfast-on-wooden-table-5490385/">
+			<a
+				href="https://www.pexels.com/photo/plate-with-delicious-breakfast-on-wooden-table-5490385/"
+			>
 				Sandwich
 			</a>
 		</li>

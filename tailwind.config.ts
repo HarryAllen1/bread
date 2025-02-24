@@ -1,11 +1,9 @@
 import type { Config } from 'tailwindcss';
 import tailwindcssAnimate from 'tailwindcss-animate';
-import { fontFamily } from 'tailwindcss/defaultTheme';
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 const config: Config = {
-	darkMode: ['class'],
 	content: ['./src/**/*.{html,js,svelte,ts}'],
-	safelist: ['dark'],
 	theme: {
 		container: {
 			center: true,
@@ -57,8 +55,8 @@ const config: Config = {
 				sm: 'calc(var(--radius) - 4px)',
 			},
 			fontFamily: {
-				sans: ['Inter var', ...fontFamily.sans],
-				display: ['Cal Sans', ...fontFamily.sans],
+				sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+				display: ['Cal Sans', ...defaultTheme.fontFamily.sans],
 			},
 			keyframes: {
 				'accordion-down': {

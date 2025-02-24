@@ -18,9 +18,9 @@
 </script>
 
 <header
-	class="border-border/40 bg-primary supports-[backdrop-filter]:bg-primary sticky top-0 z-50 w-full border-b text-primary-foreground"
+	class="border-border/40 bg-primary supports-backdrop-filter:bg-primary sticky top-0 z-50 w-full border-b text-primary-foreground"
 >
-	<div class="container flex h-16 max-w-screen-2xl items-center">
+	<div class="container flex h-16 max-w-(--breakpoint-2xl) items-center">
 		<MainNav />
 		<MobileNav />
 		<div class="grow"></div>

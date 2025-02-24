@@ -29,10 +29,17 @@
 			<img
 				src={product.image_url}
 				alt={product.name}
-				class={[cartMode ? 'max-w-screen-sm w-56 h-auto' : 'w-full', 'transform transition-transform hover:scale-105']}
+				class={[
+					cartMode ? 'max-w-(--breakpoint-sm) w-56 h-auto' : 'w-full',
+					'transform transition-transform hover:scale-105',
+				]}
 			/>
-			<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 transition-opacity hover:opacity-100" />
-			<Croissant class="absolute bottom-4 right-4 size-8 text-white opacity-0 transition-opacity hover:opacity-100 animate-float" />
+			<div
+				class="absolute inset-0 bg-linear-to-t from-black/50 to-transparent opacity-0 transition-opacity hover:opacity-100"
+			/>
+			<Croissant
+				class="absolute bottom-4 right-4 size-8 text-white opacity-0 transition-opacity hover:opacity-100 animate-float"
+			/>
 		</a>
 	</Card.Content>
 	<Card.Footer class="gap-4">
@@ -55,6 +62,5 @@
 		{#if !cartMode}
 			<Button variant="outline" href="/menu/{product.slug}" class="hover-lift">view details</Button>
 		{/if}
-		
 	</Card.Footer>
 </Card.Root>

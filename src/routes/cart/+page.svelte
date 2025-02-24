@@ -73,7 +73,7 @@
 			</div>
 		{/if}
 	{:else}
-		<p class="leading-7 [&:not(:first-child)]:mt-6">
+		<p class="leading-7 not-first:mt-6">
 			Your cart is empty, but it doesn't have to be! Check out our <a
 				href="/menu"
 				class="text-primary font-medium underline underline-offset-4"
@@ -98,7 +98,7 @@
 		{/if}
 
 		<h3 class="mt-8 scroll-m-20 text-2xl font-semibold tracking-tight">subtotal</h3>
-		<p class="leading-7 [&:not(:first-child)]:mt-4">
+		<p class="leading-7 not-first:mt-4">
 			${$cart.reduce((acc, cartItem) => {
 				const item = data.products.find((currentItem) => currentItem.id === cartItem.id);
 				if (item) {
