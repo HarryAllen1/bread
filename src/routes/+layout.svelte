@@ -2,7 +2,6 @@
 	import { invalidate } from '$app/navigation';
 	import { Toaster } from '$lib/components/ui/sonner';
 	import Confirm from '$lib/Confirm.svelte';
-	import { theme } from '$lib/stores/theme';
 	import { onMount, type Snippet } from 'svelte';
 	import '../app.css';
 	import type { PageData } from './$types';
@@ -28,7 +27,7 @@
 	});
 </script>
 
-<div class:dark={$theme === 'dark'}>
+<div>
 	<div class="min-h-screen flex flex-col bg-background text-foreground">
 		<Navbar />
 
@@ -41,4 +40,4 @@
 </div>
 
 <Confirm />
-<Toaster theme={$theme} />
+<Toaster theme="light" />

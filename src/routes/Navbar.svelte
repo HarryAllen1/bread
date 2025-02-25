@@ -1,20 +1,13 @@
 <script lang="ts">
+	import { cart } from '$lib/cart';
+	import { Badge } from '$lib/components/ui/badge';
 	import { buttonVariants } from '$lib/components/ui/button';
 	import { cn } from '$lib/utils.js';
 	import ShoppingCart from 'lucide-svelte/icons/shopping-cart';
-	import Sun from 'lucide-svelte/icons/sun';
-	import Moon from 'lucide-svelte/icons/moon';
 	import MainNav from './MainNav.svelte';
-	import { Badge } from '$lib/components/ui/badge';
-	import { cart } from '$lib/cart';
 	import MobileNav from './MobileNav.svelte';
-	import { theme } from '$lib/stores/theme';
 
 	let cartSize = $derived($cart.reduce((accumulator, item) => accumulator + item.quantity, 0));
-
-	const toggleTheme = () => {
-		theme.update((current) => (current === 'dark' ? 'light' : 'dark'));
-	};
 </script>
 
 <header
@@ -25,24 +18,6 @@
 		<MobileNav />
 		<div class="grow"></div>
 		<div class="flex items-center justify-between space-x-2 md:justify-end">
-			<button
-				class={cn(
-					buttonVariants({
-						size: 'sm',
-						variant: 'ghost',
-					}),
-					'size-10 p-0',
-				)}
-				onclick={toggleTheme}
-			>
-				{#if $theme === 'dark'}
-					<Sun class="size-6" />
-				{:else}
-					<Moon class="size-6" />
-				{/if}
-
-				<span class="sr-only">Toggle theme</span>
-			</button>
 			<nav class="flex items-center">
 				<a href="/cart" class="relative">
 					<div

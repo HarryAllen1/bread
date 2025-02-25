@@ -68,7 +68,7 @@
 				appearance: {
 					variables: {
 						fontFamily: defaultTheme.fontFamily.sans.join(', '),
-						fontSizeSm: defaultTheme.fontSize.sm[0],
+						fontSizeSm: defaultTheme.fontSize.sm[0].lineHeight,
 						fontWeightBold: defaultTheme.fontWeight.bold,
 						focusBoxShadow: 'none',
 					},
