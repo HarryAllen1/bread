@@ -58,5 +58,5 @@
 		"vite": "^6.0.0"
 	},
 	"type": "module",
-	"packageManager": "pnpm@8.15.5"
+	"packageManager": "pnpm@10.5.0"
 }
