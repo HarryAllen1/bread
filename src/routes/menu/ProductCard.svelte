@@ -15,7 +15,11 @@
 	let { product, cartMode = false }: Props = $props();
 </script>
 
-<Card.Root class="card-3d {cartMode ? '' : 'hover:shadow-2xl hover:shadow-primary/20'}">
+<Card.Root
+	class={[
+		!cartMode && 'hover:shadow-2xl hover:scale-102 transition-transform hover:shadow-primary/20',
+	]}
+>
 	<Card.Header>
 		<a href="/menu/{product.slug}">
 			<Card.Title>{product.name}</Card.Title>
