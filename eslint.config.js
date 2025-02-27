@@ -56,6 +56,7 @@ export default tseslint.config(
 			'@typescript-eslint/unbound-method': 'off',
 			// its broken
 			'unicorn/expiring-todo-comments': 'off',
+			'unicorn/number-literal-case': 'off',
 			'unicorn/no-array-reduce': 'off',
 			'unicorn/no-await-expression-member': 'off',
 			'unicorn/no-null': 'off',

@@ -1,23 +1,23 @@
 <script lang="ts">
-	import type { PageData } from './$types';
-	import * as Card from '$lib/components/ui/card';
-	import ProductCard from './ProductCard.svelte';
 	import { Button } from '$lib/components/ui/button';
+	import * as Card from '$lib/components/ui/card';
+	import { Croissant } from 'lucide-svelte';
 	import { onMount } from 'svelte';
 	import {
-		Scene,
-		PerspectiveCamera,
-		WebGLRenderer,
-		TorusGeometry,
-		Mesh,
-		MeshPhongMaterial,
-		CapsuleGeometry,
-		SphereGeometry,
 		AmbientLight,
+		CapsuleGeometry,
 		DirectionalLight,
 		Material,
+		Mesh,
+		MeshPhongMaterial,
+		PerspectiveCamera,
+		Scene,
+		SphereGeometry,
+		TorusGeometry,
+		WebGLRenderer,
 	} from 'three';
-	import { Croissant } from 'lucide-svelte';
+	import type { PageData } from './$types';
+	import ProductCard from './ProductCard.svelte';
 
 	interface Props {
 		data: PageData;
@@ -27,8 +27,6 @@
 	let container: HTMLDivElement;
 
 	onMount(() => {
-		if (!container) return;
-
 		const scene = new Scene();
 		const camera = new PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 		const renderer = new WebGLRenderer({
@@ -39,7 +37,7 @@
 
 		renderer.setSize(window.innerWidth, window.innerHeight);
 		renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-		container.appendChild(renderer.domElement);
+		container.append(renderer.domElement);
 
 		// Create bread-like shapes
 		const breadGeometries = [
@@ -49,9 +47,9 @@
 		];
 
 		const breadMaterial = new MeshPhongMaterial({
-			color: 0xe3c397,
+			color: 0xe3_c3_97,
 			shininess: 30,
-			specular: 0x555555,
+			specular: 0x55_55_55,
 		});
 
 		const objects: Mesh[] = [];
@@ -77,10 +75,10 @@
 		}
 
 		// Lighting setup
-		const ambientLight = new AmbientLight(0xffffff, 0.7);
+		const ambientLight = new AmbientLight(0xff_ff_ff, 0.7);
 		scene.add(ambientLight);
 
-		const directionalLight = new DirectionalLight(0xffd700, 0.8);
+		const directionalLight = new DirectionalLight(0xff_d7_00, 0.8);
 		directionalLight.position.set(5, 5, 5);
 		scene.add(directionalLight);
 
@@ -88,24 +86,24 @@
 
 		let animationFrameId: number;
 
-		const animate = () => {
+		const animate = (): void => {
 			animationFrameId = requestAnimationFrame(animate);
 
-			objects.forEach((obj, index) => {
+			for (const [index, obj] of objects.entries()) {
 				// Gentle floating motion
 				obj.position.y += Math.sin(Date.now() * 0.001 + index) * 0.01;
 
 				// Slow rotation
 				obj.rotation.x += 0.001;
 				obj.rotation.y += 0.002;
-			});
+			}
 
 			renderer.render(scene, camera);
 		};
 
 		animate();
 
-		const handleResize = () => {
+		const handleResize = (): void => {
 			const width = window.innerWidth;
 			const height = window.innerHeight;
 
@@ -122,16 +120,14 @@
 			window.removeEventListener('resize', handleResize);
 			cancelAnimationFrame(animationFrameId);
 			renderer.dispose();
-			objects.forEach((obj) => {
+			for (const obj of objects) {
 				obj.geometry.dispose();
 				if (obj.material instanceof Material) {
 					obj.material.dispose();
 				}
-			});
-			scene.clear();
-			if (container && renderer.domElement) {
-				container.removeChild(renderer.domElement);
 			}
+			scene.clear();
+			renderer.domElement.remove();
 		};
 	});
 </script>
