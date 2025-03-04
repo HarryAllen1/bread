@@ -6,15 +6,15 @@
 </script>
 
 <div class="mr-4 hidden md:flex">
-	<a href="/" class="mr-20 flex items-center space-x-2">
-		<Logo class="size-10 gap-2 flex-row" iconClass="size-10" />
+	<a href="/" class="mr-10 flex items-center space-x-2">
+		<Logo />
 	</a>
 	<nav class="flex items-center gap-6 text-sm">
 		{#each pages as page}
 			<a
 				href={page.href}
 				class={cn(
-					'hover:text-primary-foreground/80 transition-colors',
+					'hover:text-primary-foreground/80 transition-colors font-medium',
 					pageStore.url.pathname === page.href
 						? 'text-primary-foreground'
 						: 'text-primary-foreground/60',

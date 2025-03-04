@@ -1,0 +1,19 @@
+<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g opacity="0.5">
+    <!-- Sandwich 1 - Classic -->
+    <rect x="5" y="10" width="30" height="15" rx="2" fill="#4CAF50" />
+    <rect x="7" y="15" width="26" height="5" rx="1" fill="#8BC34A" />
+    
+    <!-- Sandwich 2 - Wrap -->
+    <circle cx="60" cy="20" r="15" fill="#4CAF50" />
+    <path d="M50 20C50 14.4772 54.4772 10 60 10V30C54.4772 30 50 25.5228 50 20Z" fill="#8BC34A" />
+    
+    <!-- Sandwich 3 - Veggie -->
+    <rect x="10" y="50" width="25" height="15" rx="2" fill="#4CAF50" />
+    <rect x="12" y="55" width="21" height="5" rx="1" fill="#8BC34A" />
+    
+    <!-- Sandwich 4 - Avocado -->
+    <circle cx="55" cy="55" r="12" fill="#4CAF50" />
+    <circle cx="55" cy="55" r="6" fill="#8BC34A" />
+  </g>
+</svg>

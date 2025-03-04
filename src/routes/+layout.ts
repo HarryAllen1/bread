@@ -9,7 +9,8 @@ if (!dev) {
 	injectAnalytics();
 }
 
-export const ssr = true;
+export const ssr = false;
+export const prerender = true;
 
 export const load = (async ({ data, depends, fetch }) => {
 	/**

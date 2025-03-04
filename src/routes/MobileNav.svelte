@@ -6,6 +6,7 @@
 	import { cn } from '$lib/utils.js';
 	import MobileLink from './MobileLink.svelte';
 	import { pages } from './pages.js';
+	import UserPreferences from '$lib/components/UserPreferences.svelte';
 
 	let open = $state(false);
 </script>
@@ -51,18 +52,29 @@
 		<span class="sr-only">Toggle Menu</span>
 	</Sheet.Trigger>
 	<Sheet.Content side="left" class="pr-0">
-		<ScrollArea orientation="both" class="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
-			<div class="flex flex-col space-y-3">
-				{#each pages as navItem, index (`${navItem.title}${index}`)}
-					<MobileLink href={navItem.href} bind:open class="text-foreground">
-						{navItem.title}
-					</MobileLink>
-				{/each}
+		<div class="flex flex-col space-y-6 my-6">
+			<div class="px-6">
+				<Logo />
 			</div>
-		</ScrollArea>
+
+			<div class="px-6">
+				<UserPreferences />
+			</div>
+
+			<ScrollArea orientation="both" class="h-[calc(100vh-12rem)] pb-10 pl-6">
+				<div class="flex flex-col space-y-3">
+					{#each pages as navItem, index (`${navItem.title}${index}`)}
+						<MobileLink href={navItem.href} bind:open class="text-foreground font-medium text-lg">
+							{navItem.title}
+						</MobileLink>
+					{/each}
+					}
+				</div>
+			</ScrollArea>
+		</div>
 	</Sheet.Content>
 </Sheet.Root>
 
 <a href="/" class="md:hidden">
-	<Logo class="size-10 gap-2 flex-row ml-4" iconClass="size-10" />
+	<Logo class="ml-4" />
 </a>

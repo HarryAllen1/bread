@@ -8,7 +8,15 @@ export const pages: Page[] = [
 		title: 'Menu',
 	},
 	{
-		href: '/references',
-		title: 'References',
+		href: '/create',
+		title: 'Build Your Own',
+	},
+	{
+		href: '/about',
+		title: 'About Us',
+	},
+	{
+		href: '/locations',
+		title: 'Locations',
 	},
 ];
