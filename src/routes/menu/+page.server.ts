@@ -1,5 +1,7 @@
 import type { PageServerLoad } from './$types';
 
+export const prerender = false;
+
 export const load = (async ({ locals: { supabase } }) => {
 	const { data: products } = await supabase.from('products').select('*').order('name');
 

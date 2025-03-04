@@ -1,6 +1,10 @@
 <script lang="ts">
-	export let productId: number;
-	export let productName: string;
+	interface Props {
+		productId: number;
+		productName: string;
+	}
+
+	let { productId, productName }: Props = $props();
 
 	// Sample pairings data
 	const pairings = [
@@ -31,7 +35,7 @@
 	];
 
 	// Filter pairings based on product
-	const getRelevantPairings = () => {
+	const getRelevantPairings = (): typeof pairings => {
 		// In a real app, this would filter based on the actual product
 		return pairings;
 	};
@@ -48,13 +52,14 @@
 				<div class="relative h-40">
 					<img src={pairing.image} alt={pairing.name} class="w-full h-full object-cover" />
 					<div
-						class="absolute top-2 right-2 px-2 py-1 text-xs font-medium rounded"
-						class:bg-blue-100={pairing.type === 'bread'}
-						class:text-blue-800={pairing.type === 'bread'}
-						class:bg-green-100={pairing.type === 'meal'}
-						class:text-green-800={pairing.type === 'meal'}
-						class:bg-purple-100={pairing.type === 'beverage'}
-						class:text-purple-800={pairing.type === 'beverage'}
+						class={[
+							'absolute top-2 right-2 px-2 py-1 text-xs font-medium rounded',
+							{
+								'bg-blue-100 text-blue-800': pairing.type === 'bread',
+								'bg-green-100 text-green-800': pairing.type === 'meal',
+								'bg-purple-100 text-purple-800': pairing.type === 'beverage',
+							},
+						]}
 					>
 						{pairing.type}
 					</div>
@@ -66,6 +71,5 @@
 				</div>
 			</div>
 		{/each}
-		}
 	</div>
 </div>

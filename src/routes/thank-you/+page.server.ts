@@ -2,6 +2,8 @@ import { error, redirect } from '@sveltejs/kit';
 import type Stripe from 'stripe';
 import type { PageServerLoad } from './$types';
 
+export const prerender = false;
+
 export const load = (async ({ url, fetch }) => {
 	const sessionId = url.searchParams.get('session_id');
 	if (!sessionId) {
