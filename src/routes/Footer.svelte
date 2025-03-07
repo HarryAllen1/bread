@@ -3,7 +3,7 @@
 	import { pages } from './pages';
 </script>
 
-<div class="w-full bg-primary py-12">
+<div class="w-full bg-primary py-12 z-5">
 	<div class="container text-primary-foreground flex flex-col gap-8 px-4">
 		<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
 			<div class="flex flex-col items-center md:items-start gap-4">

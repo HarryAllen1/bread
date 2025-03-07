@@ -190,9 +190,6 @@
 
 		// Initialize scroll animations
 		initScrollAnimations();
-
-		// Create floating sandwich icons
-		createFloatingSandwiches();
 	});
 
 	function animateHero() {
@@ -327,7 +324,6 @@
 		}
 	}
 </script>
-
 <AnimatedSandwichBackground count={25} animated={true} opacity={0.3} speed={1.5} />
 
 <div class="relative min-h-screen" bind:this={heroSection}>
@@ -338,7 +334,7 @@
 	></div>
 
 	<!-- Decorative elements - using only working icons -->
-	<div
+	<!-- <div
 		class="absolute top-1/4 left-1/4 transform -translate-x-1/2 -translate-y-1/2 opacity-20 hero-decor"
 	>
 		<img src="https://img.icons8.com/color/96/hamburger.png" alt="Hamburger" class="w-24 h-24" />
@@ -352,7 +348,7 @@
 		class="absolute top-2/3 left-2/3 transform -translate-x-1/2 -translate-y-1/2 opacity-20 hero-decor"
 	>
 		<img src="https://img.icons8.com/color/96/sandwich.png" alt="Sandwich" class="w-16 h-16" />
-	</div>
+	</div> -->
 
 	<div class="container mx-auto px-4 py-12 md:py-16 relative z-10">
 		<div class="max-w-3xl mx-auto text-center mb-12">
@@ -541,7 +537,7 @@
 		}
 	}
 
-	.floating-sandwich {
+	.floating-sandwich {	x
 		position: absolute;
 		z-index: -1;
 		pointer-events: none;

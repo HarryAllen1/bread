@@ -81,7 +81,7 @@
 			>
 				Environmental Stewardship
 			</h2>
-			<p class="text-lg text-muted-foreground max-w-2xl mx-auto mt-4">
+			<p class="text-lg text-foreground max-w-2xl mx-auto mt-4 bg-accent rounded-2xl py-4">
 				We're committed to minimizing our environmental footprint through sustainable practices at
 				every level of our operation.
 			</p>
@@ -92,7 +92,7 @@
 				class="bg-white rounded-lg shadow-xl p-8 transform transition-all hover:translate-y-[-10px] duration-300 animate-in fade-in-50 slide-in-from-bottom-8 duration-700"
 			>
 				<div class="bg-gradient-to-br from-primary/20 to-primary/40 p-4 rounded-full w-fit mb-6">
-					<Recycle class="text-primary size-6" />
+					<Recycle class="text-primary size-6"/>
 				</div>
 				<h3 class="text-xl font-bold mb-3">Sustainable Packaging</h3>
 				<p class="text-muted-foreground mb-4">
