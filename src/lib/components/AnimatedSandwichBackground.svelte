@@ -2,12 +2,16 @@
 	import { onMount, onDestroy } from 'svelte';
 	import { gsap } from 'gsap';
 
-	export let count = 15;
-	export let animated = true;
-	export let opacity = 0.5;
-	export let speed = 2;
+	interface Props {
+		count?: number;
+		animated?: boolean;
+		opacity?: number;
+		speed?: number;
+	}
 
-	let container: HTMLDivElement;
+	let { count = 15, animated = true, opacity = 0.5, speed = 2 }: Props = $props();
+
+	let container: HTMLDivElement | undefined = $state();
 	let sandwiches: HTMLDivElement[] = [];
 
 	// Reduced icon set to only include icons that are loading properly
@@ -50,8 +54,9 @@
 			img.className = 'w-full h-full object-contain';
 			img.loading = 'eager'; // Ensure images load immediately
 
-			sandwich.appendChild(img);
-			container.appendChild(sandwich);
+			sandwich.append(img);
+			// eslint-disable-next-line svelte/no-dom-manipulating
+			container.append(sandwich);
 			sandwiches.push(sandwich);
 
 			if (animated) {
@@ -71,9 +76,9 @@
 
 	onDestroy(() => {
 		// Clean up GSAP animations
-		sandwiches.forEach((sandwich) => {
+		for (const sandwich of sandwiches) {
 			gsap.killTweensOf(sandwich);
-		});
+		}
 	});
 </script>
 

@@ -1,13 +1,17 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
-	export let animated = true;
-	export let count = 30;
-	export let opacity = 0.15;
-	export let pattern = false; // Whether to arrange in a pattern (checkerboard) or random
+	interface Props {
+		animated?: boolean;
+		count?: number;
+		opacity?: number;
+		pattern?: boolean; // Whether to arrange in a pattern (checkerboard) or random
+	}
+
+	let { animated = true, count = 30, opacity = 0.15, pattern = false }: Props = $props();
 
 	// Create static sandwich icons
-	const createStaticSandwichIcons = () => {
+	const createStaticSandwichIcons = (): HTMLDivElement => {
 		const container = document.createElement('div');
 		container.className = 'static-sandwiches-container';
 		container.style.position = 'absolute';
@@ -19,7 +23,7 @@
 		container.style.pointerEvents = 'none';
 		container.style.zIndex = '-1';
 
-		document.body.appendChild(container);
+		document.body.append(container);
 
 		// Use only icons that are loading properly
 		const workingIcons = [
@@ -60,9 +64,9 @@
 					img.alt = icon.alt;
 					img.style.width = `${40 + Math.random() * 30}px`;
 					img.style.height = `${40 + Math.random() * 30}px`;
-					wrapper.appendChild(img);
+					wrapper.append(img);
 
-					container.appendChild(wrapper);
+					container.append(wrapper);
 					counter++;
 				}
 			}
@@ -90,9 +94,9 @@
 				img.alt = icon.alt;
 				img.style.width = `${40 + Math.random() * 30}px`;
 				img.style.height = `${40 + Math.random() * 30}px`;
-				wrapper.appendChild(img);
+				wrapper.append(img);
 
-				container.appendChild(wrapper);
+				container.append(wrapper);
 			}
 		}
 
@@ -103,8 +107,8 @@
 		const container = createStaticSandwichIcons();
 
 		return () => {
-			if (container && document.body.contains(container)) {
-				document.body.removeChild(container);
+			if (document.body.contains(container)) {
+				container.remove();
 			}
 		};
 	});

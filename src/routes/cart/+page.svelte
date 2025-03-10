@@ -99,12 +99,12 @@
 
 		<h3 class="mt-8 scroll-m-20 text-2xl font-semibold tracking-tight">subtotal</h3>
 		<p class="leading-7 not-first:mt-4">
-			${$cart.reduce((acc, cartItem) => {
+			${$cart.reduce((accumulator, cartItem) => {
 				const item = data.products.find((currentItem) => currentItem.id === cartItem.id);
 				if (item) {
-					return acc + item.price * cartItem.quantity;
+					return accumulator + item.price * cartItem.quantity;
 				}
-				return acc;
+				return accumulator;
 			}, 0)}
 		</p>
 

@@ -1,11 +1,4 @@
 <script lang="ts">
-	interface Props {
-		productId: number;
-		productName: string;
-	}
-
-	let { productId, productName }: Props = $props();
-
 	// Sample pairings data
 	const pairings = [
 		{

@@ -20,40 +20,40 @@
 		initTiltEffects();
 	});
 
-	function initRevealSections() {
+	const initRevealSections = (): void => {
 		const sections = document.querySelectorAll('.reveal-section');
 
-		sections.forEach((section) => {
+		for (const section of sections) {
 			ScrollTrigger.create({
 				trigger: section,
 				start: 'top 80%',
 				onEnter: () => section.classList.add('active'),
 				once: true,
 			});
-		});
-	}
+		}
+	};
 
-	function initRevealItems() {
+	const initRevealItems = (): void => {
 		const items = document.querySelectorAll('.reveal-item');
 
-		items.forEach((item) => {
+		for (const item of items) {
 			ScrollTrigger.create({
 				trigger: item,
 				start: 'top 85%',
 				onEnter: () => item.classList.add('active'),
 				once: true,
 			});
-		});
-	}
+		}
+	};
 
-	function initParallaxEffects() {
-		const parallaxElements = document.querySelectorAll('.parallax-element');
+	const initParallaxEffects = (): void => {
+		const parallaxElements = document.querySelectorAll<HTMLDivElement>('.parallax-element');
 
-		parallaxElements.forEach((element) => {
-			const speed = element.getAttribute('data-speed') || '0.1';
+		for (const element of parallaxElements) {
+			const speed = element.dataset.speed || '0.1';
 
 			gsap.to(element, {
-				y: `${-100 * parseFloat(speed)}%`,
+				y: `${-100 * Number.parseFloat(speed)}%`,
 				ease: 'none',
 				scrollTrigger: {
 					trigger: element.parentElement,
@@ -62,17 +62,17 @@
 					scrub: true,
 				},
 			});
-		});
-	}
+		}
+	};
 
-	function initTiltEffects() {
-		const tiltCards = document.querySelectorAll('.tilt-card');
+	const initTiltEffects = (): void => {
+		const tiltCards = document.querySelectorAll<HTMLDivElement>('.tilt-card');
 
-		tiltCards.forEach((card) => {
-			card.addEventListener('mousemove', (e) => {
+		for (const card of tiltCards) {
+			card.addEventListener('mousemove', (event) => {
 				const rect = card.getBoundingClientRect();
-				const x = e.clientX - rect.left;
-				const y = e.clientY - rect.top;
+				const x = event.clientX - rect.left;
+				const y = event.clientY - rect.top;
 
 				const centerX = rect.width / 2;
 				const centerY = rect.height / 2;
@@ -86,6 +86,6 @@
 			card.addEventListener('mouseleave', () => {
 				card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
 			});
-		});
-	}
+		}
+	};
 </script>

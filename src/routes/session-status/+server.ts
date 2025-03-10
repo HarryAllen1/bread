@@ -15,8 +15,8 @@ export const GET = (async ({ url }) => {
 			status: session.status,
 			customer_email: session.customer_details?.email,
 		});
-	} catch (err) {
-		console.error('Error retrieving session:', err);
+	} catch (error_) {
+		console.error('Error retrieving session:', error_);
 		// Return mock data for development
 		return json({
 			status: 'complete',

@@ -137,7 +137,7 @@
 
 <svelte:head>
 	<title>
-		{data.productDetails.name} - Greens
+		{data.productDetails.name} - Greenwich
 	</title>
 	<meta
 		name="description"
@@ -303,10 +303,7 @@
 			</div>
 
 			<div>
-				<PerfectPairings
-					productId={data.productDetails.id}
-					productName={data.productDetails.name}
-				/>
+				<PerfectPairings />
 			</div>
 		</div>
 
@@ -332,7 +329,7 @@
 				</Tabs.Content>
 
 				<Tabs.Content value="reviews" class="pt-4">
-					<ReviewSystem productId={data.productDetails.id} productName={data.productDetails.name} />
+					<ReviewSystem productName={data.productDetails.name} />
 				</Tabs.Content>
 			</Tabs.Root>
 		</div>

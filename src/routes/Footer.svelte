@@ -9,7 +9,7 @@
 			<div class="flex flex-col items-center md:items-start gap-4">
 				<a href="/" class="w-fit"><Logo textClass="text-xl" /></a>
 				<p class="text-sm opacity-80 max-w-xs text-center md:text-left">
-					Greens specializes in crafting exceptional vegetarian sandwiches using premium,
+					Greenwich specializes in crafting exceptional vegetarian sandwiches using premium,
 					locally-sourced ingredients for a refined culinary experience.
 				</p>
 			</div>
@@ -33,14 +33,13 @@
 						{page.title}
 					</a>
 				{/each}
-				}
 			</div>
 
 			<div class="flex flex-col items-center md:items-start gap-2">
 				<h3 class="font-bold text-lg mb-2">Contact</h3>
 				<a href="tel:+15551234567" class="text-sm opacity-80 hover:opacity-100">555-123-4567</a>
-				<a href="mailto:contact@greens.com" class="text-sm opacity-80 hover:opacity-100"
-					>contact@greens.com</a
+				<a href="mailto:contact@greenwich.jhstsa.org" class="text-sm opacity-80 hover:opacity-100"
+					>contact@greenwich.jhstsa.org</a
 				>
 				<a
 					href="https://maps.app.goo.gl/azSbbyC12TmuJwfF8"
@@ -53,7 +52,9 @@
 		</div>
 
 		<div class="border-t border-primary-foreground/20 pt-6 mt-4 text-center md:text-left">
-			<p class="text-sm opacity-70">© {new Date().getFullYear()} Greens. All rights reserved.</p>
+			<p class="text-sm opacity-70">
+				© {new Date().getFullYear()} Greenwich. All rights reserved.
+			</p>
 		</div>
 	</div>
 </div>

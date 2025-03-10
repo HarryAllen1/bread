@@ -1,5 +1,5 @@
 {
-	"name": "greens",
+	"name": "greenwich",
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
@@ -13,10 +13,6 @@
 		"sync": "svelte-kit sync"
 	},
 	"dependencies": {
-		"@fontsource/inter": "^5.0.17",
-		"@fontsource/montserrat": "^5.0.17",
-		"@mantine/core": "^7.5.3",
-		"@mantine/hooks": "^7.5.3",
 		"@stripe/stripe-js": "^5.10.0",
 		"@supabase/ssr": "^0.5.2",
 		"@supabase/supabase-js": "^2.46.1",
@@ -24,8 +20,6 @@
 		"embla-carousel": "^8.4.0",
 		"embla-carousel-autoplay": "^8.4.0",
 		"gsap": "^3.12.5",
-		"lottie-web": "^5.12.2",
-		"scrolltrigger": "^1.0.1",
 		"sharp": "^0.33.5",
 		"stripe": "17.7.0",
 		"svelte-persisted-store": "^0.12.0",

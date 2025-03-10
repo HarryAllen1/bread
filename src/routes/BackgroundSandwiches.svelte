@@ -1,12 +1,16 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
-	export let animated = true;
-	export let count = 10;
-	export let opacity = 0.15;
+	interface Props {
+		animated?: boolean;
+		count?: number;
+		opacity?: number;
+	}
+
+	let { animated = true, count = 10, opacity = 0.15 }: Props = $props();
 
 	// Create static sandwich icons
-	const createStaticSandwichIcons = () => {
+	const createStaticSandwichIcons = (): HTMLDivElement => {
 		const container = document.createElement('div');
 		container.className = 'static-sandwiches-container';
 		container.style.position = 'absolute';
@@ -18,7 +22,7 @@
 		container.style.pointerEvents = 'none';
 		container.style.zIndex = '-1';
 
-		document.body.appendChild(container);
+		document.body.append(container);
 
 		const sandwichTypes = ['classic', 'wrap', 'veggie', 'avocado', 'club', 'sub'];
 
@@ -39,9 +43,9 @@
 
 			const iconElement = document.createElement('div');
 			iconElement.className = `sandwich-icon ${type}`;
-			wrapper.appendChild(iconElement);
+			wrapper.append(iconElement);
 
-			container.appendChild(wrapper);
+			container.append(wrapper);
 		}
 
 		return container;
@@ -51,8 +55,8 @@
 		const container = createStaticSandwichIcons();
 
 		return () => {
-			if (container && document.body.contains(container)) {
-				document.body.removeChild(container);
+			if (document.body.contains(container)) {
+				container.remove();
 			}
 		};
 	});

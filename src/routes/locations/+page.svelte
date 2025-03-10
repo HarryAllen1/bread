@@ -64,8 +64,9 @@
 
 	<div class="mb-8">
 		<p class="text-lg max-w-3xl mx-auto text-center">
-			Visit one of our establishments to experience our artisanal vegetarian sandwiches. Each Greens
-			location maintains our exacting standards for ingredient quality and culinary execution.
+			Visit one of our establishments to experience our artisanal vegetarian sandwiches. Each
+			Greenwich location maintains our exacting standards for ingredient quality and culinary
+			execution.
 		</p>
 	</div>
 
@@ -231,12 +232,12 @@
 				allowfullscreen
 				loading="lazy"
 				referrerpolicy="no-referrer-when-downgrade"
-				title="Greens locations map"
+				title="Greenwich locations map"
 			></iframe>
 		</div>
 
 		<div class="mt-4 text-center text-sm text-gray-500">
-			<p>Interactive map showing all Greens locations. Click on markers for details.</p>
+			<p>Interactive map showing all Greenwich locations. Click on markers for details.</p>
 		</div>
 	</div>
 

@@ -31,7 +31,7 @@
 	class={cn('bread-icon', type, sizeMap[size], animated && 'animate-float', className)}
 	bind:this={ref}
 	{...props}
-/>
+></div>
 
 <style>
 	.bread-icon {

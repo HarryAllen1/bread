@@ -2,16 +2,11 @@
 	import { invalidate } from '$app/navigation';
 	import { Toaster } from '$lib/components/ui/sonner';
 	import Confirm from '$lib/Confirm.svelte';
-	import { theme } from '$lib/stores/theme';
 	import { onMount, type Snippet } from 'svelte';
 	import '../app.css';
 	import type { PageData } from './$types';
 	import Footer from './Footer.svelte';
 	import Navbar from './Navbar.svelte';
-
-	/* Import standard font files instead of variable fonts */
-	import '@fontsource/inter';
-	import '@fontsource/montserrat';
 
 	interface Props {
 		children: Snippet;
@@ -22,17 +17,17 @@
 	let { session, supabase } = $derived(data);
 
 	onMount(() => {
-		const { data } = supabase?.auth.onAuthStateChange((_, newSession) => {
+		const { data } = supabase.auth.onAuthStateChange((_, newSession) => {
 			if (newSession?.expires_at !== session?.expires_at) {
 				invalidate('supabase:auth');
 			}
 		});
 
-		return () => data?.subscription.unsubscribe();
+		return () => data.subscription.unsubscribe();
 	});
 </script>
 
-<div class:dark={$theme === 'dark'}>
+<div>
 	<div class="min-h-screen flex flex-col bg-background text-foreground">
 		<Navbar />
 
@@ -45,4 +40,4 @@
 </div>
 
 <Confirm />
-<Toaster theme={$theme} />
+<Toaster theme="light" />

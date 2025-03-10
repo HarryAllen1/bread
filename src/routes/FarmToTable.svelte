@@ -69,7 +69,7 @@
 					<div class="mt-8">
 						<a
 							href="/about"
-							class="inline-block bg-white text-primary font-bold px-6 py-3 rounded-full hover:bg-white/90 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-transform"
+							class="inline-block bg-white text-primary font-bold px-6 py-3 rounded-full hover:bg-white/90 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all"
 							>Learn more about our partners →</a
 						>
 					</div>

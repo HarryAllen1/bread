@@ -1,8 +1,12 @@
 <script lang="ts">
 	import SandwichIcon from '$lib/icons/SandwichIcon.svelte';
 
-	export let size: 'sm' | 'md' | 'lg' = 'md';
-	export let animated = false;
+	interface Props {
+		size?: 'sm' | 'md' | 'lg';
+		animated?: boolean;
+	}
+
+	let { size = 'md', animated = false }: Props = $props();
 </script>
 
 <div class="grid grid-cols-3 gap-4">

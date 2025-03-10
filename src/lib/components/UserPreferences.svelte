@@ -1,44 +1,13 @@
 <script lang="ts">
 	import { Button } from '$lib/components/ui/button';
 	import * as Sheet from '$lib/components/ui/sheet';
-	import { toast } from 'svelte-sonner';
-	import Settings from 'lucide-svelte/icons/settings';
-	import { browser } from '$app/environment';
 	import { userPreferences } from '$lib/stores/userPreferences';
-	import { get } from 'svelte/store';
+	import Settings from 'lucide-svelte/icons/settings';
 
 	let open = $state(false);
-	let currentPrefs = $state({
-		dietaryRestrictions: {
-			glutenFree: false,
-			vegan: false,
-			vegetarian: false,
-			dairyFree: false,
-			nutFree: false,
-		},
-		favorites: [],
-		customizations: {
-			preferredBreadType: '',
-			preferredSliceThickness: 'medium',
-			toasted: false,
-		},
-	});
 
-	// Initialize preferences safely
-	$effect(() => {
-		if (browser) {
-			currentPrefs = get(userPreferences);
-		}
-	});
-
-	const savePreferences = () => {
-		userPreferences.set(currentPrefs);
-		toast.success('Preferences saved successfully');
-		open = false;
-	};
-
-	const resetPreferences = () => {
-		currentPrefs = {
+	const resetPreferences = (): void => {
+		$userPreferences = {
 			dietaryRestrictions: {
 				glutenFree: false,
 				vegan: false,
@@ -82,7 +51,7 @@
 						<label class="flex items-center space-x-3 text-lg">
 							<input
 								type="checkbox"
-								bind:checked={currentPrefs.dietaryRestrictions.glutenFree}
+								bind:checked={$userPreferences.dietaryRestrictions.glutenFree}
 								class="rounded text-primary focus:ring-primary size-5"
 							/>
 							<span>Gluten Free</span>
@@ -91,7 +60,7 @@
 						<label class="flex items-center space-x-3 text-lg">
 							<input
 								type="checkbox"
-								bind:checked={currentPrefs.dietaryRestrictions.vegan}
+								bind:checked={$userPreferences.dietaryRestrictions.vegan}
 								class="rounded text-primary focus:ring-primary size-5"
 							/>
 							<span>Vegan</span>
@@ -100,7 +69,7 @@
 						<label class="flex items-center space-x-3 text-lg">
 							<input
 								type="checkbox"
-								bind:checked={currentPrefs.dietaryRestrictions.vegetarian}
+								bind:checked={$userPreferences.dietaryRestrictions.vegetarian}
 								class="rounded text-primary focus:ring-primary size-5"
 							/>
 							<span>Vegetarian</span>
@@ -109,7 +78,7 @@
 						<label class="flex items-center space-x-3 text-lg">
 							<input
 								type="checkbox"
-								bind:checked={currentPrefs.dietaryRestrictions.dairyFree}
+								bind:checked={$userPreferences.dietaryRestrictions.dairyFree}
 								class="rounded text-primary focus:ring-primary size-5"
 							/>
 							<span>Dairy Free</span>
@@ -118,7 +87,7 @@
 						<label class="flex items-center space-x-3 text-lg">
 							<input
 								type="checkbox"
-								bind:checked={currentPrefs.dietaryRestrictions.nutFree}
+								bind:checked={$userPreferences.dietaryRestrictions.nutFree}
 								class="rounded text-primary focus:ring-primary size-5"
 							/>
 							<span>Nut Free</span>
@@ -137,7 +106,7 @@
 							<select
 								id="bread-type"
 								class="w-full p-3 border rounded-md text-lg"
-								bind:value={currentPrefs.customizations.preferredBreadType}
+								bind:value={$userPreferences.customizations.preferredBreadType}
 							>
 								<option value="">No Preference</option>
 								<option value="sourdough">Sourdough</option>
@@ -150,14 +119,14 @@
 						</div>
 
 						<div>
-							<label class="block text-lg font-medium mb-1">Preferred Slice Thickness</label>
+							<h2 class="block text-lg font-medium mb-1">Preferred Slice Thickness</h2>
 							<div class="flex space-x-4">
 								<label class="flex items-center space-x-2 text-lg">
 									<input
 										type="radio"
 										name="slice-thickness"
 										value="thin"
-										bind:group={currentPrefs.customizations.preferredSliceThickness}
+										bind:group={$userPreferences.customizations.preferredSliceThickness}
 										class="text-primary focus:ring-primary size-5"
 									/>
 									<span>Thin</span>
@@ -168,7 +137,7 @@
 										type="radio"
 										name="slice-thickness"
 										value="medium"
-										bind:group={currentPrefs.customizations.preferredSliceThickness}
+										bind:group={$userPreferences.customizations.preferredSliceThickness}
 										class="text-primary focus:ring-primary size-5"
 									/>
 									<span>Medium</span>
@@ -179,7 +148,7 @@
 										type="radio"
 										name="slice-thickness"
 										value="thick"
-										bind:group={currentPrefs.customizations.preferredSliceThickness}
+										bind:group={$userPreferences.customizations.preferredSliceThickness}
 										class="text-primary focus:ring-primary size-5"
 									/>
 									<span>Thick</span>
@@ -190,7 +159,7 @@
 						<label class="flex items-center space-x-3 text-lg">
 							<input
 								type="checkbox"
-								bind:checked={currentPrefs.customizations.toasted}
+								bind:checked={$userPreferences.customizations.toasted}
 								class="rounded text-primary focus:ring-primary size-5"
 							/>
 							<span>Toasted (when applicable)</span>
@@ -202,12 +171,6 @@
 			<Sheet.Footer>
 				<div class="flex justify-between w-full">
 					<Button variant="outline" onclick={resetPreferences} class="text-lg py-6">Reset</Button>
-					<div class="flex space-x-2">
-						<Sheet.Close asChild>
-							<Button variant="outline" class="text-lg py-6">Cancel</Button>
-						</Sheet.Close>
-						<Button onclick={savePreferences} class="text-lg py-6">Save Preferences</Button>
-					</div>
 				</div>
 			</Sheet.Footer>
 		</Sheet.Content>

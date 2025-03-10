@@ -1,13 +1,14 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
+	import BackgroundSandwiches from '$lib/components/BackgroundSandwiches.svelte';
 	import { Button } from '$lib/components/ui/button';
 	import * as Card from '$lib/components/ui/card';
 	import { Input } from '$lib/components/ui/input';
 	import { Label } from '$lib/components/ui/label';
 	import SandwichIcon from '$lib/icons/SandwichIcon.svelte';
-	import { toast } from 'svelte-sonner';
 	import { userPreferences } from '$lib/stores/userPreferences';
-	import { browser } from '$app/environment';
-	import BackgroundSandwiches from '$lib/components/BackgroundSandwiches.svelte';
+	import type { SandwichType } from '$lib/types';
+	import { toast } from 'svelte-sonner';
 
 	interface BaseProduct {
 		id: string;
@@ -32,7 +33,12 @@
 	let phone = $state('');
 
 	// Options
-	const breadTypes = [
+	const breadTypes: {
+		id: string;
+		name: string;
+		price: number;
+		icon: SandwichType;
+	}[] = [
 		{ id: 'sourdough', name: 'Sourdough', price: 1.5, icon: 'classic' },
 		{ id: 'whole-wheat', name: 'Whole Wheat', price: 1.5, icon: 'classic' },
 		{ id: 'rye', name: 'Rye', price: 1.75, icon: 'classic' },
@@ -164,7 +170,7 @@
 
 		// Add extras
 		for (const extraId of extras) {
-			const extra = extraOptions.find((extra) => extra.id === extraId);
+			const extra = extraOptions.find((extra) => extra.id === extraId.id);
 			if (extra) total += extra.price;
 		}
 
@@ -361,12 +367,12 @@
 									class={[
 										'border rounded-lg p-4 cursor-pointer transition-all',
 										{
-											'border-primary': toppings.includes(topping.id),
-											'bg-primary-5': toppings.includes(topping.id),
-											'shadow-md': toppings.includes(topping.id),
+											'border-primary': toppings.includes(topping),
+											'bg-primary-5': toppings.includes(topping),
+											'shadow-md': toppings.includes(topping),
 										},
 									]}
-									onclick={() => (toppings = toggleSelection(toppings, topping.id))}
+									onclick={() => (toppings = toggleSelection(toppings, topping))}
 								>
 									<div class="flex items-center justify-between">
 										<div>
@@ -401,12 +407,12 @@
 									class={[
 										'border rounded-lg p-4 cursor-pointer transition-all',
 										{
-											'border-primary': spreads.includes(spread.id),
-											'bg-primary-5': spreads.includes(spread.id),
-											'shadow-md': spreads.includes(spread.id),
+											'border-primary': spreads.includes(spread),
+											'bg-primary-5': spreads.includes(spread),
+											'shadow-md': spreads.includes(spread),
 										},
 									]}
-									onclick={() => (spreads = toggleSelection(spreads, spread.id))}
+									onclick={() => (spreads = toggleSelection(spreads, spread))}
 								>
 									<div class="flex items-center justify-between">
 										<div>
@@ -441,12 +447,12 @@
 									class={[
 										'border rounded-lg p-4 cursor-pointer transition-all',
 										{
-											'border-primary': proteins.includes(protein.id),
-											'bg-primary-5': proteins.includes(protein.id),
-											'shadow-md': proteins.includes(protein.id),
+											'border-primary': proteins.includes(protein),
+											'bg-primary-5': proteins.includes(protein),
+											'shadow-md': proteins.includes(protein),
 										},
 									]}
-									onclick={() => (proteins = toggleSelection(proteins, protein.id))}
+									onclick={() => (proteins = toggleSelection(proteins, protein))}
 								>
 									<div class="flex items-center justify-between">
 										<div>
@@ -481,12 +487,12 @@
 									class={[
 										'border rounded-lg p-4 cursor-pointer transition-all',
 										{
-											'border-primary': vegetables.includes(vegetable.id),
-											'bg-primary-5': vegetables.includes(vegetable.id),
-											'shadow-md': vegetables.includes(vegetable.id),
+											'border-primary': vegetables.includes(vegetable),
+											'bg-primary-5': vegetables.includes(vegetable),
+											'shadow-md': vegetables.includes(vegetable),
 										},
 									]}
-									onclick={() => (vegetables = toggleSelection(vegetables, vegetable.id))}
+									onclick={() => (vegetables = toggleSelection(vegetables, vegetable))}
 								>
 									<div class="flex items-center justify-between">
 										<div>
@@ -521,12 +527,12 @@
 									class={[
 										'border rounded-lg p-4 cursor-pointer transition-all',
 										{
-											'border-primary': extras.includes(extra.id),
-											'bg-primary-5': extras.includes(extra.id),
-											'shadow-md': extras.includes(extra.id),
+											'border-primary': extras.includes(extra),
+											'bg-primary-5': extras.includes(extra),
+											'shadow-md': extras.includes(extra),
 										},
 									]}
-									onclick={() => (extras = toggleSelection(extras, extra.id))}
+									onclick={() => (extras = toggleSelection(extras, extra))}
 								>
 									<div class="flex items-center justify-between">
 										<div>
@@ -588,7 +594,7 @@
 										<span class="font-medium">Toppings:</span>
 										<ul class="ml-4 list-disc">
 											{#each toppings as toppingId}
-												{@const topping = toppingOptions.find((t) => t.id === toppingId)}
+												{@const topping = toppingOptions.find((t) => t.id === toppingId.id)}
 												{#if topping}
 													<li class="flex justify-between">
 														<span>{topping.name}</span>
@@ -605,7 +611,7 @@
 										<span class="font-medium">Spreads:</span>
 										<ul class="ml-4 list-disc">
 											{#each spreads as spreadId}
-												{@const spread = spreadOptions.find((s) => s.id === spreadId)}
+												{@const spread = spreadOptions.find((s) => s.id === spreadId.id)}
 												{#if spread}
 													<li class="flex justify-between">
 														<span>{spread.name}</span>
@@ -622,7 +628,7 @@
 										<span class="font-medium">Proteins:</span>
 										<ul class="ml-4 list-disc">
 											{#each proteins as proteinId}
-												{@const protein = proteinOptions.find((p) => p.id === proteinId)}
+												{@const protein = proteinOptions.find((p) => p.id === proteinId.id)}
 												{#if protein}
 													<li class="flex justify-between">
 														<span>{protein.name}</span>
@@ -639,7 +645,7 @@
 										<span class="font-medium">Vegetables:</span>
 										<ul class="ml-4 list-disc">
 											{#each vegetables as vegetableId}
-												{@const vegetable = vegetableOptions.find((v) => v.id === vegetableId)}
+												{@const vegetable = vegetableOptions.find((v) => v.id === vegetableId.id)}
 												{#if vegetable}
 													<li class="flex justify-between">
 														<span>{vegetable.name}</span>
@@ -656,7 +662,9 @@
 										<span class="font-medium">Extras:</span>
 										<ul class="ml-4 list-disc">
 											{#each extras as extraId}
-												{@const extra = extraOptions.find((e) => e.id === extraId)}
+												{@const extra = extraOptions.find(
+													(extraItem) => extraItem.id === extraId.id,
+												)}
 												{#if extra}
 													<li class="flex justify-between">
 														<span>{extra.name}</span>

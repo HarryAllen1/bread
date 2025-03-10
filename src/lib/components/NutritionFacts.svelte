@@ -1,13 +1,27 @@
 <script lang="ts">
-	export let calories: number;
-	export let protein: number;
-	export let carbs: number;
-	export let fat: number;
-	export let fiber: number;
-	export let sugar: number;
-	export let sodium: number;
-	export let servingSize: string;
-	export let healthScore: number = Math.floor(Math.random() * 41) + 60; // 60-100 range
+	interface Props {
+		calories: number;
+		protein: number;
+		carbs: number;
+		fat: number;
+		fiber: number;
+		sugar: number;
+		sodium: number;
+		servingSize: string;
+		healthScore?: number; // 60-100 range
+	}
+
+	let {
+		calories,
+		protein,
+		carbs,
+		fat,
+		fiber,
+		sugar,
+		sodium,
+		servingSize,
+		healthScore = Math.floor(Math.random() * 41) + 60,
+	}: Props = $props();
 
 	// Calculate macronutrient percentages
 	const totalCals = protein * 4 + carbs * 4 + fat * 9;
@@ -16,7 +30,7 @@
 	const fatPercentage = Math.round(((fat * 9) / totalCals) * 100);
 
 	// Health score color
-	let healthScoreColor = '';
+	let healthScoreColor = $state('');
 	if (healthScore >= 80) {
 		healthScoreColor = 'text-green-500';
 	} else if (healthScore >= 60) {
