@@ -6,7 +6,6 @@
 	import { cn } from '$lib/utils.js';
 	import MobileLink from './MobileLink.svelte';
 	import { pages } from './pages.js';
-	import UserPreferences from '$lib/components/UserPreferences.svelte';
 
 	let open = $state(false);
 </script>
@@ -57,10 +56,6 @@
 				<Logo />
 			</div>
 
-			<div class="px-6">
-				<UserPreferences />
-			</div>
-
 			<ScrollArea orientation="both" class="h-[calc(100vh-12rem)] pb-10 pl-6">
 				<div class="flex flex-col space-y-3">
 					{#each pages as navItem, index (`${navItem.title}${index}`)}
@@ -68,7 +63,6 @@
 							{navItem.title}
 						</MobileLink>
 					{/each}
-					}
 				</div>
 			</ScrollArea>
 		</div>

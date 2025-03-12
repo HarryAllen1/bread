@@ -85,19 +85,19 @@
 	{#if $cart.length}
 		{#if itemsNotInCart.length}
 			<h3 class="mt-8 scroll-m-20 text-2xl font-semibold tracking-tight">
-				want to add anything else?
+				Want to add anything else?
 			</h3>
 
 			<ScrollArea orientation="horizontal" class="mt-4">
 				<div class="flex flex-row gap-4">
 					{#each itemsNotInCart as item}
-						<ProductCard product={item} cartMode />
+						<ProductCard product={item} cartMode class="w-64 mb-8" />
 					{/each}
 				</div>
 			</ScrollArea>
 		{/if}
 
-		<h3 class="mt-8 scroll-m-20 text-2xl font-semibold tracking-tight">subtotal</h3>
+		<h3 class="mt-8 scroll-m-20 text-2xl font-semibold tracking-tight">Subtotal</h3>
 		<p class="leading-7 not-first:mt-4">
 			${$cart.reduce((accumulator, cartItem) => {
 				const item = data.products.find((currentItem) => currentItem.id === cartItem.id);

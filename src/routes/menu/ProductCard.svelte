@@ -8,13 +8,16 @@
 	import { userPreferences } from '$lib/stores/userPreferences';
 	import { toast } from 'svelte-sonner';
 	import type { PageData } from './$types';
+	import { cn } from '$lib/utils';
 
 	interface Props {
 		product: PageData['products'][number];
 		cartMode?: boolean;
+		class?: string;
+		byo?: boolean;
 	}
 
-	let { product, cartMode = false }: Props = $props();
+	let { product, cartMode = false, class: className, byo = false }: Props = $props();
 
 	// Determine sandwich type icon
 	let sandwichType: 'classic' | 'wrap' | 'veggie' | 'avocado' | 'club' | 'sub' = $state('classic');
@@ -79,7 +82,10 @@
 </script>
 
 <Card.Root
-	class="card-3d hover:shadow-2xl hover:shadow-primary/20 relative transition-all duration-500 opacity-0 translate-y-8 card-loaded"
+	class={cn(
+		'card-3d hover:shadow-2xl hover:shadow-primary/20 relative transition-all duration-500 opacity-0 translate-y-8 card-loaded',
+		className,
+	)}
 >
 	{#if isFavorite}
 		<div class="absolute top-2 right-2 z-10">
@@ -106,14 +112,14 @@
 	{/if}
 
 	<Card.Header>
-		<a href="/menu/{product.slug}" class="flex items-center gap-2">
-			<SandwichIcon type={sandwichType} size="sm" animated={true} />
+		<a href="{byo ? '' : '/menu'}/{product.slug}" class="flex items-center gap-2">
+			<!-- <SandwichIcon type={sandwichType} size="sm" animated={true} /> -->
 			<Card.Title class="text-xl">{product.name}</Card.Title>
 		</a>
 		<Card.Description class="flex justify-between items-center text-lg">
-			<span class="font-bold text-primary">${product.price}</span>
+			<span class="font-bold text-primary">{byo ? 'Variable' : `$${product.price}`}</span>
 
-			{#if !isFavorite}
+			{#if !isFavorite && !byo}
 				<button
 					class="text-gray-400 hover:text-red-500 transition-colors"
 					onclick={toggleFavorite}
@@ -132,12 +138,12 @@
 		</Card.Description>
 	</Card.Header>
 	<Card.Content>
-		<a href="/menu/{product.slug}" class="block relative overflow-hidden rounded-lg">
+		<a href="{byo ? '' : '/menu'}/{product.slug}" class="block relative overflow-hidden rounded-lg">
 			<img
 				src={product.image_url}
 				alt={product.name}
 				class={cartMode
-					? 'max-w-xs w-full h-auto aspect-square object-cover'
+					? 'max-w-xs w-full h-auto aspect-video object-cover'
 					: 'w-full h-64 object-cover'}
 			/>
 			<div
@@ -155,26 +161,30 @@
 		{/if}
 	</Card.Content>
 	<Card.Footer class="gap-4">
-		<Button
-			onclick={() => {
-				addToCart(product.id);
-				toast.success('Added to cart!', {
-					action: {
-						label: 'View Cart',
-						onClick: () => {
-							goto('/cart');
+		{#if byo}
+			<Button variant="default" href="/create" class="text-base py-5 w-full">Create</Button>
+		{:else}
+			<Button
+				onclick={() => {
+					addToCart(product.id);
+					toast.success('Added to cart!', {
+						action: {
+							label: 'View Cart',
+							onClick: () => {
+								goto('/cart');
+							},
 						},
-					},
-				});
-			}}
-			class="hover-lift text-base py-5 w-full"
-		>
-			add to cart
-		</Button>
-		{#if !cartMode}
-			<Button variant="outline" href="/menu/{product.slug}" class="hover-lift text-base py-5 w-full"
-				>view details</Button
+					});
+				}}
+				class="text-base py-5 w-full"
 			>
+				Add to Cart
+			</Button>
+			{#if !cartMode}
+				<Button variant="outline" href="/menu/{product.slug}" class="text-base py-5 w-full">
+					View Details
+				</Button>
+			{/if}
 		{/if}
 	</Card.Footer>
 </Card.Root>

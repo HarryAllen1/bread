@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
+	import { goto } from '$app/navigation';
 	import BackgroundSandwiches from '$lib/components/BackgroundSandwiches.svelte';
 	import { Button } from '$lib/components/ui/button';
 	import * as Card from '$lib/components/ui/card';
-	import { Input } from '$lib/components/ui/input';
 	import { Label } from '$lib/components/ui/label';
 	import SandwichIcon from '$lib/icons/SandwichIcon.svelte';
 	import { userPreferences } from '$lib/stores/userPreferences';
@@ -28,9 +28,6 @@
 	let vegetables = $state<BaseProduct[]>([]);
 	let extras = $state<BaseProduct[]>([]);
 	let specialInstructions = $state('');
-	let name = $state('');
-	let email = $state('');
-	let phone = $state('');
 
 	// Options
 	const breadTypes: {
@@ -205,9 +202,9 @@
 		vegetables = [];
 		extras = [];
 		specialInstructions = '';
-		name = '';
-		email = '';
-		phone = '';
+
+
+		goto('/cart');
 	};
 
 	// Toggle selection
@@ -323,7 +320,7 @@
 									>
 										<div class="flex items-center gap-3">
 											<SandwichIcon type={bread.icon} size="sm" />
-											<div>
+											<div class="text-start">
 												<div class="font-medium">{bread.name}</div>
 												<div class="text-sm text-gray-500">${bread.price.toFixed(2)}</div>
 											</div>
@@ -351,7 +348,7 @@
 										<div class="font-medium">{size.name}</div>
 										<div class="text-sm text-gray-500">
 											{size.multiplier < 1 ? '-' : '+'}
-											{Math.abs((size.multiplier - 1) * 100)}%
+											{Math.round(Math.abs((size.multiplier - 1) * 100))}%
 										</div>
 									</button>
 								{/each}
@@ -375,7 +372,7 @@
 									onclick={() => (toppings = toggleSelection(toppings, topping))}
 								>
 									<div class="flex items-center justify-between">
-										<div>
+										<div class="text-start">
 											<div class="font-medium">{topping.name}</div>
 											<div class="text-sm text-gray-500">+${topping.price.toFixed(2)}</div>
 										</div>
@@ -415,7 +412,7 @@
 									onclick={() => (spreads = toggleSelection(spreads, spread))}
 								>
 									<div class="flex items-center justify-between">
-										<div>
+										<div class="text-start">
 											<div class="font-medium">{spread.name}</div>
 											<div class="text-sm text-gray-500">+${spread.price.toFixed(2)}</div>
 										</div>
@@ -455,7 +452,7 @@
 									onclick={() => (proteins = toggleSelection(proteins, protein))}
 								>
 									<div class="flex items-center justify-between">
-										<div>
+										<div class="text-start">
 											<div class="font-medium">{protein.name}</div>
 											<div class="text-sm text-gray-500">+${protein.price.toFixed(2)}</div>
 										</div>
@@ -495,7 +492,7 @@
 									onclick={() => (vegetables = toggleSelection(vegetables, vegetable))}
 								>
 									<div class="flex items-center justify-between">
-										<div>
+										<div class="text-start">
 											<div class="font-medium">{vegetable.name}</div>
 											<div class="text-sm text-gray-500">+${vegetable.price.toFixed(2)}</div>
 										</div>
@@ -535,7 +532,7 @@
 									onclick={() => (extras = toggleSelection(extras, extra))}
 								>
 									<div class="flex items-center justify-between">
-										<div>
+										<div class="text-start">
 											<div class="font-medium">{extra.name}</div>
 											<div class="text-sm text-gray-500">+${extra.price.toFixed(2)}</div>
 										</div>
@@ -686,26 +683,6 @@
 								<div class="border-t pt-3 flex justify-between font-bold">
 									<span>Total:</span>
 									<span>${calculateTotal()}</span>
-								</div>
-							</div>
-						</div>
-
-						<div>
-							<h3 class="font-semibold mb-2">Contact Information</h3>
-							<div class="space-y-3">
-								<div>
-									<Label for="name">Name</Label>
-									<Input id="name" bind:value={name} placeholder="Your name" />
-								</div>
-
-								<div>
-									<Label for="email">Email</Label>
-									<Input id="email" type="email" bind:value={email} placeholder="Your email" />
-								</div>
-
-								<div>
-									<Label for="phone">Phone (optional)</Label>
-									<Input id="phone" bind:value={phone} placeholder="Your phone number" />
 								</div>
 							</div>
 						</div>

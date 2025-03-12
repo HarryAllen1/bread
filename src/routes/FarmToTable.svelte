@@ -22,7 +22,7 @@
 					<div class="space-y-6">
 						<div class="flex gap-4 group hover:translate-x-2 transition-transform duration-300">
 							<div
-								class="flex-shrink-0 bg-primary p-3 rounded-full shadow-lg group-hover:bg-primary/80 transition-colors"
+								class="flex-shrink-0 bg-primary aspect-square size-12 p-3 rounded-full shadow-lg group-hover:bg-primary/80 transition-colors"
 							>
 								<Leaf class="text-white size-6" />
 							</div>
@@ -37,7 +37,7 @@
 
 						<div class="flex gap-4 group hover:translate-x-2 transition-transform duration-300">
 							<div
-								class="flex-shrink-0 bg-primary p-3 rounded-full shadow-lg group-hover:bg-primary/80 transition-colors"
+								class="flex-shrink-0 bg-primary aspect-square size-12 p-3 rounded-full shadow-lg group-hover:bg-primary/80 transition-colors"
 							>
 								<MapPin class="text-white size-6" />
 							</div>
@@ -52,7 +52,7 @@
 
 						<div class="flex gap-4 group hover:translate-x-2 transition-transform duration-300">
 							<div
-								class="flex-shrink-0 bg-primary p-3 rounded-full shadow-lg group-hover:bg-primary/80 transition-colors"
+								class="flex-shrink-0 bg-primary aspect-square size-12 p-3 rounded-full shadow-lg group-hover:bg-primary/80 transition-colors"
 							>
 								<Truck class="text-white size-6" />
 							</div>
