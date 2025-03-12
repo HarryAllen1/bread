@@ -1,6 +1,10 @@
 <script lang="ts">
-	export let allergens: string[] = [];
-	export let mayContain: string[] = [];
+	interface Props {
+		allergens?: string[];
+		mayContain?: string[];
+	}
+
+	let { allergens = [], mayContain = [] }: Props = $props();
 
 	const commonAllergens = [
 		'Wheat',
@@ -32,10 +36,14 @@
 	<div class="grid grid-cols-2 gap-4">
 		{#each commonAllergens as allergen}
 			<div
-				class="flex items-center p-2 rounded-md"
-				class:bg-red-50={hasAllergen(allergen)}
-				class:bg-yellow-50={mayHaveAllergen(allergen)}
-				class:bg-green-50={!hasAllergen(allergen) && !mayHaveAllergen(allergen)}
+				class={[
+					'flex items-center p-2 rounded-md',
+					{
+						'bg-red-50': hasAllergen(allergen),
+						'bg-yellow-50': mayHaveAllergen(allergen),
+						'bg-green-50': !hasAllergen(allergen) && !mayHaveAllergen(allergen),
+					},
+				]}
 			>
 				{#if hasAllergen(allergen)}
 					<div class="w-4 h-4 rounded-full bg-red-500 mr-3 flex-shrink-0"></div>
@@ -59,7 +67,6 @@
 				}
 			</div>
 		{/each}
-		}
 	</div>
 
 	{#if allergens.length > 0}
@@ -69,7 +76,6 @@
 			</p>
 		</div>
 	{/if}
-	}
 
 	{#if mayContain.length > 0}
 		<div class="mt-4 p-3 bg-yellow-50 rounded-md border border-yellow-200">
@@ -80,5 +86,4 @@
 			</p>
 		</div>
 	{/if}
-	}
 </div>

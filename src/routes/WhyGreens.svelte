@@ -7,7 +7,7 @@
 		<h2
 			class="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-primary/90 to-primary p-6 rounded-lg inline-block backdrop-blur-xs border-2 border-primary/70 relative text-white shadow-lg"
 		>
-			<span class="relative z-10">Why Choose Greens</span>
+			<span class="relative z-10">Why Choose Greenwich</span>
 			<div class="absolute -top-6 -left-6 animate-spin-slow opacity-20">
 				<Leaf class="size-12 text-white" />
 			</div>

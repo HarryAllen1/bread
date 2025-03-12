@@ -1,7 +1,6 @@
 import { stripe } from '$lib/server/stripe';
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
-import { error } from '@sveltejs/kit';
 
 export const POST = (async ({ request, url }) => {
 	try {
@@ -25,8 +24,8 @@ export const POST = (async ({ request, url }) => {
 		return json({
 			client_secret: paymentIntent.client_secret,
 		});
-	} catch (err) {
-		console.error('Error creating checkout session:', err);
+	} catch (error_) {
+		console.error('Error creating checkout session:', error_);
 		return json({
 			client_secret: 'mock_client_secret_for_development',
 		});

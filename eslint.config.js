@@ -1,18 +1,24 @@
+import { includeIgnoreFile } from '@eslint/compat';
 import js from '@eslint/js';
 import prettier from 'eslint-config-prettier';
 import svelte from 'eslint-plugin-svelte';
 import eslintPluginUnicorn from 'eslint-plugin-unicorn';
 import globals from 'globals';
+import { fileURLToPath } from 'node:url';
 import tseslint from 'typescript-eslint';
+import svelteConfig from './svelte.config.js';
+
+const gitignorePath = fileURLToPath(new URL('.gitignore', import.meta.url));
 
 export default tseslint.config(
+	includeIgnoreFile(gitignorePath),
 	js.configs.recommended,
 	...tseslint.configs.strictTypeChecked,
 	...tseslint.configs.stylisticTypeChecked,
-	...svelte.configs['flat/recommended'],
+	...svelte.configs.recommended,
 	prettier,
-	...svelte.configs['flat/prettier'],
-	eslintPluginUnicorn.configs['flat/recommended'],
+	...svelte.configs.prettier,
+	eslintPluginUnicorn.configs.recommended,
 	{
 		languageOptions: {
 			parserOptions: {
@@ -39,6 +45,7 @@ export default tseslint.config(
 			'@typescript-eslint/no-confusing-void-expression': 'off',
 			// conflicts with Svelte $props rune
 			'@typescript-eslint/no-unsafe-assignment': 'off',
+			'@typescript-eslint/no-unsafe-call': 'off',
 			'@typescript-eslint/only-throw-error': 'off',
 			'@typescript-eslint/prefer-nullish-coalescing': 'off',
 			'@typescript-eslint/prefer-promise-reject-errors': 'off',
@@ -54,14 +61,36 @@ export default tseslint.config(
 				},
 			],
 			'@typescript-eslint/unbound-method': 'off',
-			// its broken
-			'unicorn/expiring-todo-comments': 'off',
-			'unicorn/number-literal-case': 'off',
+			'svelte/require-each-key': 'off',
 			'unicorn/no-array-reduce': 'off',
 			'unicorn/no-await-expression-member': 'off',
+			// prettier edits the fix away
+			'unicorn/no-nested-ternary': 'off',
+			'unicorn/number-literal-case': 'off',
 			'unicorn/no-null': 'off',
 			'unicorn/filename-case': 'off',
-			'unicorn/prevent-abbreviations': 'off',
+			'unicorn/prefer-spread': 'off',
+			'unicorn/prevent-abbreviations': [
+				'error',
+				{
+					allowList: {
+						$$Props: true,
+						// arguments is often an illegal variable name
+						args: true,
+						dev: true,
+						i: true,
+						param: true,
+						prod: true,
+						Props: true,
+						props: true,
+						Ref: true,
+						ref: true,
+						src: true,
+						utils: true,
+					},
+				},
+			],
+			curly: ['error', 'multi-line'],
 			eqeqeq: 'error',
 			'func-style': ['error', 'expression', { allowArrowFunctions: true }],
 			'no-console': ['warn', { allow: ['warn', 'error'] }],
@@ -72,10 +101,14 @@ export default tseslint.config(
 		},
 	},
 	{
-		files: ['**/*.svelte'],
+		files: ['**/*.svelte', '**/*.svelte.ts', '**/*.svelte.js'],
+		ignores: ['eslint.config.js', 'svelte.config.js'],
 		languageOptions: {
 			parserOptions: {
+				projectService: true,
+				extraFileExtensions: ['.svelte'],
 				parser: tseslint.parser,
+				svelteConfig,
 			},
 		},
 		rules: {
@@ -84,17 +117,6 @@ export default tseslint.config(
 		},
 	},
 	{
-		ignores: [
-			'build/',
-			'.svelte-kit/',
-			'dist/',
-			'coverage/',
-			'src/lib/components/ui/',
-			'src/lib/ui-utils.ts',
-			'src/lib/gibberish.js',
-			'static',
-			'vite.config.ts.timestamp-*',
-			'src/database.types.ts',
-		],
+		ignores: ['src/lib/components/ui/', 'src/lib/utils.ts', 'static'],
 	},
 );

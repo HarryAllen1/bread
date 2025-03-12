@@ -1,11 +1,15 @@
 <script lang="ts">
-	export let ingredients: Array<{
-		name: string;
-		source: string;
-		organic: boolean;
-		local: boolean;
-		description?: string;
-	}>;
+	interface Props {
+		ingredients: {
+			name: string;
+			source: string;
+			organic: boolean;
+			local: boolean;
+			description?: string;
+		}[];
+	}
+
+	let { ingredients }: Props = $props();
 </script>
 
 <div class="ingredient-sourcing bg-white rounded-lg shadow-md p-6 border border-gray-200">
@@ -14,13 +18,17 @@
 	<div class="space-y-4">
 		{#each ingredients as ingredient}
 			<div
-				class="p-3 rounded-md border"
-				class:bg-green-50={ingredient.organic}
-				class:border-green-200={ingredient.organic}
-				class:bg-blue-50={ingredient.local && !ingredient.organic}
-				class:border-blue-200={ingredient.local && !ingredient.organic}
-				class:bg-gray-50={!ingredient.organic && !ingredient.local}
-				class:border-gray-200={!ingredient.organic && !ingredient.local}
+				class={[
+					'p-3 rounded-md border',
+					{
+						'bg-green-50': ingredient.organic,
+						'border-green-200': ingredient.organic,
+						'bg-blue-50': ingredient.local && !ingredient.organic,
+						'border-blue-200': ingredient.local && !ingredient.organic,
+						'bg-gray-50': !ingredient.organic && !ingredient.local,
+						'border-gray-200': !ingredient.organic && !ingredient.local,
+					},
+				]}
 			>
 				<div class="flex justify-between items-start">
 					<h4 class="font-semibold">{ingredient.name}</h4>
@@ -30,13 +38,12 @@
 								>Organic</span
 							>
 						{/if}
-						}
+
 						{#if ingredient.local}
 							<span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded"
 								>Local</span
 							>
 						{/if}
-						}
 					</div>
 				</div>
 
@@ -45,10 +52,8 @@
 				{#if ingredient.description}
 					<p class="text-sm mt-2">{ingredient.description}</p>
 				{/if}
-				}
 			</div>
 		{/each}
-		}
 	</div>
 
 	<div class="mt-6 flex items-center justify-center">

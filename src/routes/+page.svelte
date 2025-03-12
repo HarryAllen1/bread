@@ -1,49 +1,37 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import AnimatedSandwichBackground from '$lib/components/AnimatedSandwichBackground.svelte';
+	import { Button } from '$lib/components/ui/button';
 	import { gsap } from 'gsap';
 	import { ScrollTrigger } from 'gsap/ScrollTrigger';
-	import SandwichIcon from '$lib/icons/SandwichIcon.svelte';
-	import lottie from 'lottie-web';
-	import { Button } from '$lib/components/ui/button';
-	import SandwichCarousel from './SandwichCarousel.svelte';
-	import WhyGreens from './WhyGreens.svelte';
+	import { onMount } from 'svelte';
 	import FarmToTable from './FarmToTable.svelte';
-	import PreparationProcess from './PreparationProcess.svelte';
-	import Sustainability from './Sustainability.svelte';
 	import Offerings from './Offerings.svelte';
-	import AnimatedSandwichBackground from '$lib/components/AnimatedSandwichBackground.svelte';
+	import PreparationProcess from './PreparationProcess.svelte';
+	import SandwichCarousel from './SandwichCarousel.svelte';
+	import Sustainability from './Sustainability.svelte';
+	import WhyGreens from './WhyGreens.svelte';
 
 	// Register GSAP plugins
 	gsap.registerPlugin(ScrollTrigger);
 
-	const sandwichTypes = ['classic', 'wrap', 'veggie', 'avocado', 'club', 'sub'];
 	let heroSection: HTMLDivElement;
-	let lottieContainer: HTMLDivElement;
-	let lottieAnimation: any;
 
 	onMount(() => {
-		// Initialize lottie animation
-		if (lottieContainer) {
-			lottieAnimation = lottie.loadAnimation({
-				container: lottieContainer,
-				renderer: 'svg',
-				loop: true,
-				autoplay: true,
-				path: 'https://assets5.lottiefiles.com/packages/lf20_tljjahng.json', // Sandwich animation
-			});
+		if ((globalThis as unknown as { ranIntro: boolean }).ranIntro || Math.random() < 0.5) {
+			document.querySelector('.intro-overlay')?.remove();
+			return;
 		}
-
 		// Create intro animation
 		const introOverlay = document.createElement('div');
 		introOverlay.className = 'intro-overlay';
-		document.body.appendChild(introOverlay);
+		document.body.append(introOverlay);
 
 		// Create slices
 		for (let i = 0; i < 5; i++) {
 			const slice = document.createElement('div');
 			slice.className = 'intro-slice';
 			slice.style.top = `${i * 20}vh`;
-			introOverlay.appendChild(slice);
+			introOverlay.append(slice);
 		}
 
 		// Create content
@@ -58,24 +46,25 @@
 		logo.style.width = '200px';
 		logo.style.height = '200px';
 
-		logoContainer.appendChild(logo);
+		logoContainer.append(logo);
 
 		const text = document.createElement('div');
 		text.className = 'intro-text';
-		text.textContent = 'Greens';
+		text.textContent = 'Greenwich';
 
-		introContent.appendChild(logoContainer);
-		introContent.appendChild(text);
-		introOverlay.appendChild(introContent);
+		introContent.append(logoContainer);
+		introContent.append(text);
+		introOverlay.append(introContent);
 
+		const MULTIPLIER = 0.6;
 		// Create timeline for intro animation
 		const introTl = gsap.timeline({
 			onComplete: () => {
 				document.body.classList.remove('overflow-hidden');
 				introOverlay.classList.add('hidden');
 				setTimeout(() => {
-					document.body.removeChild(introOverlay);
-				}, 1000);
+					introOverlay.remove();
+				}, 1000 * MULTIPLIER);
 
 				// Start hero animations after intro
 				animateHero();
@@ -90,7 +79,7 @@
 			scale: 0,
 			rotation: -180,
 			opacity: 0,
-			duration: 1.2,
+			duration: 1.2 * MULTIPLIER,
 			ease: 'elastic.out(1, 0.5)',
 		});
 
@@ -100,27 +89,27 @@
 			{
 				y: 50,
 				opacity: 0,
-				duration: 0.8,
+				duration: 0.8 * MULTIPLIER,
 				ease: 'back.out(1.7)',
 			},
 			'-=0.5',
 		);
 
 		// Pause for a moment
-		introTl.to({}, { duration: 0.7 });
+		introTl.to({}, { duration: 0.7 * MULTIPLIER });
 
 		// Create slices animation
 		introTl.to(logoContainer, {
 			scale: 1.5,
 			opacity: 0,
-			duration: 0.5,
+			duration: 0.5 * MULTIPLIER,
 		});
 
 		introTl.to(
 			text,
 			{
 				opacity: 0,
-				duration: 0.3,
+				duration: 0.3 * MULTIPLIER,
 			},
 			'-=0.3',
 		);
@@ -132,7 +121,7 @@
 			slices[0],
 			{
 				xPercent: -100,
-				duration: 0.8,
+				duration: 0.8 * MULTIPLIER,
 				ease: 'power2.inOut',
 			},
 			'-=0.1',
@@ -142,7 +131,7 @@
 			slices[1],
 			{
 				xPercent: 100,
-				duration: 0.8,
+				duration: 0.8 * MULTIPLIER,
 				ease: 'power2.inOut',
 			},
 			'-=0.7',
@@ -152,7 +141,7 @@
 			slices[2],
 			{
 				xPercent: -100,
-				duration: 0.8,
+				duration: 0.8 * MULTIPLIER,
 				ease: 'power2.inOut',
 			},
 			'-=0.7',
@@ -162,7 +151,7 @@
 			slices[3],
 			{
 				xPercent: 100,
-				duration: 0.8,
+				duration: 0.8 * MULTIPLIER,
 				ease: 'power2.inOut',
 			},
 			'-=0.7',
@@ -172,7 +161,7 @@
 			slices[4],
 			{
 				xPercent: -100,
-				duration: 0.8,
+				duration: 0.8 * MULTIPLIER,
 				ease: 'power2.inOut',
 			},
 			'-=0.7',
@@ -183,18 +172,17 @@
 			introOverlay,
 			{
 				opacity: 0,
-				duration: 0.5,
+				duration: 0.5 * MULTIPLIER,
 			},
 			'-=0.3',
 		);
 
 		// Initialize scroll animations
 		initScrollAnimations();
+		(globalThis as unknown as { ranIntro: boolean }).ranIntro = true;
 	});
 
-	function animateHero() {
-		if (!heroSection) return;
-
+	const animateHero = (): void => {
 		// Hero section animation
 		gsap.from('.hero-title', {
 			opacity: 0,
@@ -230,8 +218,8 @@
 
 		// Animate decorative elements
 		const decorElements = heroSection.querySelectorAll('.hero-decor');
-		decorElements.forEach((el, index) => {
-			gsap.to(el, {
+		for (const [index, element] of decorElements.entries()) {
+			gsap.to(element, {
 				y: -20 + Math.random() * 40,
 				x: -10 + Math.random() * 20,
 				rotation: Math.random() * 20 - 10,
@@ -241,13 +229,13 @@
 				ease: 'sine.inOut',
 				delay: index * 0.2,
 			});
-		});
-	}
+		}
+	};
 
-	function initScrollAnimations() {
+	const initScrollAnimations = (): void => {
 		// Animate sections on scroll
 		const sections = document.querySelectorAll('.animate-on-scroll');
-		sections.forEach((section) => {
+		for (const section of sections) {
 			gsap.from(section, {
 				opacity: 0,
 				y: 50,
@@ -259,11 +247,11 @@
 					scrub: 1,
 				},
 			});
-		});
+		}
 
 		// Parallax effect for background elements
 		const parallaxElements = document.querySelectorAll('.parallax');
-		parallaxElements.forEach((element) => {
+		for (const element of parallaxElements) {
 			gsap.to(element, {
 				y: -100,
 				ease: 'none',
@@ -274,56 +262,10 @@
 					scrub: true,
 				},
 			});
-		});
-	}
-
-	function createFloatingSandwiches() {
-		// Use only the icons that are loading properly
-		const workingSandwichTypes = ['hamburger', 'croissant', 'sandwich'];
-
-		for (let i = 0; i < 20; i++) {
-			const sandwich = document.createElement('div');
-			sandwich.className = `floating-sandwich`;
-
-			// Random position
-			sandwich.style.left = `${Math.random() * 100}vw`;
-			sandwich.style.top = `${Math.random() * 100}vh`;
-
-			// Random size
-			const size = 40 + Math.random() * 60;
-			sandwich.style.width = `${size}px`;
-			sandwich.style.height = `${size}px`;
-
-			// Random rotation
-			sandwich.style.transform = `rotate(${Math.random() * 360}deg)`;
-
-			// Add shadow for visibility
-			sandwich.style.filter = 'drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.2))';
-
-			// Create image element instead of using CSS classes
-			const img = document.createElement('img');
-			const iconType =
-				workingSandwichTypes[Math.floor(Math.random() * workingSandwichTypes.length)];
-			img.src = `https://img.icons8.com/color/96/${iconType}.png`;
-			img.alt = 'Food icon';
-			img.className = 'w-full h-full object-contain';
-
-			sandwich.appendChild(img);
-			document.body.appendChild(sandwich);
-
-			// Animate with GSAP
-			gsap.to(sandwich, {
-				x: -200 + Math.random() * 400,
-				y: -200 + Math.random() * 400,
-				rotation: Math.random() * 360,
-				duration: 10 + Math.random() * 15,
-				repeat: -1,
-				yoyo: true,
-				ease: 'sine.inOut',
-			});
 		}
-	}
+	};
 </script>
+
 <AnimatedSandwichBackground count={25} animated={true} opacity={0.3} speed={1.5} />
 
 <div class="relative min-h-screen" bind:this={heroSection}>
@@ -432,83 +374,6 @@
 </div>
 
 <style>
-	.intro-overlay {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		z-index: 9999;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
-	}
-
-	.intro-overlay.hidden {
-		display: none;
-	}
-
-	.intro-slice {
-		position: absolute;
-		width: 100%;
-		height: 20vh;
-		background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
-		transform-origin: center;
-	}
-
-	.intro-slice:nth-child(1) {
-		top: 0;
-	}
-
-	.intro-slice:nth-child(2) {
-		top: 20vh;
-	}
-
-	.intro-slice:nth-child(3) {
-		top: 40vh;
-	}
-
-	.intro-slice:nth-child(4) {
-		top: 60vh;
-	}
-
-	.intro-slice:nth-child(5) {
-		top: 80vh;
-	}
-
-	.intro-content {
-		position: relative;
-		z-index: 10;
-		text-align: center;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.intro-logo {
-		width: 200px;
-		height: 200px;
-		margin: 0 auto;
-		filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.intro-text {
-		font-size: 5rem;
-		font-weight: bold;
-		background: linear-gradient(to right, #ffffff, #e0f7fa, #ffffff);
-		-webkit-background-clip: text;
-		background-clip: text;
-		color: transparent;
-		margin-top: 1rem;
-		text-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-		animation: gradient-shift 3s ease infinite;
-	}
-
 	@keyframes gradient-shift {
 		0% {
 			background-position: 0% 50%;
@@ -535,13 +400,6 @@
 			transform: scale(1.05);
 			box-shadow: 0 0 20px rgba(76, 175, 80, 0.6);
 		}
-	}
-
-	.floating-sandwich {	x
-		position: absolute;
-		z-index: -1;
-		pointer-events: none;
-		opacity: 0.4;
 	}
 
 	@keyframes sandwichFloat {

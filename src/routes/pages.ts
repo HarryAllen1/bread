@@ -19,4 +19,8 @@ export const pages: Page[] = [
 		href: '/locations',
 		title: 'Locations',
 	},
+	{
+		href: '/references',
+		title: 'References',
+	},
 ];

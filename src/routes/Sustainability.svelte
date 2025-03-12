@@ -5,28 +5,26 @@
 	onMount(() => {
 		const observer = new IntersectionObserver(
 			(entries) => {
-				entries.forEach((entry) => {
+				for (const entry of entries) {
 					if (entry.isIntersecting) {
-						const counters = document.querySelectorAll('.counter-animation');
-						counters.forEach((counter) => {
-							const target = parseInt(counter.getAttribute('data-value') || '0');
+						const counters = document.querySelectorAll<HTMLElement>('.counter-animation');
+						for (const counter of counters) {
+							const target = Number.parseInt(counter.dataset.value || '0');
 							const isPercentage = counter.querySelector('p')?.textContent?.includes('%');
 							let count = 0;
 							const duration = 2000; // 2 seconds
 							const increment = target / (duration / 16); // 60fps
 
-							const updateCounter = () => {
+							const updateCounter = (): void => {
 								if (count < target) {
 									count += increment;
 									if (count > target) count = target;
 
 									const counterElement = counter.querySelector('p');
 									if (counterElement) {
-										if (isPercentage) {
-											counterElement.textContent = `${Math.floor(count)}%`;
-										} else {
-											counterElement.textContent = `${Math.floor(count).toLocaleString()}`;
-										}
+										counterElement.textContent = isPercentage
+											? `${Math.floor(count)}%`
+											: Math.floor(count).toLocaleString();
 									}
 
 									if (count < target) {
@@ -36,11 +34,11 @@
 							};
 
 							updateCounter();
-						});
+						}
 
 						observer.disconnect();
 					}
-				});
+				}
 			},
 			{ threshold: 0.5 },
 		);
@@ -92,7 +90,7 @@
 				class="bg-white rounded-lg shadow-xl p-8 transform transition-all hover:translate-y-[-10px] duration-300 animate-in fade-in-50 slide-in-from-bottom-8 duration-700"
 			>
 				<div class="bg-gradient-to-br from-primary/20 to-primary/40 p-4 rounded-full w-fit mb-6">
-					<Recycle class="text-primary size-6"/>
+					<Recycle class="text-primary size-6" />
 				</div>
 				<h3 class="text-xl font-bold mb-3">Sustainable Packaging</h3>
 				<p class="text-muted-foreground mb-4">

@@ -1,30 +1,44 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
+	import BackgroundSandwiches from '$lib/components/BackgroundSandwiches.svelte';
 	import { Button } from '$lib/components/ui/button';
 	import * as Card from '$lib/components/ui/card';
 	import { Input } from '$lib/components/ui/input';
 	import { Label } from '$lib/components/ui/label';
 	import SandwichIcon from '$lib/icons/SandwichIcon.svelte';
-	import { toast } from 'svelte-sonner';
 	import { userPreferences } from '$lib/stores/userPreferences';
-	import { browser } from '$app/environment';
-	import BackgroundSandwiches from '$lib/components/BackgroundSandwiches.svelte';
+	import type { SandwichType } from '$lib/types';
+	import { toast } from 'svelte-sonner';
+
+	interface BaseProduct {
+		id: string;
+		name: string;
+		price: number;
+		vegan: boolean;
+		glutenFree: boolean;
+	}
 
 	// Form state
 	let currentStep = $state(1);
 	let breadType = $state('sourdough');
 	let breadSize = $state('medium');
-	let toppings = $state([]);
-	let spreads = $state([]);
-	let proteins = $state([]);
-	let vegetables = $state([]);
-	let extras = $state([]);
+	let toppings = $state<BaseProduct[]>([]);
+	let spreads = $state<BaseProduct[]>([]);
+	let proteins = $state<BaseProduct[]>([]);
+	let vegetables = $state<BaseProduct[]>([]);
+	let extras = $state<BaseProduct[]>([]);
 	let specialInstructions = $state('');
 	let name = $state('');
 	let email = $state('');
 	let phone = $state('');
 
 	// Options
-	const breadTypes = [
+	const breadTypes: {
+		id: string;
+		name: string;
+		price: number;
+		icon: SandwichType;
+	}[] = [
 		{ id: 'sourdough', name: 'Sourdough', price: 1.5, icon: 'classic' },
 		{ id: 'whole-wheat', name: 'Whole Wheat', price: 1.5, icon: 'classic' },
 		{ id: 'rye', name: 'Rye', price: 1.75, icon: 'classic' },
@@ -109,8 +123,8 @@
 	});
 
 	// Filter options based on dietary preferences
-	const filterOptions = (options) => {
-		return options.filter((option) => {
+	const filterOptions = (options: BaseProduct[]): BaseProduct[] =>
+		options.filter((option) => {
 			if (userPrefs.dietaryRestrictions.glutenFree && !option.glutenFree) {
 				return false;
 			}
@@ -119,7 +133,6 @@
 			}
 			return true;
 		});
-	};
 
 	// Calculate total price
 	const calculateTotal = (): string => {
@@ -133,31 +146,31 @@
 
 		// Add toppings
 		for (const toppingId of toppings) {
-			const topping = toppingOptions.find((t) => t.id === toppingId);
+			const topping = toppingOptions.find((t) => t.id === toppingId.id);
 			if (topping) total += topping.price;
 		}
 
 		// Add spreads
 		for (const spreadId of spreads) {
-			const spread = spreadOptions.find((s) => s.id === spreadId);
+			const spread = spreadOptions.find((s) => s.id === spreadId.id);
 			if (spread) total += spread.price;
 		}
 
 		// Add proteins
 		for (const proteinId of proteins) {
-			const protein = proteinOptions.find((p) => p.id === proteinId);
+			const protein = proteinOptions.find((p) => p.id === proteinId.id);
 			if (protein) total += protein.price;
 		}
 
 		// Add vegetables
 		for (const vegetableId of vegetables) {
-			const vegetable = vegetableOptions.find((v) => v.id === vegetableId);
+			const vegetable = vegetableOptions.find((v) => v.id === vegetableId.id);
 			if (vegetable) total += vegetable.price;
 		}
 
 		// Add extras
 		for (const extraId of extras) {
-			const extra = extraOptions.find((e) => e.id === extraId);
+			const extra = extraOptions.find((extra) => extra.id === extraId.id);
 			if (extra) total += extra.price;
 		}
 
@@ -165,20 +178,20 @@
 	};
 
 	// Handle form navigation
-	const nextStep = () => {
+	const nextStep = (): void => {
 		if (currentStep < 7) {
 			currentStep++;
 		}
 	};
 
-	const prevStep = () => {
+	const previousStep = (): void => {
 		if (currentStep > 1) {
 			currentStep--;
 		}
 	};
 
 	// Handle form submission
-	const submitOrder = () => {
+	const submitOrder = (): void => {
 		// In a real app, this would send the order to a server
 		toast.success('Your custom sandwich has been added to cart!');
 
@@ -198,7 +211,7 @@
 	};
 
 	// Toggle selection
-	const toggleSelection = (array, item) => {
+	const toggleSelection = <T,>(array: T[], item: T): T[] => {
 		const index = array.indexOf(item);
 		return index === -1 ? [...array, item] : array.filter((i) => i !== item);
 	};
@@ -215,7 +228,7 @@
 		<!-- Progress bar -->
 		<div class="mb-8">
 			<div class="flex justify-between mb-2">
-				{#each Array.from({ length: 7 }) as _, i}
+				{#each { length: 7 }, i}
 					<div
 						class="flex flex-col items-center"
 						class:text-primary={currentStep >= i + 1}
@@ -297,11 +310,15 @@
 							<h3 class="text-lg font-medium mb-3">Bread Type</h3>
 							<div class="grid grid-cols-2 md:grid-cols-3 gap-4">
 								{#each breadTypes as bread}
-									<div
-										class="border rounded-lg p-4 cursor-pointer transition-all"
-										class:border-primary={breadType === bread.id}
-										class:bg-primary-5={breadType === bread.id}
-										class:shadow-md={breadType === bread.id}
+									<button
+										class={[
+											'border rounded-lg p-4 cursor-pointer transition-all',
+											{
+												'border-primary': breadType === bread.id,
+												'bg-primary-5': breadType === bread.id,
+												'shadow-md': breadType === bread.id,
+											},
+										]}
 										onclick={() => (breadType = bread.id)}
 									>
 										<div class="flex items-center gap-3">
@@ -311,7 +328,7 @@
 												<div class="text-sm text-gray-500">${bread.price.toFixed(2)}</div>
 											</div>
 										</div>
-									</div>
+									</button>
 								{/each}
 							</div>
 						</div>
@@ -320,11 +337,15 @@
 							<h3 class="text-lg font-medium mb-3">Size</h3>
 							<div class="flex gap-4">
 								{#each breadSizes as size}
-									<div
-										class="border rounded-lg p-4 cursor-pointer transition-all flex-1 text-center"
-										class:border-primary={breadSize === size.id}
-										class:bg-primary-5={breadSize === size.id}
-										class:shadow-md={breadSize === size.id}
+									<button
+										class={[
+											'border rounded-lg p-4 cursor-pointer transition-all flex-1 text-center',
+											{
+												'border-primary': breadSize === size.id,
+												'bg-primary-5': breadSize === size.id,
+												'shadow-md': breadSize === size.id,
+											},
+										]}
 										onclick={() => (breadSize = size.id)}
 									>
 										<div class="font-medium">{size.name}</div>
@@ -332,7 +353,7 @@
 											{size.multiplier < 1 ? '-' : '+'}
 											{Math.abs((size.multiplier - 1) * 100)}%
 										</div>
-									</div>
+									</button>
 								{/each}
 							</div>
 						</div>
@@ -342,12 +363,16 @@
 					<div>
 						<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 							{#each filterOptions(toppingOptions) as topping}
-								<div
-									class="border rounded-lg p-4 cursor-pointer transition-all"
-									class:border-primary={toppings.includes(topping.id)}
-									class:bg-primary-5={toppings.includes(topping.id)}
-									class:shadow-md={toppings.includes(topping.id)}
-									onclick={() => (toppings = toggleSelection(toppings, topping.id))}
+								<button
+									class={[
+										'border rounded-lg p-4 cursor-pointer transition-all',
+										{
+											'border-primary': toppings.includes(topping),
+											'bg-primary-5': toppings.includes(topping),
+											'shadow-md': toppings.includes(topping),
+										},
+									]}
+									onclick={() => (toppings = toggleSelection(toppings, topping))}
 								>
 									<div class="flex items-center justify-between">
 										<div>
@@ -369,7 +394,7 @@
 											{/if}
 										</div>
 									</div>
-								</div>
+								</button>
 							{/each}
 						</div>
 					</div>
@@ -378,12 +403,16 @@
 					<div>
 						<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 							{#each filterOptions(spreadOptions) as spread}
-								<div
-									class="border rounded-lg p-4 cursor-pointer transition-all"
-									class:border-primary={spreads.includes(spread.id)}
-									class:bg-primary-5={spreads.includes(spread.id)}
-									class:shadow-md={spreads.includes(spread.id)}
-									onclick={() => (spreads = toggleSelection(spreads, spread.id))}
+								<button
+									class={[
+										'border rounded-lg p-4 cursor-pointer transition-all',
+										{
+											'border-primary': spreads.includes(spread),
+											'bg-primary-5': spreads.includes(spread),
+											'shadow-md': spreads.includes(spread),
+										},
+									]}
+									onclick={() => (spreads = toggleSelection(spreads, spread))}
 								>
 									<div class="flex items-center justify-between">
 										<div>
@@ -405,7 +434,7 @@
 											{/if}
 										</div>
 									</div>
-								</div>
+								</button>
 							{/each}
 						</div>
 					</div>
@@ -414,12 +443,16 @@
 					<div>
 						<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 							{#each filterOptions(proteinOptions) as protein}
-								<div
-									class="border rounded-lg p-4 cursor-pointer transition-all"
-									class:border-primary={proteins.includes(protein.id)}
-									class:bg-primary-5={proteins.includes(protein.id)}
-									class:shadow-md={proteins.includes(protein.id)}
-									onclick={() => (proteins = toggleSelection(proteins, protein.id))}
+								<button
+									class={[
+										'border rounded-lg p-4 cursor-pointer transition-all',
+										{
+											'border-primary': proteins.includes(protein),
+											'bg-primary-5': proteins.includes(protein),
+											'shadow-md': proteins.includes(protein),
+										},
+									]}
+									onclick={() => (proteins = toggleSelection(proteins, protein))}
 								>
 									<div class="flex items-center justify-between">
 										<div>
@@ -441,7 +474,7 @@
 											{/if}
 										</div>
 									</div>
-								</div>
+								</button>
 							{/each}
 						</div>
 					</div>
@@ -450,12 +483,16 @@
 					<div>
 						<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 							{#each filterOptions(vegetableOptions) as vegetable}
-								<div
-									class="border rounded-lg p-4 cursor-pointer transition-all"
-									class:border-primary={vegetables.includes(vegetable.id)}
-									class:bg-primary-5={vegetables.includes(vegetable.id)}
-									class:shadow-md={vegetables.includes(vegetable.id)}
-									onclick={() => (vegetables = toggleSelection(vegetables, vegetable.id))}
+								<button
+									class={[
+										'border rounded-lg p-4 cursor-pointer transition-all',
+										{
+											'border-primary': vegetables.includes(vegetable),
+											'bg-primary-5': vegetables.includes(vegetable),
+											'shadow-md': vegetables.includes(vegetable),
+										},
+									]}
+									onclick={() => (vegetables = toggleSelection(vegetables, vegetable))}
 								>
 									<div class="flex items-center justify-between">
 										<div>
@@ -477,7 +514,7 @@
 											{/if}
 										</div>
 									</div>
-								</div>
+								</button>
 							{/each}
 						</div>
 					</div>
@@ -486,12 +523,16 @@
 					<div>
 						<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 							{#each filterOptions(extraOptions) as extra}
-								<div
-									class="border rounded-lg p-4 cursor-pointer transition-all"
-									class:border-primary={extras.includes(extra.id)}
-									class:bg-primary-5={extras.includes(extra.id)}
-									class:shadow-md={extras.includes(extra.id)}
-									onclick={() => (extras = toggleSelection(extras, extra.id))}
+								<button
+									class={[
+										'border rounded-lg p-4 cursor-pointer transition-all',
+										{
+											'border-primary': extras.includes(extra),
+											'bg-primary-5': extras.includes(extra),
+											'shadow-md': extras.includes(extra),
+										},
+									]}
+									onclick={() => (extras = toggleSelection(extras, extra))}
 								>
 									<div class="flex items-center justify-between">
 										<div>
@@ -513,7 +554,7 @@
 											{/if}
 										</div>
 									</div>
-								</div>
+								</button>
 							{/each}
 						</div>
 
@@ -553,7 +594,7 @@
 										<span class="font-medium">Toppings:</span>
 										<ul class="ml-4 list-disc">
 											{#each toppings as toppingId}
-												{@const topping = toppingOptions.find((t) => t.id === toppingId)}
+												{@const topping = toppingOptions.find((t) => t.id === toppingId.id)}
 												{#if topping}
 													<li class="flex justify-between">
 														<span>{topping.name}</span>
@@ -570,7 +611,7 @@
 										<span class="font-medium">Spreads:</span>
 										<ul class="ml-4 list-disc">
 											{#each spreads as spreadId}
-												{@const spread = spreadOptions.find((s) => s.id === spreadId)}
+												{@const spread = spreadOptions.find((s) => s.id === spreadId.id)}
 												{#if spread}
 													<li class="flex justify-between">
 														<span>{spread.name}</span>
@@ -587,7 +628,7 @@
 										<span class="font-medium">Proteins:</span>
 										<ul class="ml-4 list-disc">
 											{#each proteins as proteinId}
-												{@const protein = proteinOptions.find((p) => p.id === proteinId)}
+												{@const protein = proteinOptions.find((p) => p.id === proteinId.id)}
 												{#if protein}
 													<li class="flex justify-between">
 														<span>{protein.name}</span>
@@ -604,7 +645,7 @@
 										<span class="font-medium">Vegetables:</span>
 										<ul class="ml-4 list-disc">
 											{#each vegetables as vegetableId}
-												{@const vegetable = vegetableOptions.find((v) => v.id === vegetableId)}
+												{@const vegetable = vegetableOptions.find((v) => v.id === vegetableId.id)}
 												{#if vegetable}
 													<li class="flex justify-between">
 														<span>{vegetable.name}</span>
@@ -621,7 +662,9 @@
 										<span class="font-medium">Extras:</span>
 										<ul class="ml-4 list-disc">
 											{#each extras as extraId}
-												{@const extra = extraOptions.find((e) => e.id === extraId)}
+												{@const extra = extraOptions.find(
+													(extraItem) => extraItem.id === extraId.id,
+												)}
 												{#if extra}
 													<li class="flex justify-between">
 														<span>{extra.name}</span>
@@ -671,7 +714,7 @@
 			</Card.Content>
 
 			<Card.Footer class="flex justify-between">
-				<Button variant="outline" onclick={prevStep} disabled={currentStep === 1}>Back</Button>
+				<Button variant="outline" onclick={previousStep} disabled={currentStep === 1}>Back</Button>
 
 				{#if currentStep < 7}
 					<Button onclick={nextStep}>Next</Button>

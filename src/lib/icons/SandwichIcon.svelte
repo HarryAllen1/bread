@@ -1,9 +1,8 @@
 <script lang="ts">
+	import type { SandwichType } from '$lib/types';
+	import { cn } from '$lib/utils';
 	import type { WithElementRef } from 'bits-ui';
 	import type { HTMLAttributes } from 'svelte/elements';
-	import { cn } from '$lib/utils';
-
-	type SandwichType = 'classic' | 'wrap' | 'veggie' | 'avocado' | 'club' | 'sub';
 
 	interface Props {
 		type?: SandwichType;
@@ -31,7 +30,7 @@
 	class={cn('sandwich-icon', type, sizeMap[size], animated && 'animate-float', className)}
 	bind:this={ref}
 	{...props}
-/>
+></div>
 
 <style>
 	.sandwich-icon {

@@ -1,10 +1,9 @@
 <script lang="ts">
-	import { Button } from '$lib/components/ui/button';
-	import SandwichIcon from '$lib/icons/SandwichIcon.svelte';
 	import AnimatedSandwichBackground from '$lib/components/AnimatedSandwichBackground.svelte';
-	import { onMount } from 'svelte';
+	import SandwichIcon from '$lib/icons/SandwichIcon.svelte';
 	import { gsap } from 'gsap';
 	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+	import { onMount } from 'svelte';
 
 	// Register GSAP plugins
 	gsap.registerPlugin(ScrollTrigger);
@@ -20,7 +19,7 @@
 
 		// Animate sections on scroll
 		const sections = document.querySelectorAll('.about-section');
-		sections.forEach((section, index) => {
+		for (const [index, section] of sections.entries()) {
 			gsap.from(section, {
 				opacity: 0,
 				y: 50,
@@ -32,7 +31,7 @@
 				},
 				delay: index * 0.1,
 			});
-		});
+		}
 
 		// Animate team members with staggered effect
 		gsap.from('.team-member', {
@@ -64,7 +63,7 @@
 
 <div class="container my-8 px-4 max-w-5xl mx-auto">
 	<h1 class="about-title text-4xl font-extrabold tracking-tight lg:text-5xl mb-6 text-center">
-		About Greens
+		About Greenwich
 	</h1>
 
 	<div
@@ -73,7 +72,7 @@
 		<div>
 			<h2 class="text-2xl font-bold mb-3 text-primary">Our Heritage</h2>
 			<p class="text-base mb-3">
-				Established in 2023, Greens was conceived with a singular vision: to create exceptional
+				Established in 2023, Greenwich was conceived with a singular vision: to create exceptional
 				vegetarian sandwiches that redefine plant-based dining.
 			</p>
 			<p class="text-base mb-3">
@@ -206,17 +205,5 @@
 				<p class="text-xs text-gray-600">Culinary Innovation Lead</p>
 			</div>
 		</div>
-	</div>
-
-	<div class="about-section text-center mb-8 bg-white/80 rounded-xl p-6 shadow-md">
-		<h2 class="text-2xl font-bold mb-3 text-primary">Join Our Team</h2>
-		<p class="text-base max-w-2xl mx-auto mb-4">
-			We're seeking passionate culinary professionals who share our commitment to excellence and
-			innovation. If you're dedicated to advancing plant-based cuisine, we invite you to explore
-			opportunities with our growing team.
-		</p>
-		<Button href="/careers" size="lg" class="shadow-lg hover:shadow-xl transition-all duration-300"
-			>View Opportunities</Button
-		>
 	</div>
 </div>

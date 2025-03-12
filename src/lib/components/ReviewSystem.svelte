@@ -1,18 +1,15 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { Button } from '$lib/components/ui/button';
-	import { Input } from '$lib/components/ui/input';
+	import BadgeCheck from 'lucide-svelte/icons/badge-check';
+	import Camera from 'lucide-svelte/icons/camera';
 	import Star from 'lucide-svelte/icons/star';
 	import StarHalf from 'lucide-svelte/icons/star-half';
-	import Camera from 'lucide-svelte/icons/camera';
-	import BadgeCheck from 'lucide-svelte/icons/badge-check';
 	import { toast } from 'svelte-sonner';
 
 	interface Props {
-		productId: number;
 		productName: string;
 	}
-	let { productId, productName }: Props = $props();
+	let { productName }: Props = $props();
 
 	// Sample reviews data
 	let reviews = $state([
@@ -66,36 +63,36 @@
 	let showReviewForm = $state(false);
 	let sortBy = $state('newest');
 
-	const averageRating = () => {
-		if (reviews.length === 0) return 0;
-		const sum = reviews.reduce((acc, review) => acc + review.rating, 0);
+	const averageRating = (): string => {
+		if (reviews.length === 0) return '0';
+		const sum = reviews.reduce((accumulator, review) => accumulator + review.rating, 0);
 		return (sum / reviews.length).toFixed(1);
 	};
 
-	const ratingDistribution = () => {
+	const ratingDistribution = (): number[] => {
 		const distribution = [0, 0, 0, 0, 0];
-		reviews.forEach((review) => {
+		for (const review of reviews) {
 			const index = Math.floor(review.rating) - 1;
 			if (index >= 0 && index < 5) {
 				distribution[index]++;
 			}
-		});
+		}
 		return distribution.reverse(); // 5 stars first
 	};
 
-	const handleRatingHover = (rating: number) => {
+	const handleRatingHover = (rating: number): void => {
 		hoveredRating = rating;
 	};
 
-	const handleRatingLeave = () => {
+	const handleRatingLeave = (): void => {
 		hoveredRating = 0;
 	};
 
-	const handleRatingClick = (rating: number) => {
+	const handleRatingClick = (rating: number): void => {
 		newReview.rating = rating;
 	};
 
-	const handleImageUpload = (event: Event) => {
+	const handleImageUpload = (event: Event): void => {
 		const input = event.target as HTMLInputElement;
 		if (input.files && input.files.length > 0) {
 			// In a real app, you would upload the file to a server
@@ -107,7 +104,7 @@
 		}
 	};
 
-	const submitReview = () => {
+	const submitReview = (): void => {
 		if (newReview.rating === 0) {
 			toast.error('Please select a rating');
 			return;
@@ -122,7 +119,7 @@
 
 		// Simulate API call
 		setTimeout(() => {
-			const newReviewObj = {
+			const newReviewObject = {
 				id: reviews.length + 1,
 				author: 'You',
 				rating: newReview.rating,
@@ -133,7 +130,7 @@
 				images: newReview.images,
 			};
 
-			reviews = [newReviewObj, ...reviews];
+			reviews = [newReviewObject, ...reviews];
 
 			// Reset form
 			newReview = {
@@ -149,7 +146,7 @@
 		}, 1000);
 	};
 
-	const markHelpful = (reviewId: number) => {
+	const markHelpful = (reviewId: number): void => {
 		reviews = reviews.map((review) => {
 			if (review.id === reviewId) {
 				return { ...review, helpful: review.helpful + 1 };
@@ -160,17 +157,31 @@
 		toast.success('Review marked as helpful');
 	};
 
-	const sortReviews = () => {
-		if (sortBy === 'newest') {
-			reviews = [...reviews].sort(
-				(a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-			);
-		} else if (sortBy === 'highest') {
-			reviews = [...reviews].sort((a, b) => b.rating - a.rating);
-		} else if (sortBy === 'lowest') {
-			reviews = [...reviews].sort((a, b) => a.rating - b.rating);
-		} else if (sortBy === 'helpful') {
-			reviews = [...reviews].sort((a, b) => b.helpful - a.helpful);
+	const sortReviews = (): void => {
+		switch (sortBy) {
+			case 'newest': {
+				reviews = [...reviews].sort(
+					(a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+				);
+
+				break;
+			}
+			case 'highest': {
+				reviews = [...reviews].sort((a, b) => b.rating - a.rating);
+
+				break;
+			}
+			case 'lowest': {
+				reviews = [...reviews].sort((a, b) => a.rating - b.rating);
+
+				break;
+			}
+			case 'helpful': {
+				reviews = [...reviews].sort((a, b) => b.helpful - a.helpful);
+
+				break;
+			}
+			// No default
 		}
 	};
 
@@ -188,7 +199,7 @@
 			<div class="text-center mb-4">
 				<div class="text-5xl font-bold">{averageRating()}</div>
 				<div class="flex justify-center my-2">
-					{#each Array(5) as _, i}
+					{#each { length: 5 }, i}
 						{#if i < Math.floor(Number(averageRating()))}
 							<Star class="text-yellow-400 fill-yellow-400 size-5" />
 						{:else if i === Math.floor(Number(averageRating())) && Number(averageRating()) % 1 >= 0.5}
@@ -196,9 +207,7 @@
 						{:else}
 							<Star class="text-gray-300 size-5" />
 						{/if}
-						}
 					{/each}
-					}
 				</div>
 				<div class="text-sm text-gray-600">Based on {reviews.length} reviews</div>
 			</div>
@@ -218,7 +227,6 @@
 						<div class="w-8 text-xs text-gray-600">{count}</div>
 					</div>
 				{/each}
-				}
 			</div>
 
 			<div class="mt-6">
@@ -237,7 +245,7 @@
 					<div>
 						<h3 class="block text-sm font-medium mb-1">Rating</h3>
 						<div class="flex space-x-1" role="form" onmouseleave={handleRatingLeave}>
-							{#each Array(5), i}
+							{#each Array.from({ length: 5 }), i}
 								<button
 									type="button"
 									class="focus:outline-none"
@@ -327,7 +335,7 @@
 										</div>
 										<div class="flex items-center mt-1">
 											<div class="flex mr-2">
-												{#each Array(5) as _, i}
+												{#each { length: 5 }, i}
 													{#if i < Math.floor(review.rating)}
 														<Star class="text-yellow-400 fill-yellow-400 size-4" />
 													{:else if i === Math.floor(review.rating) && review.rating % 1 >= 0.5}

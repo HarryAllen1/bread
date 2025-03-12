@@ -15,7 +15,7 @@
 </script>
 
 <div class="container my-8">
-	<h1 class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">thank you!</h1>
+	<h1 class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">Thank you!</h1>
 	<p class="leading-7 not-first:mt-6">
 		Thank you for your purchase! A receipt has been sent to your email at {data.email}. If you
 		actually paid for something on this site, first off, why, and also, we'll refund you shortly

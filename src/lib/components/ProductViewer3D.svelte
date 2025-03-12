@@ -1,37 +1,38 @@
 <script lang="ts">
-	import { onMount, onDestroy } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 	import {
-		Scene,
-		PerspectiveCamera,
-		WebGLRenderer,
+		AmbientLight,
+		CylinderGeometry,
+		DirectionalLight,
+		Group,
 		Mesh,
 		MeshStandardMaterial,
-		AmbientLight,
-		DirectionalLight,
-		TextureLoader,
+		PerspectiveCamera,
+		Scene,
 		SphereGeometry,
-		CylinderGeometry,
+		TextureLoader,
 		TorusGeometry,
-		Group,
-		Vector2,
+		WebGLRenderer,
 	} from 'three';
 	import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
-	export let productType: 'loaf' | 'bagel' | 'croissant' | 'baguette' | 'roll' | 'pretzel' = 'loaf';
-	export let productName: string;
-	export let textureUrl: string = '';
+	interface Props {
+		productType?: 'loaf' | 'bagel' | 'croissant' | 'baguette' | 'roll' | 'pretzel';
+		productName: string;
+		textureUrl?: string;
+	}
 
-	let container: HTMLDivElement;
+	let { productType = 'loaf', productName, textureUrl = '' }: Props = $props();
+
+	let container: HTMLDivElement | undefined = $state();
 	let renderer: WebGLRenderer;
 	let scene: Scene;
 	let camera: PerspectiveCamera;
 	let controls: OrbitControls;
 	let bread: Group;
-	let isZoomed = false;
-	let isDragging = false;
-	let mousePosition = { x: 0, y: 0 };
+	let isZoomed = $state(false);
 
-	const createBreadModel = () => {
+	const createBreadModel = (): Group => {
 		bread = new Group();
 		const textureLoader = new TextureLoader();
 		let breadGeometry;
@@ -46,21 +47,23 @@
 			});
 		} else {
 			breadMaterial = new MeshStandardMaterial({
-				color: 0xe3c397,
+				color: 0xe3_c3_97,
 				roughness: 0.8,
 				metalness: 0.1,
 			});
 		}
 
 		switch (productType) {
-			case 'loaf':
+			case 'loaf': {
 				breadGeometry = new CylinderGeometry(1, 1, 2, 16);
 				breadGeometry.scale(1, 0.6, 0.8);
 				break;
-			case 'bagel':
+			}
+			case 'bagel': {
 				breadGeometry = new TorusGeometry(0.8, 0.4, 16, 32);
 				break;
-			case 'croissant':
+			}
+			case 'croissant': {
 				// Create a more complex shape for croissant
 				const crescent = new Group();
 				const base = new CylinderGeometry(0.2, 0.2, 2, 8);
@@ -75,14 +78,17 @@
 
 				bread.add(crescent);
 				return bread;
-			case 'baguette':
+			}
+			case 'baguette': {
 				breadGeometry = new CylinderGeometry(0.3, 0.3, 3, 16);
 				break;
-			case 'roll':
+			}
+			case 'roll': {
 				breadGeometry = new SphereGeometry(0.8, 32, 32);
 				breadGeometry.scale(1, 0.7, 1);
 				break;
-			case 'pretzel':
+			}
+			case 'pretzel': {
 				// Create a more complex shape for pretzel
 				const pretzel = new Group();
 
@@ -105,8 +111,10 @@
 				pretzel.add(loop1Mesh, loop2Mesh, centerMesh);
 				bread.add(pretzel);
 				return bread;
-			default:
+			}
+			default: {
 				breadGeometry = new SphereGeometry(1, 32, 32);
+			}
 		}
 
 		const breadMesh = new Mesh(breadGeometry, breadMaterial);
@@ -114,38 +122,14 @@
 		return bread;
 	};
 
-	const handleZoom = () => {
+	const handleZoom = (): void => {
 		isZoomed = !isZoomed;
 
-		if (isZoomed) {
-			camera.position.z = 2;
-		} else {
-			camera.position.z = 5;
-		}
-	};
-
-	const handleMouseDown = (event: MouseEvent) => {
-		isDragging = true;
-		mousePosition = { x: event.clientX, y: event.clientY };
-	};
-
-	const handleMouseMove = (event: MouseEvent) => {
-		if (!isDragging) return;
-
-		const deltaX = event.clientX - mousePosition.x;
-		const deltaY = event.clientY - mousePosition.y;
-
-		bread.rotation.y += deltaX * 0.01;
-		bread.rotation.x += deltaY * 0.01;
-
-		mousePosition = { x: event.clientX, y: event.clientY };
-	};
-
-	const handleMouseUp = () => {
-		isDragging = false;
+		camera.position.z = isZoomed ? 2 : 5;
 	};
 
 	onMount(() => {
+		if (!container) return;
 		// Setup scene
 		scene = new Scene();
 		camera = new PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
@@ -155,17 +139,18 @@
 		renderer = new WebGLRenderer({ antialias: true, alpha: true });
 		renderer.setSize(container.clientWidth, container.clientHeight);
 		renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-		container.appendChild(renderer.domElement);
+		// eslint-disable-next-line svelte/no-dom-manipulating
+		container.append(renderer.domElement);
 
 		// Add lights
-		const ambientLight = new AmbientLight(0xffffff, 0.5);
+		const ambientLight = new AmbientLight(0xff_ff_ff, 0.5);
 		scene.add(ambientLight);
 
-		const directionalLight = new DirectionalLight(0xffffff, 1);
+		const directionalLight = new DirectionalLight(0xff_ff_ff, 1);
 		directionalLight.position.set(5, 5, 5);
 		scene.add(directionalLight);
 
-		const backLight = new DirectionalLight(0xffffff, 0.5);
+		const backLight = new DirectionalLight(0xff_ff_ff, 0.5);
 		backLight.position.set(-5, 5, -5);
 		scene.add(backLight);
 
@@ -181,7 +166,7 @@
 		controls.minDistance = 2;
 
 		// Animation loop
-		const animate = () => {
+		const animate = (): void => {
 			requestAnimationFrame(animate);
 
 			// Gentle rotation if not being controlled
@@ -196,7 +181,10 @@
 		animate();
 
 		// Handle resize
-		const handleResize = () => {
+		const handleResize = (): void => {
+			// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- is this a bug????
+			if (!container) return;
+
 			camera.aspect = container.clientWidth / container.clientHeight;
 			camera.updateProjectionMatrix();
 			renderer.setSize(container.clientWidth, container.clientHeight);
@@ -208,14 +196,12 @@
 		return () => {
 			window.removeEventListener('resize', handleResize);
 			renderer.dispose();
-			container.removeChild(renderer.domElement);
+			renderer.domElement.remove();
 		};
 	});
 
 	onDestroy(() => {
-		if (renderer) {
-			renderer.dispose();
-		}
+		renderer.dispose();
 	});
 </script>
 
@@ -223,11 +209,7 @@
 	<div class="viewer-container" bind:this={container}></div>
 
 	<div class="controls">
-		<button
-			class="control-btn"
-			on:click={handleZoom}
-			aria-label={isZoomed ? 'Zoom out' : 'Zoom in'}
-		>
+		<button class="control-btn" onclick={handleZoom} aria-label={isZoomed ? 'Zoom out' : 'Zoom in'}>
 			{isZoomed ? 'Zoom Out' : 'Zoom In'}
 		</button>
 

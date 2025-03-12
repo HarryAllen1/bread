@@ -20,8 +20,8 @@
 	$effect(() => {
 		if (browser) {
 			const prefs = $userPreferences;
-			hasFavorites = prefs?.favorites?.length > 0;
-			favoritesCount = prefs?.favorites?.length || 0;
+			hasFavorites = prefs.favorites.length > 0;
+			favoritesCount = prefs.favorites.length || 0;
 		}
 	});
 </script>

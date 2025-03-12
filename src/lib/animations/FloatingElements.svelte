@@ -1,17 +1,18 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { gsap } from 'gsap';
-	import SandwichIcon from '$lib/icons/SandwichIcon.svelte';
-	import BreadIcon from '$lib/icons/BreadIcon.svelte';
 
-	export let count = 10;
-	export let types = ['classic', 'wrap', 'veggie'];
+	interface Props {
+		count: number;
+		types: string[];
+	}
+	let { count, types }: Props = $props();
 
 	onMount(() => {
 		createFloatingElements();
 	});
 
-	function createFloatingElements() {
+	const createFloatingElements = (): void => {
 		const container = document.createElement('div');
 		container.className = 'floating-elements-container';
 		container.style.position = 'absolute';
@@ -23,7 +24,7 @@
 		container.style.pointerEvents = 'none';
 		container.style.zIndex = '1';
 
-		document.body.appendChild(container);
+		document.body.append(container);
 
 		for (let i = 0; i < count; i++) {
 			const element = document.createElement('div');
@@ -45,9 +46,9 @@
 			const type = types[Math.floor(Math.random() * types.length)];
 			const iconElement = document.createElement('div');
 			iconElement.className = `sandwich-icon ${type}`;
-			element.appendChild(iconElement);
+			element.append(iconElement);
 
-			container.appendChild(element);
+			container.append(element);
 
 			// Animate with GSAP
 			gsap.to(element, {
@@ -60,5 +61,5 @@
 				ease: 'sine.inOut',
 			});
 		}
-	}
+	};
 </script>
