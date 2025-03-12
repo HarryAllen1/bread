@@ -155,32 +155,11 @@
 	</div>
 
 	<div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-		<Card.Root class="card-3d">
-			<Card.Header>
-				<a href="/create">
-					<Card.Title>Build Your Own</Card.Title>
-				</a>
-				<Card.Description>Custom Price</Card.Description>
-			</Card.Header>
-			<Card.Content>
-				<a href="/create" class="block relative overflow-hidden rounded-lg">
-					<img
-						src="https://images.unsplash.com/photo-1554433607-66b5efe9d304?q=80&w=2070&auto=format&fit=crop"
-						alt="Custom Sandwich"
-						class="transform transition-transform hover:scale-105 h-64 w-full object-cover"
-					/>
-					<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-					<Sandwich class="absolute bottom-4 right-4 size-8 text-white animate-float" />
-				</a>
-			</Card.Content>
-			<Card.Footer>
-				<Button href="/create" class="hover-lift">Start Creating</Button>
-			</Card.Footer>
-		</Card.Root>
 		<ProductCard
+			byo
 			product={{
 				id: 9999,
-				name: 'Custom Sandwich',
+				name: 'Build Your Own Sandwich',
 				allergens: '',
 				category: 'custom',
 				description: 'Create your own sandwich with your favorite ingredients',

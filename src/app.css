@@ -113,14 +113,9 @@
 	border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* 3D card effect */
-.card-3d {
-	transform-style: preserve-3d;
-	perspective: 1000px;
-}
 
 .card-3d:hover {
-	transform: rotateY(10deg);
+scale: 1.02;
 }
 
 /* Animation utilities */

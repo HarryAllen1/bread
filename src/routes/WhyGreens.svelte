@@ -31,7 +31,7 @@
 			class="bg-gradient-to-br from-primary/20 to-primary/30 rounded-lg p-6 shadow-lg transform transition-all duration-300 hover:translate-y-[-5px] hover:shadow-xl animate-card-1"
 		>
 			<div class="relative">
-				<Salad class="size-12 text-primary mb-4 transform rotate-12 animate-float" />
+				<Salad class="size-12 text-primary my-2 transform rotate-12 animate-float" />
 			</div>
 			<h3 class="text-xl font-bold mb-3">Premium Ingredients</h3>
 			<p class="text-foreground font-medium">
@@ -43,7 +43,7 @@
 			class="bg-gradient-to-br from-primary/20 to-primary/30 rounded-lg p-6 shadow-lg transform transition-all duration-300 hover:translate-y-[-5px] hover:shadow-xl animate-card-2"
 		>
 			<div class="relative">
-				<Leaf class="size-12 text-primary mb-4 transform -rotate-12 animate-float" />
+				<Leaf class="size-12 text-primary my-2 transform -rotate-12 animate-float" />
 			</div>
 			<h3 class="text-xl font-bold mb-3">Plant-Forward Cuisine</h3>
 			<p class="text-foreground font-medium">
@@ -55,7 +55,7 @@
 			class="bg-gradient-to-br from-primary/20 to-primary/30 rounded-lg p-6 shadow-lg transform transition-all duration-300 hover:translate-y-[-5px] hover:shadow-xl animate-card-3"
 		>
 			<div class="relative">
-				<Utensils class="size-12 text-primary mb-4 animate-float" />
+				<Utensils class="size-12 text-primary my-2 animate-float" />
 			</div>
 			<h3 class="text-xl font-bold mb-3">Artisanal Preparation</h3>
 			<p class="text-foreground font-medium">

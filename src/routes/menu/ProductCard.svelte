@@ -14,9 +14,10 @@
 		product: PageData['products'][number];
 		cartMode?: boolean;
 		class?: string;
+		byo?: boolean;
 	}
 
-	let { product, cartMode = false, class: className }: Props = $props();
+	let { product, cartMode = false, class: className, byo = false }: Props = $props();
 
 	// Determine sandwich type icon
 	let sandwichType: 'classic' | 'wrap' | 'veggie' | 'avocado' | 'club' | 'sub' = $state('classic');
@@ -111,14 +112,14 @@
 	{/if}
 
 	<Card.Header>
-		<a href="/menu/{product.slug}" class="flex items-center gap-2">
+		<a href="{byo ? '' : '/menu'}/{product.slug}" class="flex items-center gap-2">
 			<!-- <SandwichIcon type={sandwichType} size="sm" animated={true} /> -->
 			<Card.Title class="text-xl">{product.name}</Card.Title>
 		</a>
 		<Card.Description class="flex justify-between items-center text-lg">
-			<span class="font-bold text-primary">${product.price}</span>
+			<span class="font-bold text-primary">{byo ? 'Variable' : `$${product.price}`}</span>
 
-			{#if !isFavorite}
+			{#if !isFavorite && !byo}
 				<button
 					class="text-gray-400 hover:text-red-500 transition-colors"
 					onclick={toggleFavorite}
@@ -137,7 +138,7 @@
 		</Card.Description>
 	</Card.Header>
 	<Card.Content>
-		<a href="/menu/{product.slug}" class="block relative overflow-hidden rounded-lg">
+		<a href="{byo ? '' : '/menu'}/{product.slug}" class="block relative overflow-hidden rounded-lg">
 			<img
 				src={product.image_url}
 				alt={product.name}
@@ -160,26 +161,30 @@
 		{/if}
 	</Card.Content>
 	<Card.Footer class="gap-4">
-		<Button
-			onclick={() => {
-				addToCart(product.id);
-				toast.success('Added to cart!', {
-					action: {
-						label: 'View Cart',
-						onClick: () => {
-							goto('/cart');
+		{#if byo}
+			<Button variant="default" href="/create" class="text-base py-5 w-full">Create</Button>
+		{:else}
+			<Button
+				onclick={() => {
+					addToCart(product.id);
+					toast.success('Added to cart!', {
+						action: {
+							label: 'View Cart',
+							onClick: () => {
+								goto('/cart');
+							},
 						},
-					},
-				});
-			}}
-			class="text-base py-5 w-full"
-		>
-			add to cart
-		</Button>
-		{#if !cartMode}
-			<Button variant="outline" href="/menu/{product.slug}" class="text-base py-5 w-full"
-				>view details</Button
+					});
+				}}
+				class="text-base py-5 w-full"
 			>
+				Add to Cart
+			</Button>
+			{#if !cartMode}
+				<Button variant="outline" href="/menu/{product.slug}" class="text-base py-5 w-full">
+					View Details
+				</Button>
+			{/if}
 		{/if}
 	</Card.Footer>
 </Card.Root>
