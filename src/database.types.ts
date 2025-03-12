@@ -1,6 +1,6 @@
 export type Json = string | number | boolean | null | { [key: string]: Json | undefined } | Json[];
 
-export interface Database {
+export type Database = {
 	public: {
 		Tables: {
 			cart_items: {
@@ -35,6 +35,7 @@ export interface Database {
 			products: {
 				Row: {
 					allergens: string | null;
+					category: Database['public']['Enums']['category'];
 					created_at: string;
 					description: string | null;
 					id: number;
@@ -42,11 +43,12 @@ export interface Database {
 					image_name: string | null;
 					name: string;
 					price: number;
+					price_id: string | null;
 					slug: string;
-					price_id?: string | null;
 				};
 				Insert: {
 					allergens?: string | null;
+					category: Database['public']['Enums']['category'];
 					created_at?: string;
 					description?: string | null;
 					id?: number;
@@ -54,11 +56,12 @@ export interface Database {
 					image_name?: string | null;
 					name: string;
 					price?: number;
-					slug: string;
 					price_id?: string | null;
+					slug: string;
 				};
 				Update: {
 					allergens?: string | null;
+					category?: Database['public']['Enums']['category'];
 					created_at?: string;
 					description?: string | null;
 					id?: number;
@@ -66,8 +69,8 @@ export interface Database {
 					image_name?: string | null;
 					name?: string;
 					price?: number;
-					slug?: string;
 					price_id?: string | null;
+					slug?: string;
 				};
 				Relationships: [];
 			};
@@ -99,12 +102,20 @@ export interface Database {
 				Relationships: [];
 			};
 		};
-		Views: Record<never, never>;
-		Functions: Record<never, never>;
-		Enums: Record<never, never>;
-		CompositeTypes: Record<never, never>;
+		Views: {
+			[_ in never]: never;
+		};
+		Functions: {
+			[_ in never]: never;
+		};
+		Enums: {
+			category: 'bread' | 'sandwich' | 'custom';
+		};
+		CompositeTypes: {
+			[_ in never]: never;
+		};
 	};
-}
+};
 
 type PublicSchema = Database[Extract<keyof Database, 'public'>];
 

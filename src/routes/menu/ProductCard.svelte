@@ -8,13 +8,15 @@
 	import { userPreferences } from '$lib/stores/userPreferences';
 	import { toast } from 'svelte-sonner';
 	import type { PageData } from './$types';
+	import { cn } from '$lib/utils';
 
 	interface Props {
 		product: PageData['products'][number];
 		cartMode?: boolean;
+		class?: string;
 	}
 
-	let { product, cartMode = false }: Props = $props();
+	let { product, cartMode = false, class: className }: Props = $props();
 
 	// Determine sandwich type icon
 	let sandwichType: 'classic' | 'wrap' | 'veggie' | 'avocado' | 'club' | 'sub' = $state('classic');
@@ -79,7 +81,10 @@
 </script>
 
 <Card.Root
-	class="card-3d hover:shadow-2xl hover:shadow-primary/20 relative transition-all duration-500 opacity-0 translate-y-8 card-loaded"
+	class={cn(
+		'card-3d hover:shadow-2xl hover:shadow-primary/20 relative transition-all duration-500 opacity-0 translate-y-8 card-loaded',
+		className,
+	)}
 >
 	{#if isFavorite}
 		<div class="absolute top-2 right-2 z-10">
@@ -137,7 +142,7 @@
 				src={product.image_url}
 				alt={product.name}
 				class={cartMode
-					? 'max-w-xs w-full h-auto aspect-square object-cover'
+					? 'max-w-xs w-full h-auto aspect-video object-cover'
 					: 'w-full h-64 object-cover'}
 			/>
 			<div

@@ -68,7 +68,6 @@
 							{navItem.title}
 						</MobileLink>
 					{/each}
-					}
 				</div>
 			</ScrollArea>
 		</div>

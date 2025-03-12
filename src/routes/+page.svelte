@@ -14,7 +14,7 @@
 	// Register GSAP plugins
 	gsap.registerPlugin(ScrollTrigger);
 
-	let heroSection: HTMLDivElement;
+	let heroSection = $state<HTMLDivElement>();
 
 	onMount(() => {
 		if ((globalThis as unknown as { ranIntro: boolean }).ranIntro || Math.random() < 0.5) {
@@ -217,8 +217,9 @@
 		});
 
 		// Animate decorative elements
-		const decorElements = heroSection.querySelectorAll('.hero-decor');
-		for (const [index, element] of decorElements.entries()) {
+		const decorElements = heroSection?.querySelectorAll('.hero-decor');
+		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+		for (const [index, element] of decorElements!.entries()) {
 			gsap.to(element, {
 				y: -20 + Math.random() * 40,
 				x: -10 + Math.random() * 20,
