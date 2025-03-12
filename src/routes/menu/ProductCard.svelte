@@ -112,7 +112,7 @@
 
 	<Card.Header>
 		<a href="/menu/{product.slug}" class="flex items-center gap-2">
-			<SandwichIcon type={sandwichType} size="sm" animated={true} />
+			<!-- <SandwichIcon type={sandwichType} size="sm" animated={true} /> -->
 			<Card.Title class="text-xl">{product.name}</Card.Title>
 		</a>
 		<Card.Description class="flex justify-between items-center text-lg">
@@ -172,12 +172,12 @@
 					},
 				});
 			}}
-			class="hover-lift text-base py-5 w-full"
+			class="text-base py-5 w-full"
 		>
 			add to cart
 		</Button>
 		{#if !cartMode}
-			<Button variant="outline" href="/menu/{product.slug}" class="hover-lift text-base py-5 w-full"
+			<Button variant="outline" href="/menu/{product.slug}" class="text-base py-5 w-full"
 				>view details</Button
 			>
 		{/if}

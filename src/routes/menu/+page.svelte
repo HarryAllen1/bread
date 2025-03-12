@@ -124,11 +124,14 @@
 		<div class="flex flex-wrap gap-2">
 			{#each categories as category}
 				<button
-					class="px-4 py-2 rounded-full text-sm font-medium transition-colors"
-					class:bg-primary={selectedCategory === category.id}
-					class:text-white={selectedCategory === category.id}
-					class:bg-gray-100={selectedCategory !== category.id}
-					class:hover:bg-gray-200={selectedCategory !== category.id}
+					class={[
+						'px-4 py-2 rounded-full text-sm font-medium transition-colors',
+						{
+							'bg-primary text-white': selectedCategory === category.id,
+							'bg-gray-100': selectedCategory !== category.id,
+							'hover:bg-gray-200': selectedCategory !== category.id,
+						},
+					]}
 					onclick={() => (selectedCategory = category.id)}
 				>
 					{category.name}
@@ -136,11 +139,14 @@
 			{/each}
 
 			<button
-				class="px-4 py-2 rounded-full text-sm font-medium transition-colors"
-				class:bg-green-600={showDietaryFilters}
-				class:text-white={showDietaryFilters}
-				class:bg-gray-100={!showDietaryFilters}
-				class:hover:bg-gray-200={!showDietaryFilters}
+				class={[
+					'px-4 py-2 rounded-full text-sm font-medium transition-colors',
+					{
+						'bg-green-600 text-white': showDietaryFilters,
+						'bg-gray-100': !showDietaryFilters,
+						'hover:bg-gray-200': !showDietaryFilters,
+					},
+				]}
 				onclick={() => (showDietaryFilters = !showDietaryFilters)}
 			>
 				{showDietaryFilters ? 'Dietary Filters On' : 'Dietary Filters Off'}
@@ -171,6 +177,23 @@
 				<Button href="/create" class="hover-lift">Start Creating</Button>
 			</Card.Footer>
 		</Card.Root>
+		<ProductCard
+			product={{
+				id: 9999,
+				name: 'Custom Sandwich',
+				allergens: '',
+				category: 'custom',
+				description: 'Create your own sandwich with your favorite ingredients',
+				image_url:
+					'https://images.unsplash.com/photo-1554433607-66b5efe9d304?q=80&w=2070&auto=format&fit=crop',
+				price: 0,
+				created_at: '',
+				slug: '',
+				price_id: '',
+				image_bucket_id: '',
+				image_name: '',
+			}}
+		/>
 
 		{#each filteredProducts as product}
 			<ProductCard {product} />

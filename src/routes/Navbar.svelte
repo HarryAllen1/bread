@@ -1,14 +1,13 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
+	import { cart } from '$lib/cart';
+	import { Badge } from '$lib/components/ui/badge';
 	import { buttonVariants } from '$lib/components/ui/button';
+	import { userPreferences } from '$lib/stores/userPreferences';
 	import { cn } from '$lib/utils.js';
 	import ShoppingCart from 'lucide-svelte/icons/shopping-cart';
 	import MainNav from './MainNav.svelte';
-	import { Badge } from '$lib/components/ui/badge';
-	import { cart } from '$lib/cart';
 	import MobileNav from './MobileNav.svelte';
-	import UserPreferences from '$lib/components/UserPreferences.svelte';
-	import { userPreferences } from '$lib/stores/userPreferences';
-	import { browser } from '$app/environment';
 
 	let cartSize = $derived($cart.reduce((accumulator, item) => accumulator + item.quantity, 0));
 
@@ -29,15 +28,11 @@
 <header
 	class="border-border/40 bg-primary supports-backdrop-filter:bg-primary/90 sticky top-0 z-50 w-full border-b text-primary-foreground backdrop-blur-sm"
 >
-	<div class="container flex h-20 max-w-(--breakpoint-2xl) items-center">
+	<div class="container flex h-18 max-w-(--breakpoint-2xl) items-center">
 		<MainNav />
 		<MobileNav />
 		<div class="grow"></div>
 		<div class="flex items-center justify-between space-x-4 md:justify-end">
-			<div class="hidden md:block">
-				<UserPreferences />
-			</div>
-
 			{#if hasFavorites}
 				<a
 					href="/favorites"
@@ -81,7 +76,7 @@
 					{#if cartSize > 0}
 						<Badge
 							variant="destructive"
-							class="aspect-square size-5 absolute -bottom-1 -right-1 p-1 text-sm"
+							class="aspect-square grid place-items-center size-5 absolute -bottom-1 -right-1 p-1 text-sm"
 						>
 							{cartSize}
 						</Badge>
