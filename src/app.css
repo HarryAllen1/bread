@@ -113,9 +113,8 @@
 	border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-
 .card-3d:hover {
-scale: 1.02;
+	scale: 1.02;
 }
 
 /* Animation utilities */

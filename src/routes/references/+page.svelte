@@ -152,16 +152,12 @@
 			</a>
 		</li>
 		<li>
-			<a
-				href="https://cravingsjournal.com/wp-content/uploads/2020/06/whole-wheat-bread-loaf-4.jpg"
-			>
+			<a href="https://cravingsjournal.com/wp-content/uploads/2020/06/whole-wheat-bread-loaf-4.jpg">
 				Whole Wheat Bread
 			</a>
 		</li>
 		<li>
-			<a
-				href="https://thegoodheartedwoman.com/wp-content/uploads/2022/10/rye-bread-f4.jpg"
-			>
+			<a href="https://thegoodheartedwoman.com/wp-content/uploads/2022/10/rye-bread-f4.jpg">
 				Rye Bread
 			</a>
 		</li>
@@ -173,9 +169,7 @@
 			</a>
 		</li>
 		<li>
-			<a
-				href="https://bakingamoment.com/wp-content/uploads/2022/02/IMG_0606-ciabatta.jpg"
-			>
+			<a href="https://bakingamoment.com/wp-content/uploads/2022/02/IMG_0606-ciabatta.jpg">
 				Ciabatta Bread
 			</a>
 		</li>
@@ -188,7 +182,7 @@
 		</li>
 		<li>
 			<a
-				https://www.bakerita.com/wp-content/uploads/2023/09/Gluten-Free-Bread-with-Yogurt-Recipe-05-1024x1536.jpg"
+				href="https://www.bakerita.com/wp-content/uploads/2023/09/Gluten-Free-Bread-with-Yogurt-Recipe-05-1024x1536.jpg"
 			>
 				Gluten Free Bread
 			</a>

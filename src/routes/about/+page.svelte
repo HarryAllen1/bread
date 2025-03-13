@@ -92,7 +92,7 @@
 		</div>
 	</div>
 
-	<div class="about-section bg-primary/5 p-6 rounded-xl mb-12 shadow-md opacity-100" >
+	<div class="about-section bg-primary/5 p-6 rounded-xl mb-12 shadow-md opacity-100">
 		<h2 class="text-2xl font-bold mb-4 text-center text-primary">Our Core Values</h2>
 
 		<div class="values-grid grid grid-cols-1 md:grid-cols-3 gap-4">
