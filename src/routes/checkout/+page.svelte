@@ -43,17 +43,12 @@
 		const response = await fetch('/create-checkout-session', {
 			method: 'POST',
 			body: JSON.stringify(
-				$cart.map((item) =>
-					'isSandwich' in item
-						? {
-								price_id: 'price_1R1jKuEVBmOMqI6CfPZZZIpB',
-								quantity: item.quantity,
-							}
-						: {
-								price_id: data.products.find((product) => product.id === item.id)?.price_id,
-								quantity: item.quantity,
-							},
-				),
+				$cart
+					.filter((item) => !('isSandwich' in item))
+					.map((item) => ({
+						price_id: data.products.find((product) => product.id === item.id)?.price_id,
+						quantity: item.quantity,
+					})),
 			),
 		});
 		const { client_secret } = await response.json();
@@ -178,7 +173,12 @@
 						<div class="flex flex-row justify-between w-full">
 							<b class="font-semibold">Subtotal</b>
 							<p>
-								{currencyFormatter.format(session.total.subtotal / 100)}
+								{currencyFormatter.format(
+									session.total.subtotal / 100 +
+										$cart
+											.filter((item) => 'isSandwich' in item)
+											.reduce((accum, item) => accum + item.price * item.quantity, 0),
+								)}
 							</p>
 						</div>
 						{#if session.total.discount > 0}
@@ -197,7 +197,12 @@
 						<div class="flex flex-row justify-between w-full">
 							<h4 class="scroll-m-20 text-xl font-bold tracking-tight">Total</h4>
 							<strong>
-								{currencyFormatter.format(session.total.total / 100)}
+								{currencyFormatter.format(
+									session.total.total / 100 +
+										$cart
+											.filter((item) => 'isSandwich' in item)
+											.reduce((accum, item) => accum + item.price * item.quantity, 0),
+								)}
 							</strong>
 						</div>
 					</Card.Footer>
