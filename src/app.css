@@ -53,33 +53,6 @@
 		@apply bg-background text-foreground relative antialiased;
 		font-feature-settings: 'ss01', 'ss02', 'cv01', 'cv02', 'cv03';
 	}
-	body::before {
-		content: '';
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		z-index: 0;
-	}
-}
-
-.sandwich-pattern {
-	position: relative;
-}
-
-.sandwich-pattern::before {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-image: url('/sandwich-pattern.svg');
-	background-size: 80px;
-	opacity: 0.05;
-	pointer-events: none;
-	z-index: 0;
 }
 
 .text-balance {
@@ -665,4 +638,10 @@
 	z-index: -1;
 	pointer-events: none;
 	animation: sandwichFloat 10s ease-in-out infinite;
+}
+
+.static-sandwich {
+	position: absolute;
+	z-index: -1;
+	pointer-events: none;
 }

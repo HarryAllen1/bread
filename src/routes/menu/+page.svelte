@@ -1,9 +1,8 @@
 <script lang="ts">
-	import BackgroundSandwiches from '$lib/components/BackgroundSandwiches.svelte';
 	import { Button } from '$lib/components/ui/button';
-	import UserPreferences from '$lib/components/UserPreferences.svelte';
+	import { Input } from '$lib/components/ui/input';
 	import SandwichIcon from '$lib/icons/SandwichIcon.svelte';
-	import { userPreferences } from '$lib/stores/userPreferences';
+	import Fuse from 'fuse.js';
 	import type { PageData } from './$types';
 	import ProductCard from './ProductCard.svelte';
 
@@ -14,78 +13,30 @@
 	let { data }: Props = $props();
 	let searchQuery = $state('');
 	let selectedCategory = $state('all');
-	let showDietaryFilters = $state(false);
 
 	// Define product categories
 	const categories = [
-		{ id: 'all', name: 'All Sandwiches' },
-		{ id: 'signature', name: 'Signature Sandwiches' },
-		{ id: 'wraps', name: 'Wraps & Rolls' },
-		{ id: 'avocado', name: 'Avocado Specials' },
-		{ id: 'seasonal', name: 'Seasonal Offerings' },
-		{ id: 'sides', name: 'Sides & Extras' },
+		{ id: 'all', name: 'All Products' },
+		{ id: 'sandwich', name: 'Signature Sandwiches' },
+		{ id: 'bread', name: 'Fresh Bread' },
 	];
+
+	let possibleProducts = $derived(
+		data.products.filter(
+			(prod) => selectedCategory === 'all' || prod.category === selectedCategory,
+		),
+	);
+	let fuse = $derived(
+		new Fuse(possibleProducts, {
+			keys: ['name'],
+		}),
+	);
 
 	// Filter products based on search, category, and dietary preferences
 	let filteredProducts = $derived(
-		data.products.filter((product) => {
-			// Filter by search query
-			if (
-				searchQuery &&
-				!product.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
-				!product.description?.toLowerCase().includes(searchQuery.toLowerCase())
-			) {
-				return false;
-			}
-
-			// Filter by category
-			if (
-				selectedCategory !== 'all'
-				// TODO: add product category
-				//  &&
-				// !product.cate(selectedCategory)
-			) {
-				return false;
-			}
-
-			// Filter by dietary preferences
-			if (showDietaryFilters) {
-				const allergens = product.allergens
-					? product.allergens.split(',').map((a) => a.trim())
-					: [];
-
-				if (
-					$userPreferences.dietaryRestrictions.glutenFree &&
-					(allergens.includes('Wheat') || allergens.includes('Gluten'))
-				) {
-					return false;
-				}
-
-				if ($userPreferences.dietaryRestrictions.dairyFree && allergens.includes('Dairy')) {
-					return false;
-				}
-
-				if (
-					$userPreferences.dietaryRestrictions.nutFree &&
-					(allergens.includes('Nuts') || allergens.includes('Peanuts'))
-				) {
-					return false;
-				}
-
-				if (
-					$userPreferences.dietaryRestrictions.vegan &&
-					(allergens.includes('Dairy') || allergens.includes('Eggs'))
-				) {
-					return false;
-				}
-			}
-
-			return true;
-		}),
+		searchQuery === '' ? possibleProducts : fuse.search(searchQuery).map((r) => r.item),
 	);
 </script>
-
-<BackgroundSandwiches animated={false} count={30} opacity={0.08} pattern={true} />
 
 <div class="container my-8 relative z-10 sandwich-pattern px-4">
 	<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
@@ -93,12 +44,7 @@
 
 		<div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
 			<div class="relative flex-grow">
-				<input
-					type="text"
-					placeholder="Search sandwiches..."
-					class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-					bind:value={searchQuery}
-				/>
+				<Input placeholder="Search sandwiches..." bind:value={searchQuery} />
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					class="absolute right-3 top-1/2 transform -translate-y-1/2 size-5 text-gray-400"
@@ -113,8 +59,6 @@
 					<line x1="21" y1="21" x2="16.65" y2="16.65"></line>
 				</svg>
 			</div>
-
-			<UserPreferences />
 		</div>
 	</div>
 
@@ -135,20 +79,6 @@
 					{category.name}
 				</button>
 			{/each}
-
-			<button
-				class={[
-					'px-4 py-2 rounded-full text-sm font-medium transition-colors',
-					{
-						'bg-green-600 text-white': showDietaryFilters,
-						'bg-gray-100': !showDietaryFilters,
-						'hover:bg-gray-200': !showDietaryFilters,
-					},
-				]}
-				onclick={() => (showDietaryFilters = !showDietaryFilters)}
-			>
-				{showDietaryFilters ? 'Dietary Filters On' : 'Dietary Filters Off'}
-			</button>
 		</div>
 	</div>
 
@@ -172,7 +102,7 @@
 			}}
 		/>
 
-		{#each filteredProducts as product}
+		{#each filteredProducts as product (product.id)}
 			<ProductCard {product} />
 		{:else}
 			<div class="col-span-full text-center py-12">
@@ -185,7 +115,6 @@
 					onclick={() => {
 						searchQuery = '';
 						selectedCategory = 'all';
-						showDietaryFilters = false;
 					}}
 				>
 					Reset Filters
