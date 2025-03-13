@@ -176,7 +176,7 @@
 				<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 					<div class="counter-animation" data-value="85">
 						<p class="text-4xl font-bold text-primary mb-2">0%</p>
-						<p class="text-sm text-muted-foreground">Reduction in landfill waste since 2023</p>
+						<p class="text-sm text-muted-foreground">Reduction in landfill waste since 2025</p>
 					</div>
 					<div class="counter-animation" data-value="12000">
 						<p class="text-4xl font-bold text-primary mb-2">0</p>

@@ -56,7 +56,7 @@
 				<div class="bg-black/80 p-8 rounded-lg backdrop-blur-sm border border-white/20 shadow-2xl">
 					<h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">Culinary Craftsmanship</h2>
 					<p class="text-lg text-white/90 mb-8 font-medium">
-						Each sandwich is meticulously prepared using time-honored techniques and innovative
+						Each sandwich is meticulously prepared using traditional techniques and innovative
 						flavor combinations to create a memorable dining experience.
 					</p>
 
@@ -70,8 +70,8 @@
 							<div>
 								<h3 class="text-xl font-bold mb-2 text-white">Artisanal Preparation</h3>
 								<p class="text-white/90">
-									Our culinary team arrives at dawn to prepare fresh ingredients and bake artisanal
-									bread for optimal quality and flavor.
+									Our professional culinary team works from dawn to dusk just to prepare fresh ingredients and bake artisanal
+									sandwiches for optimal quality and flavor.
 								</p>
 							</div>
 						</div>
@@ -101,7 +101,7 @@
 								<h3 class="text-xl font-bold mb-2 text-white">Chef-Developed Recipes</h3>
 								<p class="text-white/90">
 									Our menu is developed by our culinary team with decades of combined experience in
-									vegetarian cuisine, meticulously balancing flavors, textures, and nutritional
+									plant-based cuisine, meticulously balancing flavors, textures, and nutritional
 									profiles.
 								</p>
 							</div>
