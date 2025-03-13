@@ -47,7 +47,7 @@
 	{:else}
 		<div class="text-center py-16">
 			<div class="flex justify-center mb-4">
-				<SandwichIcon type="classic" size="lg" />
+				<SandwichIcon size="lg" />
 			</div>
 			<h2 class="text-2xl font-bold mb-2">No favorites yet</h2>
 			<p class="text-gray-600 mb-6">

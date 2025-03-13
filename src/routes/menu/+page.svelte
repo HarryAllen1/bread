@@ -1,11 +1,9 @@
 <script lang="ts">
 	import BackgroundSandwiches from '$lib/components/BackgroundSandwiches.svelte';
 	import { Button } from '$lib/components/ui/button';
-	import * as Card from '$lib/components/ui/card';
 	import UserPreferences from '$lib/components/UserPreferences.svelte';
 	import SandwichIcon from '$lib/icons/SandwichIcon.svelte';
 	import { userPreferences } from '$lib/stores/userPreferences';
-	import { Sandwich } from 'lucide-svelte';
 	import type { PageData } from './$types';
 	import ProductCard from './ProductCard.svelte';
 
@@ -179,7 +177,7 @@
 		{:else}
 			<div class="col-span-full text-center py-12">
 				<div class="flex justify-center mb-4">
-					<SandwichIcon type="classic" size="lg" />
+					<SandwichIcon size="lg" />
 				</div>
 				<h3 class="text-xl font-semibold mb-2">No sandwiches found</h3>
 				<p class="text-gray-600 mb-4">Try adjusting your search or filters</p>

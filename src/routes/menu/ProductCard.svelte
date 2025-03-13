@@ -19,20 +19,6 @@
 
 	let { product, cartMode = false, class: className, byo = false }: Props = $props();
 
-	// Determine sandwich type icon
-	let sandwichType: 'classic' | 'wrap' | 'veggie' | 'avocado' | 'club' | 'sub' = $state('classic');
-	if (product.name.toLowerCase().includes('wrap')) {
-		sandwichType = 'wrap';
-	} else if (product.name.toLowerCase().includes('veggie')) {
-		sandwichType = 'veggie';
-	} else if (product.name.toLowerCase().includes('avocado')) {
-		sandwichType = 'avocado';
-	} else if (product.name.toLowerCase().includes('club')) {
-		sandwichType = 'club';
-	} else if (product.name.toLowerCase().includes('sub')) {
-		sandwichType = 'sub';
-	}
-
 	// Check if this is a favorite - safely with browser check
 	let isFavorite = $state(false);
 	let dietaryWarning = $state(false);
@@ -152,7 +138,7 @@
 			<div
 				class="absolute bottom-4 right-4 size-10 text-white opacity-0 transition-opacity hover:opacity-100 animate-float"
 			>
-				<SandwichIcon type={sandwichType} size="md" animated />
+				<SandwichIcon size="md" animated />
 			</div>
 		</a>
 

@@ -19,20 +19,6 @@
 	}
 	let { data }: Props = $props();
 
-	// Determine sandwich type for icon
-	let sandwichType: 'classic' | 'wrap' | 'veggie' | 'avocado' | 'club' | 'sub' = $state('classic');
-	if (data.productDetails.name.toLowerCase().includes('wrap')) {
-		sandwichType = 'wrap';
-	} else if (data.productDetails.name.toLowerCase().includes('veggie')) {
-		sandwichType = 'veggie';
-	} else if (data.productDetails.name.toLowerCase().includes('avocado')) {
-		sandwichType = 'avocado';
-	} else if (data.productDetails.name.toLowerCase().includes('club')) {
-		sandwichType = 'club';
-	} else if (data.productDetails.name.toLowerCase().includes('sub')) {
-		sandwichType = 'sub';
-	}
-
 	// Sample nutrition data (would come from database in real app)
 	const nutritionData = {
 		calories: Math.floor(Math.random() * 200) + 300,
@@ -258,7 +244,7 @@
 					<div
 						class="flex items-center gap-1 bg-primary/10 text-primary px-3 py-1 rounded-full text-sm"
 					>
-						<SandwichIcon type={sandwichType} size="sm" />
+						<SandwichIcon size="sm" />
 						<span>Vegetarian</span>
 					</div>
 

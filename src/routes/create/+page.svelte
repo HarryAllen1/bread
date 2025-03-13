@@ -203,7 +203,6 @@
 		extras = [];
 		specialInstructions = '';
 
-
 		goto('/cart');
 	};
 
@@ -319,7 +318,7 @@
 										onclick={() => (breadType = bread.id)}
 									>
 										<div class="flex items-center gap-3">
-											<SandwichIcon type={bread.icon} size="sm" />
+											<SandwichIcon size="sm" />
 											<div class="text-start">
 												<div class="font-medium">{bread.name}</div>
 												<div class="text-sm text-gray-500">${bread.price.toFixed(2)}</div>
