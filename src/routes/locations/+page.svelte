@@ -72,7 +72,7 @@
 
 	<div class="locations-grid grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
 		<Card.Root
-			class="location-card transform transition-all duration-300 hover:translate-y-[-5px] hover:shadow-xl"
+			class="transform transition-all duration-300 hover:translate-y-[-5px] hover:shadow-xl"
 		>
 			<Card.Header>
 				<Card.Title>Downtown Flagship</Card.Title>
@@ -126,7 +126,7 @@
 		</Card.Root>
 
 		<Card.Root
-			class="location-card transform transition-all duration-300 hover:translate-y-[-5px] hover:shadow-xl"
+			class="transform transition-all duration-300 hover:translate-y-[-5px] hover:shadow-xl"
 		>
 			<Card.Header>
 				<Card.Title>Midtown Establishment</Card.Title>
@@ -180,7 +180,7 @@
 		</Card.Root>
 
 		<Card.Root
-			class="location-card transform transition-all duration-300 hover:translate-y-[-5px] hover:shadow-xl"
+			class="transform transition-all duration-300 hover:translate-y-[-5px] hover:shadow-xl"
 		>
 			<Card.Header>
 				<Card.Title>West Coast Expansion</Card.Title>

@@ -92,12 +92,12 @@
 		</div>
 	</div>
 
-	<div class="about-section bg-primary/5 p-6 rounded-xl mb-12 shadow-md">
+	<div class="about-section bg-primary/5 p-6 rounded-xl mb-12 shadow-md opacity-100" >
 		<h2 class="text-2xl font-bold mb-4 text-center text-primary">Our Core Values</h2>
 
 		<div class="values-grid grid grid-cols-1 md:grid-cols-3 gap-4">
 			<div
-				class="value-card bg-white p-5 rounded-lg shadow-md transform transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg"
+				class="bg-white p-5 rounded-lg shadow-md transform transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg"
 			>
 				<div class="flex justify-center mb-3">
 					<SandwichIcon size="md" />
@@ -109,9 +109,8 @@
 					from our commitment to quality and service to our dedication to a farm-to-table approach.
 				</p>
 			</div>
-
 			<div
-				class="value-card bg-white p-5 rounded-lg shadow-md transform transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg"
+				class="bg-white p-5 rounded-lg shadow-md transform transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg"
 			>
 				<div class="flex justify-center mb-3">
 					<SandwichIcon size="md" />
@@ -133,7 +132,7 @@
 				</p>
 			</div>
 			<div
-				class="value-card bg-white p-5 rounded-lg shadow-md transform transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg"
+				class="bg-white p-5 rounded-lg shadow-md transform transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg"
 			>
 				<div class="flex justify-center mb-3">
 					<SandwichIcon size="md" />
