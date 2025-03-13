@@ -8,7 +8,7 @@ export const POST = (async ({ request, url }) => {
 
 		// If no price_id is provided, use a mock price ID
 		const lineItems = items.map((item) => ({
-			price: item.price_id || 'price_mock_123456789',
+			price: item.price_id || 'price_1R1jKuEVBmOMqI6CfPZZZIpB',
 			quantity: item.quantity,
 		}));
 

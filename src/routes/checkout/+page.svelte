@@ -44,7 +44,7 @@
 			method: 'POST',
 			body: JSON.stringify(
 				$cart
-					.filter((item) => !('isSandwich' in item))
+					// .filter((item) => !('isSandwich' in item))
 					.map((item) => ({
 						price_id: data.products.find((product) => product.id === item.id)?.price_id,
 						quantity: item.quantity,
@@ -274,7 +274,7 @@
 								}
 							}}
 						>
-							apply
+							Apply
 						</Button>
 					{/if}
 				</div>
@@ -307,7 +307,7 @@
 						}
 					}}
 				>
-					submit
+					Submit
 				</Button>
 				<div class="text-destructive">{submitErrors}</div>
 			</div>
