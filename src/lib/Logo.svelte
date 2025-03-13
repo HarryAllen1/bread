@@ -7,6 +7,7 @@
 	interface Props {
 		textClass?: string;
 		iconClass?: string;
+		bg?: 'green' | 'white';
 	}
 	let {
 		ref = $bindable(),
@@ -18,7 +19,7 @@
 </script>
 
 <div class={cn('flex items-center gap-3 w-fit', className)} bind:this={ref} {...props}>
-	<SandwichIcon type="classic" class={cn('size-10', iconClass)} animated={false} />
+	<SandwichIcon class={cn('size-10', iconClass)} animated={false} />
 	<span
 		class={cn(
 			'font-bold text-2xl no-underline bg-gradient-to-r from-white to-white/80 bg-clip-text',
