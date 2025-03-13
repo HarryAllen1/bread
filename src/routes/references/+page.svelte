@@ -116,6 +116,41 @@
 				Sandwich
 			</a>
 		</li>
+		<li>
+			<a
+				href="https://images.squarespace-cdn.com/content/v1/57f6f376197aeab10fb5de9d/1595872625226-C7Y89I7TJKFQV46JW4PO/Veganism?format=1500w"
+			>
+				Avocado Toast
+			</a>
+		</li>
+		<li>
+			<a
+				href="https://cdn.prod.website-files.com/6188f0130ba9a969b212cadc/6246dfc09f6a642c91399564_618125c380213194340d7ad2_Veggie%2520recipe%2520blog%2520banner-p-2000.jpeg"
+			>
+				Mediterrean Delight
+			</a>
+		</li>
+		<li>
+			<a
+				href="https://www.momables.com/wp-content/uploads/2023/12/Peanut-Butter-Sandwich_post_01-1.jpg"
+			>
+				Peanut Butter and Jelly
+			</a>
+		</li>
+		<li>
+			<a
+				href="https://cdn.loveandlemons.com/wp-content/uploads/2019/02/banh-mi-sandwich-802x1024.jpg"
+			>
+				Tofu Banh Mi
+			</a>
+		</li>
+		<li>
+			<a
+				href="https://topteenrecipes.com/wp-content/uploads/2021/07/24-Simple-Delicious-Panini-Recipes.jpg"
+			>
+				Panini
+			</a>
+		</li>
 	</ul>
 </div>
 

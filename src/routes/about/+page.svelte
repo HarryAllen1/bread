@@ -72,7 +72,7 @@
 		<div>
 			<h2 class="text-2xl font-bold mb-3 text-primary">Our Heritage</h2>
 			<p class="text-base mb-3">
-				Established in 2023, Greenwich was conceived with a singular vision: to create exceptional
+				Established in 2025, Greenwich was conceived with a singular vision: to create exceptional
 				vegetarian sandwiches that redefine plant-based dining.
 			</p>
 			<p class="text-base mb-3">
