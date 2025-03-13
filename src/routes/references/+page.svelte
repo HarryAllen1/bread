@@ -151,6 +151,48 @@
 				Panini
 			</a>
 		</li>
+		<li>
+			<a
+				href="https://cravingsjournal.com/wp-content/uploads/2020/06/whole-wheat-bread-loaf-4.jpg"
+			>
+				Whole Wheat Bread
+			</a>
+		</li>
+		<li>
+			<a
+				href="https://thegoodheartedwoman.com/wp-content/uploads/2022/10/rye-bread-f4.jpg"
+			>
+				Rye Bread
+			</a>
+		</li>
+		<li>
+			<a
+				href="https://www.allrecipes.com/thmb/GPqr9kEn84Kj00QL56aObbv1ci0=/0x512/filters:no_upscale():max_bytes(150000):strip_icc()/260540-Chef-Johns-Sourdough-Bread-DDMFS-004-4x3-6791a75a5d804ec28424d04756054c5b.jpg"
+			>
+				Sourdough Bread
+			</a>
+		</li>
+		<li>
+			<a
+				href="https://bakingamoment.com/wp-content/uploads/2022/02/IMG_0606-ciabatta.jpg"
+			>
+				Ciabatta Bread
+			</a>
+		</li>
+		<li>
+			<a
+				href="https://bitofthegoodstuff.com/wp-content/uploads/2018/06/Tortilla-Wraps-2_2-1000.jpg"
+			>
+				Tortilla Wrap
+			</a>
+		</li>
+		<li>
+			<a
+				https://www.bakerita.com/wp-content/uploads/2023/09/Gluten-Free-Bread-with-Yogurt-Recipe-05-1024x1536.jpg"
+			>
+				Gluten Free Bread
+			</a>
+		</li>
 	</ul>
 </div>
 
