@@ -1,12 +1,11 @@
 <script lang="ts">
-	import { browser } from '$app/environment';
 	import { goto } from '$app/navigation';
+	import { cart, type Sandwich } from '$lib/cart';
 	import BackgroundSandwiches from '$lib/components/BackgroundSandwiches.svelte';
 	import { Button } from '$lib/components/ui/button';
 	import * as Card from '$lib/components/ui/card';
 	import { Label } from '$lib/components/ui/label';
 	import SandwichIcon from '$lib/icons/SandwichIcon.svelte';
-	import { userPreferences } from '$lib/stores/userPreferences';
 	import type { SandwichType } from '$lib/types';
 	import { toast } from 'svelte-sonner';
 
@@ -102,35 +101,6 @@
 		},
 	];
 
-	// User preferences with safe initialization
-	let userPrefs = $state({
-		dietaryRestrictions: {
-			glutenFree: false,
-			vegan: false,
-			vegetarian: false,
-			dairyFree: false,
-			nutFree: false,
-		},
-	});
-
-	$effect(() => {
-		if (browser) {
-			userPrefs = $userPreferences;
-		}
-	});
-
-	// Filter options based on dietary preferences
-	const filterOptions = (options: BaseProduct[]): BaseProduct[] =>
-		options.filter((option) => {
-			if (userPrefs.dietaryRestrictions.glutenFree && !option.glutenFree) {
-				return false;
-			}
-			if (userPrefs.dietaryRestrictions.vegan && !option.vegan) {
-				return false;
-			}
-			return true;
-		});
-
 	// Calculate total price
 	const calculateTotal = (): string => {
 		// Base bread price
@@ -189,6 +159,18 @@
 
 	// Handle form submission
 	const submitOrder = (): void => {
+		cart.update((cart) => {
+			const total = calculateTotal();
+			const order: Sandwich = {
+				id: Date.now(),
+				price: Number.parseFloat(total),
+				quantity: 1,
+				description: `${breadSize.slice(0, 1).toUpperCase() + breadSize.slice(1)} ${proteins.map((prot) => prot.name.toLowerCase()).join(', ')} sandwich on ${breadType}`,
+				isSandwich: true,
+			};
+			cart.push(order);
+			return cart;
+		});
 		// In a real app, this would send the order to a server
 		toast.success('Your custom sandwich has been added to cart!');
 
@@ -207,9 +189,9 @@
 	};
 
 	// Toggle selection
-	const toggleSelection = <T,>(array: T[], item: T): T[] => {
-		const index = array.indexOf(item);
-		return index === -1 ? [...array, item] : array.filter((i) => i !== item);
+	const toggleSelection = <T extends { id: string }>(array: T[], item: T): T[] => {
+		const foundItem = array.find((i) => i.id === item.id);
+		return foundItem ? array.filter((i) => i.id !== item.id) : [...array, item];
 	};
 </script>
 
@@ -358,14 +340,15 @@
 					<!-- Toppings selection -->
 					<div>
 						<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-							{#each filterOptions(toppingOptions) as topping}
+							{#each toppingOptions as topping}
+								{@const found = toppings.find((t) => t.id === topping.id)}
 								<button
 									class={[
 										'border rounded-lg p-4 cursor-pointer transition-all',
 										{
-											'border-primary': toppings.includes(topping),
-											'bg-primary-5': toppings.includes(topping),
-											'shadow-md': toppings.includes(topping),
+											'border-primary': found,
+											'bg-primary-5': found,
+											'shadow-md': found,
 										},
 									]}
 									onclick={() => (toppings = toggleSelection(toppings, topping))}
@@ -398,14 +381,15 @@
 					<!-- Spreads selection -->
 					<div>
 						<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-							{#each filterOptions(spreadOptions) as spread}
+							{#each spreadOptions as spread}
+								{@const found = spreads.find((s) => s.id === spread.id)}
 								<button
 									class={[
 										'border rounded-lg p-4 cursor-pointer transition-all',
 										{
-											'border-primary': spreads.includes(spread),
-											'bg-primary-5': spreads.includes(spread),
-											'shadow-md': spreads.includes(spread),
+											'border-primary': found,
+											'bg-primary-5': found,
+											'shadow-md': found,
 										},
 									]}
 									onclick={() => (spreads = toggleSelection(spreads, spread))}
@@ -438,14 +422,15 @@
 					<!-- Protein selection -->
 					<div>
 						<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-							{#each filterOptions(proteinOptions) as protein}
+							{#each proteinOptions as protein}
+								{@const found = proteins.find((p) => p.id === protein.id)}
 								<button
 									class={[
 										'border rounded-lg p-4 cursor-pointer transition-all',
 										{
-											'border-primary': proteins.includes(protein),
-											'bg-primary-5': proteins.includes(protein),
-											'shadow-md': proteins.includes(protein),
+											'border-primary': found,
+											'bg-primary-5': found,
+											'shadow-md': found,
 										},
 									]}
 									onclick={() => (proteins = toggleSelection(proteins, protein))}
@@ -478,14 +463,15 @@
 					<!-- Vegetables selection -->
 					<div>
 						<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-							{#each filterOptions(vegetableOptions) as vegetable}
+							{#each vegetableOptions as vegetable}
+								{@const found = vegetables.find((v) => v.id === vegetable.id)}
 								<button
 									class={[
 										'border rounded-lg p-4 cursor-pointer transition-all',
 										{
-											'border-primary': vegetables.includes(vegetable),
-											'bg-primary-5': vegetables.includes(vegetable),
-											'shadow-md': vegetables.includes(vegetable),
+											'border-primary': found,
+											'bg-primary-5': found,
+											'shadow-md': found,
 										},
 									]}
 									onclick={() => (vegetables = toggleSelection(vegetables, vegetable))}
@@ -518,14 +504,15 @@
 					<!-- Extras selection -->
 					<div>
 						<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-							{#each filterOptions(extraOptions) as extra}
+							{#each extraOptions as extra}
+								{@const found = extras.find((ex) => ex.id === extra.id)}
 								<button
 									class={[
 										'border rounded-lg p-4 cursor-pointer transition-all',
 										{
-											'border-primary': extras.includes(extra),
-											'bg-primary-5': extras.includes(extra),
-											'shadow-md': extras.includes(extra),
+											'border-primary': found,
+											'bg-primary-5': found,
+											'shadow-md': found,
 										},
 									]}
 									onclick={() => (extras = toggleSelection(extras, extra))}

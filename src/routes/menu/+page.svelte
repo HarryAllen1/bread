@@ -95,7 +95,7 @@
 					'https://images.unsplash.com/photo-1554433607-66b5efe9d304?q=80&w=2070&auto=format&fit=crop',
 				price: 0,
 				created_at: '',
-				slug: '',
+				slug: 'create',
 				price_id: '',
 				image_bucket_id: '',
 				image_name: '',

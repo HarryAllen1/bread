@@ -20,6 +20,7 @@
 
 	let { data }: Props = $props();
 
+	let name = $state('');
 	let email = $state('');
 	let promoCode = $state('');
 	let appliedPromoCode = $state('');
@@ -42,10 +43,17 @@
 		const response = await fetch('/create-checkout-session', {
 			method: 'POST',
 			body: JSON.stringify(
-				$cart.map((item) => ({
-					price_id: data.products.find((product) => product.id === item.id)?.price_id,
-					quantity: item.quantity,
-				})),
+				$cart.map((item) =>
+					'isSandwich' in item
+						? {
+								price_id: 'price_1R1jKuEVBmOMqI6CfPZZZIpB',
+								quantity: item.quantity,
+							}
+						: {
+								price_id: data.products.find((product) => product.id === item.id)?.price_id,
+								quantity: item.quantity,
+							},
+				),
 			),
 		});
 		const { client_secret } = await response.json();
@@ -89,38 +97,60 @@
 </script>
 
 <div class="container my-8">
-	<h1 class="scroll-m-20 text-4xl font-extrabold tracking-tight mb-4 lg:text-5xl">checkout</h1>
+	<h1 class="scroll-m-20 text-4xl font-extrabold tracking-tight mb-4 lg:text-5xl">Checkout</h1>
 	<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 		<div>
 			{#snippet itemSummary()}
 				{#each $cart as cartItem}
-					{@const item = data.products.find((currentItem) => currentItem.id === cartItem.id)}
-					{#if item}
+					{#if 'isSandwich' in cartItem}
 						<div class="flex items-center justify-center flex-row">
 							<div class="flex items-center min-w-16">
-								<img
-									src={item.image_url}
-									alt={item.name}
+								<enhanced:img
+									src="$lib/images/custom-sandwich.jpeg"
+									alt="Custom sandwich"
 									class="size-16 aspect-square object-cover rounded-lg"
 								/>
 							</div>
 							<div class="flex flex-row md:items-center w-full ml-4 gap-2">
 								<div class="w-full">
-									{item.name}
-									<p class="text-sm text-gray-500">{cartItem.quantity} at ${item.price} each</p>
+									{cartItem.description}
+									<p class="text-sm text-gray-500">{cartItem.quantity} at ${cartItem.price} each</p>
 								</div>
 
 								<div class="grow"></div>
 
-								<p class="ml-4 text-lg font-semibold">${item.price * cartItem.quantity}</p>
+								<p class="ml-4 text-lg font-semibold">${cartItem.price * cartItem.quantity}</p>
 							</div>
 						</div>
+					{:else}
+						{@const item = data.products.find((currentItem) => currentItem.id === cartItem.id)}
+						{#if item}
+							<div class="flex items-center justify-center flex-row">
+								<div class="flex items-center min-w-16">
+									<img
+										src={item.image_url}
+										alt={item.name}
+										class="size-16 aspect-square object-cover rounded-lg"
+									/>
+								</div>
+								<div class="flex flex-row md:items-center w-full ml-4 gap-2">
+									<div class="w-full">
+										{item.name}
+										<p class="text-sm text-gray-500">{cartItem.quantity} at ${item.price} each</p>
+									</div>
+
+									<div class="grow"></div>
+
+									<p class="ml-4 text-lg font-semibold">${item.price * cartItem.quantity}</p>
+								</div>
+							</div>
+						{/if}
 					{/if}
 				{/each}
 			{/snippet}
 			<Card.Root>
 				<Card.Header>
-					<Card.Title>order summary</Card.Title>
+					<Card.Title>Order summary</Card.Title>
 				</Card.Header>
 				<Card.Content>
 					<Collapsible.Root class="md:hidden">
@@ -175,6 +205,10 @@
 			</Card.Root>
 		</div>
 		<div class="space-y-4">
+			<div>
+				<Label for="name">Name</Label>
+				<Input id="name" placeholder="Julius Caesar" type="text" bind:value={name} />
+			</div>
 			<div>
 				<Label for="email">Email</Label>
 				<Input
