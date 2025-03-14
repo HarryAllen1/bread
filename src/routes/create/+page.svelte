@@ -4,7 +4,6 @@
 	import { Button } from '$lib/components/ui/button';
 	import * as Card from '$lib/components/ui/card';
 	import { Label } from '$lib/components/ui/label';
-	import SandwichIcon from '$lib/icons/SandwichIcon.svelte';
 	import { toast } from 'svelte-sonner';
 
 	interface BaseProduct {
