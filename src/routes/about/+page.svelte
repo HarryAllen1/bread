@@ -105,7 +105,7 @@
 					<Sprout class="size-8 text-primary" />
 				</div>
 				<h3 class="text-lg font-bold mb-2 text-center">Sustainable Sourcing</h3>
-				<p class="text-sm text-center">
+				<p class="text-center">
 					We serve our customers only the best, the finest of ingredients, made fresh every day
 					through partnering with local farms and businesses. We take pride in everything we do,
 					from our commitment to quality and service to our dedication to a farm-to-table approach.
@@ -118,7 +118,7 @@
 					<Star class="size-8 text-primary" />
 				</div>
 				<h3 class="text-lg font-bold mb-2 text-center">Top Quality</h3>
-				<p class="text-sm text-center">
+				<p class="text-center">
 					Whether it's an Italian ciabatta or a Mexican Tortilla Wrap, we craft our breads to the
 					utmost quality that perfectly compliments what you prefer. Our plant-based ingredients are
 					delicately prepared to deliver the same satisfying textures and bold flavors that you are
@@ -133,7 +133,7 @@
 					<Utensils class="size-8 text-primary" />
 				</div>
 				<h3 class="text-lg font-bold mb-2 text-center">Ending Hunger</h3>
-				<p class="text-sm text-center">
+				<p class="text-center">
 					We donate any excess food in our kitchen to local nonprofits and organizations, like food
 					banks, to help serve our yummy sandwiches to those lacking access to adequate, quality
 					food. By working with our local communities and serving customers like you, we can help
