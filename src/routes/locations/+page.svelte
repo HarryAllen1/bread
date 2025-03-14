@@ -41,17 +41,6 @@
 				start: 'top 80%',
 			},
 		});
-
-		// Animate catering section
-		gsap.from('.catering-section', {
-			opacity: 0,
-			y: 50,
-			duration: 0.8,
-			scrollTrigger: {
-				trigger: '.catering-section',
-				start: 'top 80%',
-			},
-		});
 	});
 </script>
 
@@ -90,10 +79,14 @@
 				<div class="space-y-3">
 					<div class="flex items-start gap-3">
 						<MapPin class="size-5 text-primary flex-shrink-0 mt-0.5" />
-						<div>
-							<p class="font-medium">1600 Pennsylvania Avenue NW</p>
-							<p>Washington, DC 20500</p>
-						</div>
+						<a
+							class="text-primary font-medium underline underline-offset-4"
+							href="https://maps.app.goo.gl/FYMAQcMd22QKWNL88"
+							target="_blank"
+						>
+							<b class="font-medium">160 West Putnam Avenue,</b>
+							Greenwich, CT 06830
+						</a>
 					</div>
 
 					<div class="flex items-start gap-3">
@@ -199,10 +192,14 @@
 				<div class="space-y-3">
 					<div class="flex items-start gap-3">
 						<MapPin class="size-5 text-primary flex-shrink-0 mt-0.5" />
-						<div>
-							<p class="font-medium">1200 Ocean Avenue</p>
-							<p>Santa Monica, CA 90401</p>
-						</div>
+						<a
+							class="text-primary font-medium underline underline-offset-4"
+							href="https://maps.app.goo.gl/9cT7X6msdw9jGVzL8"
+							target="_blank"
+						>
+							<b class="font-medium">55-57 Bugsby's Way</b>
+							London SE10 0QJ, United Kingdom
+						</a>
 					</div>
 
 					<div class="flex items-start gap-3">
@@ -214,9 +211,6 @@
 					</div>
 				</div>
 			</Card.Content>
-			<Card.Footer>
-				<Button class="w-full">Join Waitlist</Button>
-			</Card.Footer>
 		</Card.Root>
 	</div>
 
@@ -225,7 +219,7 @@
 
 		<div class="rounded-lg overflow-hidden shadow-lg">
 			<iframe
-				src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12087.746318586604!2d-122.01209337021786!3d37.33919716775522!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb596e9e188fd%3A0x3b0d8391510688f0!2sApple%20Park!5e0!3m2!1sen!2sus!4v1654789542873!5m2!1sen!2sus"
+				src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d19875.24341831315!2d-0.01605496170142127!3d51.487427168729354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a9cea79975f3%3A0x1470a7a162e4ca6c!2sGreenwich%2C%20London%2C%20UK!5e0!3m2!1sen!2sus!4v1741939578534!5m2!1sen!2sus"
 				width="100%"
 				height="500"
 				style="border:0;"
@@ -239,16 +233,5 @@
 		<div class="mt-4 text-center text-sm text-gray-500">
 			<p>Interactive map showing all Greenwich locations. Click on markers for details.</p>
 		</div>
-	</div>
-
-	<div class="catering-section text-center mb-12 bg-primary/5 p-8 rounded-xl shadow-lg">
-		<h2 class="text-2xl font-bold mb-3 text-primary">Catering & Events</h2>
-		<p class="text-lg max-w-2xl mx-auto mb-6">
-			Elevate your next gathering with our premium vegetarian catering services. We offer customized
-			menus for corporate functions, private celebrations, and special occasions.
-		</p>
-		<Button href="/catering" size="lg" class="shadow-md hover:shadow-xl transition-all duration-300"
-			>Explore Catering Services</Button
-		>
 	</div>
 </div>

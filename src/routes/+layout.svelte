@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { invalidate } from '$app/navigation';
+	import { afterNavigate, invalidate } from '$app/navigation';
 	import { Toaster } from '$lib/components/ui/sonner';
 	import Confirm from '$lib/Confirm.svelte';
 	import { onMount, type Snippet } from 'svelte';
@@ -15,6 +15,12 @@
 
 	let { children, data }: Props = $props();
 	let { session, supabase } = $derived(data);
+
+	afterNavigate(() => {
+		setTimeout(() => {
+			window.scrollTo(0, 0);
+		}, 50);
+	});
 
 	onMount(() => {
 		const { data } = supabase.auth.onAuthStateChange((_, newSession) => {

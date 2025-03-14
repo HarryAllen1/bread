@@ -1,12 +1,9 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { cart, type Sandwich } from '$lib/cart';
-	import BackgroundSandwiches from '$lib/components/BackgroundSandwiches.svelte';
 	import { Button } from '$lib/components/ui/button';
 	import * as Card from '$lib/components/ui/card';
 	import { Label } from '$lib/components/ui/label';
-	import SandwichIcon from '$lib/icons/SandwichIcon.svelte';
-	import type { SandwichType } from '$lib/types';
 	import { toast } from 'svelte-sonner';
 
 	interface BaseProduct {
@@ -28,19 +25,22 @@
 	let extras = $state<BaseProduct[]>([]);
 	let specialInstructions = $state('');
 
-	// Options
-	const breadTypes: {
+	interface OptionThing {
 		id: string;
 		name: string;
 		price: number;
-		icon: SandwichType;
-	}[] = [
-		{ id: 'sourdough', name: 'Sourdough', price: 1.5, icon: 'classic' },
-		{ id: 'whole-wheat', name: 'Whole Wheat', price: 1.5, icon: 'classic' },
-		{ id: 'rye', name: 'Rye', price: 1.75, icon: 'classic' },
-		{ id: 'wrap', name: 'Tortilla Wrap', price: 2, icon: 'wrap' },
-		{ id: 'ciabatta', name: 'Ciabatta', price: 2, icon: 'classic' },
-		{ id: 'gluten-free', name: 'Gluten-Free', price: 2.5, icon: 'classic' },
+		vegan: boolean;
+		glutenFree: boolean;
+	}
+
+	// Options
+	const breadOptions: OptionThing[] = [
+		{ id: 'sourdough', name: 'Sourdough', price: 1.5, vegan: true, glutenFree: false },
+		{ id: 'whole-wheat', name: 'Whole Wheat', price: 1.5, vegan: true, glutenFree: false },
+		{ id: 'rye', name: 'Rye', price: 1.75, vegan: true, glutenFree: false },
+		{ id: 'wrap', name: 'Tortilla Wrap', price: 2, vegan: true, glutenFree: false },
+		{ id: 'ciabatta', name: 'Ciabatta', price: 2, vegan: true, glutenFree: false },
+		{ id: 'gluten-free', name: 'Gluten-Free', price: 2.5, vegan: true, glutenFree: true },
 	];
 
 	const breadSizes = [
@@ -49,7 +49,7 @@
 		{ id: 'large', name: 'Large', multiplier: 1.2 },
 	];
 
-	const toppingOptions = [
+	const toppingOptions: OptionThing[] = [
 		{ id: 'sesame', name: 'Sesame Seeds', price: 0.25, vegan: true, glutenFree: true },
 		{ id: 'poppy', name: 'Poppy Seeds', price: 0.25, vegan: true, glutenFree: true },
 		{ id: 'everything', name: 'Everything Bagel', price: 0.5, vegan: true, glutenFree: false },
@@ -57,7 +57,7 @@
 		{ id: 'cheese', name: 'Cheese Crust', price: 0.75, vegan: false, glutenFree: false },
 	];
 
-	const spreadOptions = [
+	const spreadOptions: OptionThing[] = [
 		{ id: 'hummus', name: 'Hummus', price: 0.75, vegan: true, glutenFree: true },
 		{ id: 'pesto', name: 'Basil Pesto', price: 1, vegan: true, glutenFree: true },
 		{ id: 'avocado', name: 'Avocado Spread', price: 1.5, vegan: true, glutenFree: true },
@@ -66,7 +66,7 @@
 		{ id: 'tahini', name: 'Tahini Sauce', price: 0.75, vegan: true, glutenFree: true },
 	];
 
-	const proteinOptions = [
+	const proteinOptions: OptionThing[] = [
 		{ id: 'tofu', name: 'Marinated Tofu', price: 2, vegan: true, glutenFree: true },
 		{ id: 'tempeh', name: 'Smoked Tempeh', price: 2.5, vegan: true, glutenFree: true },
 		{ id: 'seitan', name: 'Seitan', price: 2.5, vegan: true, glutenFree: false },
@@ -75,7 +75,7 @@
 		{ id: 'lentil', name: 'Lentil Patty', price: 2, vegan: true, glutenFree: true },
 	];
 
-	const vegetableOptions = [
+	const vegetableOptions: OptionThing[] = [
 		{ id: 'lettuce', name: 'Lettuce', price: 0.5, vegan: true, glutenFree: true },
 		{ id: 'tomato', name: 'Tomato', price: 0.5, vegan: true, glutenFree: true },
 		{ id: 'cucumber', name: 'Cucumber', price: 0.5, vegan: true, glutenFree: true },
@@ -86,7 +86,7 @@
 		{ id: 'pickles', name: 'Pickles', price: 0.5, vegan: true, glutenFree: true },
 	];
 
-	const extraOptions = [
+	const extraOptions: OptionThing[] = [
 		{ id: 'avocado', name: 'Avocado', price: 1.5, vegan: true, glutenFree: true },
 		{ id: 'olives', name: 'Olives', price: 0.75, vegan: true, glutenFree: true },
 		{ id: 'jalapenos', name: 'Jalapeños', price: 0.5, vegan: true, glutenFree: true },
@@ -104,7 +104,7 @@
 	// Calculate total price
 	const calculateTotal = (): string => {
 		// Base bread price
-		const selectedBread = breadTypes.find((b) => b.id === breadType);
+		const selectedBread = breadOptions.find((b) => b.id === breadType);
 		let total = selectedBread ? selectedBread.price : 0;
 
 		// Size multiplier
@@ -195,8 +195,6 @@
 	};
 </script>
 
-<BackgroundSandwiches animated={false} count={30} opacity={0.08} pattern={true} />
-
 <div class="container my-8 px-4">
 	<h1 class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl mb-8">
 		Build Your Own Sandwich
@@ -208,15 +206,20 @@
 			<div class="flex justify-between mb-2">
 				{#each { length: 7 }, i}
 					<div
-						class="flex flex-col items-center"
-						class:text-primary={currentStep >= i + 1}
-						class:text-gray-400={currentStep < i + 1}
+						class={[
+							'flex flex-col items-center',
+							{ 'text-primary': currentStep >= i + 1, 'text-gray-400': currentStep < i + 1 },
+						]}
 					>
 						<div
-							class="size-8 rounded-full flex items-center justify-center mb-1"
-							class:bg-primary={currentStep >= i + 1}
-							class:bg-gray-200={currentStep < i + 1}
-							class:text-white={currentStep >= i + 1}
+							class={[
+								'size-8 rounded-full flex items-center justify-center mb-1',
+								{
+									'bg-primary': currentStep >= i + 1,
+									'bg-gray-200': currentStep < i + 1,
+									'text-white': currentStep >= i + 1,
+								},
+							]}
 						>
 							{i + 1}
 						</div>
@@ -287,7 +290,7 @@
 						<div>
 							<h3 class="text-lg font-medium mb-3">Bread Type</h3>
 							<div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-								{#each breadTypes as bread}
+								{#each breadOptions as bread}
 									<button
 										class={[
 											'border rounded-lg p-4 cursor-pointer transition-all',
@@ -299,11 +302,24 @@
 										]}
 										onclick={() => (breadType = bread.id)}
 									>
-										<div class="flex items-center gap-3">
-											<SandwichIcon size="sm" />
+										<div class="flex items-center justify-between">
 											<div class="text-start">
 												<div class="font-medium">{bread.name}</div>
-												<div class="text-sm text-gray-500">${bread.price.toFixed(2)}</div>
+												<div class="text-sm text-gray-500">+${bread.price.toFixed(2)}</div>
+											</div>
+											<div class="flex gap-2">
+												{#if bread.vegan}
+													<span
+														class="px-2 py-1 bg-green-100 text-green-800 text-xs font-medium rounded"
+														>Vegan</span
+													>
+												{/if}
+												{#if bread.glutenFree}
+													<span
+														class="px-2 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded"
+														>GF</span
+													>
+												{/if}
 											</div>
 										</div>
 									</button>
@@ -562,12 +578,12 @@
 								<div class="flex justify-between">
 									<div>
 										<span class="font-medium">Bread:</span>
-										{breadTypes.find((b) => b.id === breadType)?.name || ''} ({breadSizes.find(
+										{breadOptions.find((b) => b.id === breadType)?.name || ''} ({breadSizes.find(
 											(s) => s.id === breadSize,
 										)?.name || ''})
 									</div>
 									<div>
-										${(breadTypes.find((b) => b.id === breadType)?.price || 0) *
+										${(breadOptions.find((b) => b.id === breadType)?.price || 0) *
 											(breadSizes.find((s) => s.id === breadSize)?.multiplier || 1)}
 									</div>
 								</div>

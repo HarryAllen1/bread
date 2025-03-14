@@ -185,7 +185,12 @@
 							<div class="flex flex-row justify-between w-full">
 								<b class="font-semibold">Discount</b>
 								<p>
-									-{currencyFormatter.format(session.total.discount / 100)}
+									-{currencyFormatter.format(
+										session.total.discount / 100 +
+											$cart
+												.filter((item) => 'isSandwich' in item)
+												.reduce((accum, item) => accum + item.price * item.quantity, 0),
+									)}
 								</p>
 							</div>
 						{/if}
@@ -199,9 +204,11 @@
 							<strong>
 								{currencyFormatter.format(
 									session.total.total / 100 +
-										$cart
-											.filter((item) => 'isSandwich' in item)
-											.reduce((accum, item) => accum + item.price * item.quantity, 0),
+										(appliedPromoCode === 'TSA'
+											? 0
+											: $cart
+													.filter((item) => 'isSandwich' in item)
+													.reduce((accum, item) => accum + item.price * item.quantity, 0)),
 								)}
 							</strong>
 						</div>

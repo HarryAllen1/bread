@@ -1,8 +1,10 @@
 <script lang="ts">
 	import AnimatedSandwichBackground from '$lib/components/AnimatedSandwichBackground.svelte';
-	import SandwichIcon from '$lib/icons/SandwichIcon.svelte';
 	import { gsap } from 'gsap';
 	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+	import Sprout from 'lucide-svelte/icons/sprout';
+	import Star from 'lucide-svelte/icons/star';
+	import Utensils from 'lucide-svelte/icons/utensils';
 	import { onMount } from 'svelte';
 
 	// Register GSAP plugins
@@ -100,10 +102,10 @@
 				class="bg-white p-5 rounded-lg shadow-md transform transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg"
 			>
 				<div class="flex justify-center mb-3">
-					<SandwichIcon size="md" />
+					<Sprout class="size-8 text-primary" />
 				</div>
 				<h3 class="text-lg font-bold mb-2 text-center">Sustainable Sourcing</h3>
-				<p class="text-sm text-center">
+				<p class="text-center">
 					We serve our customers only the best, the finest of ingredients, made fresh every day
 					through partnering with local farms and businesses. We take pride in everything we do,
 					from our commitment to quality and service to our dedication to a farm-to-table approach.
@@ -113,32 +115,24 @@
 				class="bg-white p-5 rounded-lg shadow-md transform transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg"
 			>
 				<div class="flex justify-center mb-3">
-					<SandwichIcon size="md" />
+					<Star class="size-8 text-primary" />
 				</div>
 				<h3 class="text-lg font-bold mb-2 text-center">Top Quality</h3>
-				<p class="text-sm text-center">
-					Our diverse array of breads are made daily to ensure their softness and flavor. Whether
-					it's an Italian ciabatta or a Mexican Tortilla Wrap, we craft our breads to the utmost
-					quality that perfectly compliments what you prefer. Our veggies are carefully washed and
-					hand-cut to preserve their freshness and crush. Our plant-based protein are delicately
-					prepared to deliver the same sastisfying textures and bold flavors as traditional meat,
-					but as a more healthier and nutritious alternative. Our in-house sauces are crafted to
-					enhance the nature flavors of our fresh ingredients. Once the ingredients are prepped, we
-					assemble each sandwich with utmost precision, and toast it however you like. We make sure
-					every sandwich is catored to your exact preference before we serve it to you. Your
-					satisfaction is our top priority. For takeout, we wrap your sandwich with care in
-					cellophane packaging, so that it stays fresh when you enjoy it at home as it is when it
-					leaves the kitchen.
+				<p class="text-center">
+					Whether it's an Italian ciabatta or a Mexican Tortilla Wrap, we craft our breads to the
+					utmost quality that perfectly compliments what you prefer. Our plant-based ingredients are
+					delicately prepared to deliver the same satisfying textures and bold flavors that you are
+					used to, but as a more healthier and nutritious alternative.
 				</p>
 			</div>
 			<div
 				class="bg-white p-5 rounded-lg shadow-md transform transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg"
 			>
 				<div class="flex justify-center mb-3">
-					<SandwichIcon size="md" />
+					<Utensils class="size-8 text-primary" />
 				</div>
 				<h3 class="text-lg font-bold mb-2 text-center">Ending Hunger</h3>
-				<p class="text-sm text-center">
+				<p class="text-center">
 					We donate any excess food in our kitchen to local nonprofits and organizations, like food
 					banks, to help serve our yummy sandwiches to those lacking access to adequate, quality
 					food. By working with our local communities and serving customers like you, we can help

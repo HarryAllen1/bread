@@ -15,19 +15,7 @@
 			</div>
 
 			<div class="flex flex-col items-center md:items-start gap-2">
-				<h3 class="font-bold text-lg mb-2">Menu</h3>
-				<a href="/menu/signature" class="text-sm opacity-80 hover:opacity-100"
-					>Signature Sandwiches</a
-				>
-				<a href="/menu/seasonal" class="text-sm opacity-80 hover:opacity-100"
-					>Seasonal Specialties</a
-				>
-				<a href="/menu/sides" class="text-sm opacity-80 hover:opacity-100">Accompaniments</a>
-				<a href="/menu/drinks" class="text-sm opacity-80 hover:opacity-100">Beverages</a>
-			</div>
-
-			<div class="flex flex-col items-center md:items-start gap-2">
-				<h3 class="font-bold text-lg mb-2">Company</h3>
+				<h3 class="font-bold text-lg mb-2">Navigate</h3>
 				{#each pages as page}
 					<a href={page.href} class="text-sm opacity-80 hover:opacity-100">
 						{page.title}
@@ -38,15 +26,15 @@
 			<div class="flex flex-col items-center md:items-start gap-2">
 				<h3 class="font-bold text-lg mb-2">Contact</h3>
 				<a href="tel:+15551234567" class="text-sm opacity-80 hover:opacity-100">555-123-4567</a>
-				<a href="mailto:contact@greenwich.jhstsa.org" class="text-sm opacity-80 hover:opacity-100"
-					>contact@greenwich.jhstsa.org</a
-				>
+				<a href="mailto:contact@greenwich.jhstsa.org" class="text-sm opacity-80 hover:opacity-100">
+					contact@greenwich.jhstsa.org
+				</a>
 				<a
-					href="https://maps.app.goo.gl/azSbbyC12TmuJwfF8"
+					href="https://maps.app.goo.gl/FYMAQcMd22QKWNL88"
 					class="text-sm opacity-80 hover:opacity-100"
 					target="_blank"
 				>
-					1600 Pennsylvania Avenue NW, Washington, DC 20500
+					160 West Putnam Avenue, Greenwich, CT 06830
 				</a>
 			</div>
 		</div>

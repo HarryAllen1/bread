@@ -298,7 +298,7 @@
 	<div class="container mx-auto px-4 py-12 md:py-16 relative z-10">
 		<div class="max-w-3xl mx-auto text-center mb-12">
 			<div
-				class="inline-block mb-4 px-6 py-2 rounded-full bg-gradient-to-r from-primary/20 to-primary/40 text-primary font-medium backdrop-blur-sm border border-primary/30 hero-badge"
+				class="inline-block mb-4 px-6 py-2 rounded-full bg-gradient-to-r from-primary/20 to-primary/40 text-primary font-medium backdrop-blur-sm border border-primary/30"
 			>
 				Premium Vegetarian Cuisine
 			</div>
@@ -386,22 +386,6 @@
 		}
 		100% {
 			background-position: 0% 50%;
-		}
-	}
-
-	.hero-badge {
-		animation: pulse 3s infinite;
-	}
-
-	@keyframes pulse {
-		0%,
-		100% {
-			transform: scale(1);
-			box-shadow: 0 0 0 rgba(76, 175, 80, 0.4);
-		}
-		50% {
-			transform: scale(1.05);
-			box-shadow: 0 0 20px rgba(76, 175, 80, 0.6);
 		}
 	}
 

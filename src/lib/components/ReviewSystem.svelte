@@ -17,20 +17,20 @@
 			id: 1,
 			author: 'Jane Smith',
 			rating: 5,
-			date: '2023-12-15',
+			date: '2024-12-15',
 			content:
-				'This sourdough is absolutely perfect! The crust is crispy and the inside is soft and chewy. Will definitely buy again.',
+				`This ${productName.toLowerCase()} is absolutely perfect! The crust is crispy and the inside is soft and chewy. Will definitely buy again when visiting Greenwich next time.`,
 			verified: true,
-			helpful: 12,
+			helpful: 17,
 			images: [
-				'https://images.unsplash.com/photo-1586444248902-2f64eddc13df?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+				'https://images.unsplash.com/photo-1499209974431-9dddcece7f88?fm=jpg&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZmVlbGluZyUyMGdvb2R8ZW58MHx8MHx8fDA%3D',
 			],
 		},
 		{
 			id: 2,
 			author: 'Michael Johnson',
 			rating: 4,
-			date: '2023-11-28',
+			date: '2024-11-28',
 			content:
 				"Great flavor and texture. The only reason I'm not giving 5 stars is because it went stale a bit quicker than expected.",
 			verified: true,
@@ -39,15 +39,16 @@
 		},
 		{
 			id: 3,
-			author: 'Sarah Williams',
+			author: 'Justin Williams',
 			rating: 4.5,
-			date: '2023-12-02',
+			date: '2024-12-02',
 			content:
-				'Delicious bread with a perfect balance of tanginess. My family loves it for breakfast with some butter and jam.',
+				`Delicious ${productName.toLowerCase()} with a perfect balance of tanginess. My family loves it for breakfast. I give it a thumbs up!`,
 			verified: false,
 			helpful: 3,
 			images: [
-				'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+				
+				'https://images.unsplash.com/photo-1579047917338-a6a69144fe63?q=80&w=500&auto=format&fit=crop&ixlib=rb-4.0.3',
 			],
 		},
 	]);
@@ -156,38 +157,6 @@
 
 		toast.success('Review marked as helpful');
 	};
-
-	const sortReviews = (): void => {
-		switch (sortBy) {
-			case 'newest': {
-				reviews = [...reviews].sort(
-					(a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-				);
-
-				break;
-			}
-			case 'highest': {
-				reviews = [...reviews].sort((a, b) => b.rating - a.rating);
-
-				break;
-			}
-			case 'lowest': {
-				reviews = [...reviews].sort((a, b) => a.rating - b.rating);
-
-				break;
-			}
-			case 'helpful': {
-				reviews = [...reviews].sort((a, b) => b.helpful - a.helpful);
-
-				break;
-			}
-			// No default
-		}
-	};
-
-	$effect(() => {
-		sortReviews();
-	});
 </script>
 
 <div class="review-system bg-white rounded-lg shadow-md p-6 border border-gray-200">

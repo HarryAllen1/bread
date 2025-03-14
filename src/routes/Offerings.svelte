@@ -72,9 +72,9 @@
 		</div>
 
 		<div class="mt-12 text-center">
-			<p class="text-lg text-white bg-primary/50 p-4 rounded-lg inline-block shadow-lg">
-				Now accepting online orders while our physical location is being prepared.
-			</p>
+			<a href="/menu" class="text-lg text-white bg-primary p-4 rounded-lg inline-block shadow-lg">
+				Now accepting online orders
+			</a>
 		</div>
 	</div>
 </div>
