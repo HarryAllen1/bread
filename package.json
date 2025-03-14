@@ -19,6 +19,7 @@
 		"@vercel/analytics": "^1.4.1",
 		"embla-carousel": "^8.4.0",
 		"embla-carousel-autoplay": "^8.4.0",
+		"fuse.js": "^7.1.0",
 		"gsap": "^3.12.5",
 		"sharp": "^0.33.5",
 		"stripe": "17.7.0",

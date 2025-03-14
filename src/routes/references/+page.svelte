@@ -116,6 +116,82 @@
 				Sandwich
 			</a>
 		</li>
+		<li>
+			<a
+				href="https://images.squarespace-cdn.com/content/v1/57f6f376197aeab10fb5de9d/1595872625226-C7Y89I7TJKFQV46JW4PO/Veganism?format=1500w"
+			>
+				Avocado Toast
+			</a>
+		</li>
+		<li>
+			<a
+				href="https://cdn.prod.website-files.com/6188f0130ba9a969b212cadc/6246dfc09f6a642c91399564_618125c380213194340d7ad2_Veggie%2520recipe%2520blog%2520banner-p-2000.jpeg"
+			>
+				Mediterrean Delight
+			</a>
+		</li>
+		<li>
+			<a
+				href="https://www.momables.com/wp-content/uploads/2023/12/Peanut-Butter-Sandwich_post_01-1.jpg"
+			>
+				Peanut Butter and Jelly
+			</a>
+		</li>
+		<li>
+			<a
+				href="https://cdn.loveandlemons.com/wp-content/uploads/2019/02/banh-mi-sandwich-802x1024.jpg"
+			>
+				Tofu Banh Mi
+			</a>
+		</li>
+		<li>
+			<a
+				href="https://topteenrecipes.com/wp-content/uploads/2021/07/24-Simple-Delicious-Panini-Recipes.jpg"
+			>
+				Panini
+			</a>
+		</li>
+		<li>
+			<a href="https://cravingsjournal.com/wp-content/uploads/2020/06/whole-wheat-bread-loaf-4.jpg">
+				Whole Wheat Bread
+			</a>
+		</li>
+		<li>
+			<a href="https://thegoodheartedwoman.com/wp-content/uploads/2022/10/rye-bread-f4.jpg">
+				Rye Bread
+			</a>
+		</li>
+		<li>
+			<a
+				href="https://www.allrecipes.com/thmb/GPqr9kEn84Kj00QL56aObbv1ci0=/0x512/filters:no_upscale():max_bytes(150000):strip_icc()/260540-Chef-Johns-Sourdough-Bread-DDMFS-004-4x3-6791a75a5d804ec28424d04756054c5b.jpg"
+			>
+				Sourdough Bread
+			</a>
+		</li>
+		<li>
+			<a href="https://bakingamoment.com/wp-content/uploads/2022/02/IMG_0606-ciabatta.jpg">
+				Ciabatta Bread
+			</a>
+		</li>
+		<li>
+			<a
+				href="https://bitofthegoodstuff.com/wp-content/uploads/2018/06/Tortilla-Wraps-2_2-1000.jpg"
+			>
+				Tortilla Wrap
+			</a>
+		</li>
+		<li>
+			<a
+				href="https://www.bakerita.com/wp-content/uploads/2023/09/Gluten-Free-Bread-with-Yogurt-Recipe-05-1024x1536.jpg"
+			>
+				Gluten Free Bread
+			</a>
+		</li>
+		<li>
+			<a href="https://www.pexels.com/photo/bacon-sandwich-166676/">
+				That one sandwich for the custom sandwich thumbnail
+			</a>
+		</li>
 	</ul>
 </div>
 

@@ -52,7 +52,7 @@
 					<span class="sr-only">Favorites</span>
 					<Badge
 						variant="destructive"
-						class="aspect-square size-5 absolute -bottom-1 -right-1 p-1 text-sm"
+						class="flex aspect-square size-5 absolute -bottom-1 -right-1 p-1 text-sm justify-center items-center"
 					>
 						{favoritesCount}
 					</Badge>
@@ -76,7 +76,7 @@
 					{#if cartSize > 0}
 						<Badge
 							variant="destructive"
-							class="aspect-square grid place-items-center size-5 absolute -bottom-1 -right-1 p-1 text-sm"
+							class="flex aspect-square size-5 absolute -bottom-1 -right-1 p-1 text-sm justify-center items-center"
 						>
 							{cartSize}
 						</Badge>

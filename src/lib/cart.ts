@@ -6,7 +6,13 @@ export interface CartItem {
 	quantity: number;
 }
 
-export const cart = persisted<CartItem[]>('cart', []);
+export interface Sandwich extends CartItem {
+	isSandwich: true;
+	price: number;
+	description: string;
+}
+
+export const cart = persisted<(CartItem | Sandwich)[]>('cart', []);
 
 export const addToCart = (id: number): void => {
 	const item = get(cart).find((item) => item.id === id);

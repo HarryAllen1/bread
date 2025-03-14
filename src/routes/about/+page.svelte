@@ -72,7 +72,7 @@
 		<div>
 			<h2 class="text-2xl font-bold mb-3 text-primary">Our Heritage</h2>
 			<p class="text-base mb-3">
-				Established in 2023, Greenwich was conceived with a singular vision: to create exceptional
+				Established in 2025, Greenwich was conceived with a singular vision: to create exceptional
 				vegetarian sandwiches that redefine plant-based dining.
 			</p>
 			<p class="text-base mb-3">
@@ -92,62 +92,57 @@
 		</div>
 	</div>
 
-	<div class="about-section bg-primary/5 p-6 rounded-xl mb-12 shadow-md">
+	<div class="about-section bg-primary/5 p-6 rounded-xl mb-12 shadow-md opacity-100">
 		<h2 class="text-2xl font-bold mb-4 text-center text-primary">Our Core Values</h2>
 
 		<div class="values-grid grid grid-cols-1 md:grid-cols-3 gap-4">
 			<div
-				class="value-card bg-white p-5 rounded-lg shadow-md transform transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg"
+				class="bg-white p-5 rounded-lg shadow-md transform transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg"
 			>
 				<div class="flex justify-center mb-3">
-					<SandwichIcon type="classic" size="md" />
+					<SandwichIcon size="md" />
 				</div>
 				<h3 class="text-lg font-bold mb-2 text-center">Sustainable Sourcing</h3>
 				<p class="text-sm text-center">
-					We serve our customers only the best, the finest of ingredients, made fresh every day through partnering
-					with local farms and businesses. We take pride in everything we do, from our commitment to quality and 
-					service to our dedication to a farm-to-table approach. 
+					We serve our customers only the best, the finest of ingredients, made fresh every day
+					through partnering with local farms and businesses. We take pride in everything we do,
+					from our commitment to quality and service to our dedication to a farm-to-table approach.
 				</p>
 			</div>
-
 			<div
-				class="value-card bg-white p-5 rounded-lg shadow-md transform transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg"
+				class="bg-white p-5 rounded-lg shadow-md transform transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg"
 			>
 				<div class="flex justify-center mb-3">
-					<SandwichIcon type="veggie" size="md" />
+					<SandwichIcon size="md" />
 				</div>
 				<h3 class="text-lg font-bold mb-2 text-center">Top Quality</h3>
 				<p class="text-sm text-center">
-					Our diverse array of breads are made daily to ensure their softness and flavor. 
-					Whether it's an Italian ciabatta or a Mexican Tortilla Wrap, we craft our breads 
-					to the utmost quality that perfectly compliments what you prefer.
-
-					Our veggies are carefully washed and hand-cut to preserve their freshness and crush. Our plant-based protein 
-					are delicately prepared to deliver the same sastisfying textures and bold flavors as traditional meat, but as a 
-					more healthier and nutritious alternative. Our in-house sauces are crafted to enhance the nature flavors 
-					of our fresh ingredients.
-
-					Once the ingredients are prepped, we assemble each sandwich with utmost precision, and toast it however you like.
-
-					We make sure every sandwich is catored to your exact preference before we serve it to you. Your satisfaction is our 
-					top priority.
-
-					For takeout, we wrap your sandwich with care in cellophane packaging, so that it stays fresh when you enjoy it at
-					home as it is when it leaves the kitchen.
-
+					Our diverse array of breads are made daily to ensure their softness and flavor. Whether
+					it's an Italian ciabatta or a Mexican Tortilla Wrap, we craft our breads to the utmost
+					quality that perfectly compliments what you prefer. Our veggies are carefully washed and
+					hand-cut to preserve their freshness and crush. Our plant-based protein are delicately
+					prepared to deliver the same sastisfying textures and bold flavors as traditional meat,
+					but as a more healthier and nutritious alternative. Our in-house sauces are crafted to
+					enhance the nature flavors of our fresh ingredients. Once the ingredients are prepped, we
+					assemble each sandwich with utmost precision, and toast it however you like. We make sure
+					every sandwich is catored to your exact preference before we serve it to you. Your
+					satisfaction is our top priority. For takeout, we wrap your sandwich with care in
+					cellophane packaging, so that it stays fresh when you enjoy it at home as it is when it
+					leaves the kitchen.
 				</p>
 			</div>
 			<div
-				class="value-card bg-white p-5 rounded-lg shadow-md transform transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg"
+				class="bg-white p-5 rounded-lg shadow-md transform transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg"
 			>
 				<div class="flex justify-center mb-3">
-					<SandwichIcon type="wrap" size="md" />
+					<SandwichIcon size="md" />
 				</div>
 				<h3 class="text-lg font-bold mb-2 text-center">Ending Hunger</h3>
 				<p class="text-sm text-center">
-					We donate any excess food in our kitchen to local nonprofits and organizations, like food banks, to 
-					help serve our yummy sandwiches to those lacking access to adequate, quality food. 
-					By working with our local communities and serving customers like you, we can help make an impact - together.
+					We donate any excess food in our kitchen to local nonprofits and organizations, like food
+					banks, to help serve our yummy sandwiches to those lacking access to adequate, quality
+					food. By working with our local communities and serving customers like you, we can help
+					make an impact - together.
 				</p>
 			</div>
 		</div>

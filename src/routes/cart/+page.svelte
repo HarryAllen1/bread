@@ -24,40 +24,39 @@
 	<h1 class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">Cart</h1>
 
 	{#each $cart as cartItem}
-		{@const item = data.products.find((currentItem) => currentItem.id === cartItem.id)}
-		{#if item}
+		{#if 'isSandwich' in cartItem}
 			<div class="flex md:items-center justify-center flex-row my-4">
 				<div class="flex md:items-center min-w-16">
-					<a href="/menu/{item.slug}">
-						<img
-							src={item.image_url}
-							alt={item.name}
+					<a href="/create" aria-label="Custom sandwich">
+						<enhanced:img
+							src="$lib/images/custom-sandwich.jpeg"
+							alt="Custom sandwich"
 							class="size-16 aspect-square object-cover rounded-lg"
 						/>
 					</a>
 				</div>
 				<div class="flex flex-col md:flex-row md:items-center w-full ml-4 gap-2">
 					<div class="w-full">
-						<a class="text-lg font-semibold" href="/menu/{item.slug}">
-							{item.name}
+						<a class="text-lg font-semibold" href="/create">
+							{cartItem.description}
 						</a>
-						<p class="text-sm text-gray-500">${item.price} each</p>
+						<p class="text-sm text-gray-500">${cartItem.price} each</p>
 					</div>
 
 					<div class="grow"></div>
 
 					<div class="flex items-center justify-start md:justify-end w-full">
-						<Button size="icon" variant="outline" onclick={() => removeFromCart(item.id)}>
+						<Button size="icon" variant="outline" onclick={() => removeFromCart(cartItem.id)}>
 							<Minus />
 						</Button>
 						<p class="mx-4">{cartItem.quantity}</p>
-						<Button size="icon" variant="outline" onclick={() => addToCart(item.id)}>
+						<Button size="icon" variant="outline" onclick={() => addToCart(cartItem.id)}>
 							<Plus />
 						</Button>
 
 						<Button
 							onclick={() => {
-								$cart = $cart.filter((value) => value.id !== item.id);
+								$cart = $cart.filter((value) => value.id !== cartItem.id);
 								toast.success('Removed from cart!');
 							}}
 							variant="outline"
@@ -67,10 +66,59 @@
 							<Trash />
 						</Button>
 
-						<p class="ml-4 text-lg font-semibold">${item.price * cartItem.quantity}</p>
+						<p class="ml-4 text-lg font-semibold">${cartItem.price * cartItem.quantity}</p>
 					</div>
 				</div>
 			</div>
+		{:else}
+			{@const item = data.products.find((currentItem) => currentItem.id === cartItem.id)}
+			{#if item}
+				<div class="flex md:items-center justify-center flex-row my-4">
+					<div class="flex md:items-center min-w-16">
+						<a href="/menu/{item.slug}">
+							<img
+								src={item.image_url}
+								alt={item.name}
+								class="size-16 aspect-square object-cover rounded-lg"
+							/>
+						</a>
+					</div>
+					<div class="flex flex-col md:flex-row md:items-center w-full ml-4 gap-2">
+						<div class="w-full">
+							<a class="text-lg font-semibold" href="/menu/{item.slug}">
+								{item.name}
+							</a>
+							<p class="text-sm text-gray-500">${item.price} each</p>
+						</div>
+
+						<div class="grow"></div>
+
+						<div class="flex items-center justify-start md:justify-end w-full">
+							<Button size="icon" variant="outline" onclick={() => removeFromCart(item.id)}>
+								<Minus />
+							</Button>
+							<p class="mx-4">{cartItem.quantity}</p>
+							<Button size="icon" variant="outline" onclick={() => addToCart(item.id)}>
+								<Plus />
+							</Button>
+
+							<Button
+								onclick={() => {
+									$cart = $cart.filter((value) => value.id !== item.id);
+									toast.success('Removed from cart!');
+								}}
+								variant="outline"
+								size="icon"
+								class="text-red-500 ml-4"
+							>
+								<Trash />
+							</Button>
+
+							<p class="ml-4 text-lg font-semibold">${item.price * cartItem.quantity}</p>
+						</div>
+					</div>
+				</div>
+			{/if}
 		{/if}
 	{:else}
 		<p class="leading-7 not-first:mt-6">
@@ -100,6 +148,9 @@
 		<h3 class="mt-8 scroll-m-20 text-2xl font-semibold tracking-tight">Subtotal</h3>
 		<p class="leading-7 not-first:mt-4">
 			${$cart.reduce((accumulator, cartItem) => {
+				if ('isSandwich' in cartItem) {
+					return accumulator + cartItem.price * cartItem.quantity;
+				}
 				const item = data.products.find((currentItem) => currentItem.id === cartItem.id);
 				if (item) {
 					return accumulator + item.price * cartItem.quantity;
@@ -108,6 +159,6 @@
 			}, 0)}
 		</p>
 
-		<Button href="/checkout" class="mt-8">checkout</Button>
+		<Button href="/checkout" class="mt-8">Checkout</Button>
 	{/if}
 </div>

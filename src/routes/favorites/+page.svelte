@@ -5,16 +5,17 @@
 	import { userPreferences } from '$lib/stores/userPreferences';
 	import { toast } from 'svelte-sonner';
 	import ProductCard from '../menu/ProductCard.svelte';
-	import type { Database } from '../../database.types';
+	import type { PageProps } from './$types';
+
+	let { data }: PageProps = $props();
 
 	// Get user favorites - safely with browser check
 	let favorites = $userPreferences.favorites;
 
-	// Sample product data (in a real app, this would come from the database)
-	const products: (Database['public']['Tables']['products']['Row'] & { image_url: string })[] = [];
-
 	// Filter products to show only favorites
-	let favoriteProducts = $derived(products.filter((product) => favorites.includes(product.id)));
+	let favoriteProducts = $derived(
+		data.products.filter((product) => favorites.includes(product.id)),
+	);
 
 	// Clear all favorites
 	const clearFavorites = (): void => {
@@ -47,7 +48,7 @@
 	{:else}
 		<div class="text-center py-16">
 			<div class="flex justify-center mb-4">
-				<SandwichIcon type="classic" size="lg" />
+				<SandwichIcon size="lg" />
 			</div>
 			<h2 class="text-2xl font-bold mb-2">No favorites yet</h2>
 			<p class="text-gray-600 mb-6">

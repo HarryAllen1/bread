@@ -113,27 +113,3 @@
 		};
 	});
 </script>
-
-<style>
-	:global(.static-sandwich) {
-		position: absolute;
-		z-index: -1;
-		pointer-events: none;
-	}
-
-	@keyframes sandwichFloat {
-		0%,
-		100% {
-			transform: translate(0, 0) rotate(0deg);
-		}
-		25% {
-			transform: translate(40px, -30px) rotate(15deg);
-		}
-		50% {
-			transform: translate(80px, 0) rotate(0deg);
-		}
-		75% {
-			transform: translate(40px, 30px) rotate(-15deg);
-		}
-	}
-</style>

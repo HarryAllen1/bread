@@ -64,7 +64,6 @@
 						<div class="text-xs text-green-700">Free from</div>
 					</div>
 				{/if}
-				}
 			</div>
 		{/each}
 	</div>
