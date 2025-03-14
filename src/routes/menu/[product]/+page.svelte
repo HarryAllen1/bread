@@ -168,11 +168,10 @@
 					aria-label={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
 				>
 					<svg
-						class="size-6"
+						class={['size-6', isFavorite && 'text-red-500']}
 						fill={isFavorite ? 'currentColor' : 'none'}
 						stroke="currentColor"
 						viewBox="0 0 24 24"
-						class:text-red-500={isFavorite}
 					>
 						<path
 							stroke-linecap="round"

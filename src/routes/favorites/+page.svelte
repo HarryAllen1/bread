@@ -1,5 +1,4 @@
 <script lang="ts">
-	import BackgroundSandwiches from '$lib/components/BackgroundSandwiches.svelte';
 	import { Button } from '$lib/components/ui/button';
 	import SandwichIcon from '$lib/icons/SandwichIcon.svelte';
 	import { userPreferences } from '$lib/stores/userPreferences';
@@ -28,7 +27,6 @@
 	};
 </script>
 
-<BackgroundSandwiches animated={false} count={30} opacity={0.08} pattern={true} />
 
 <div class="container my-8 px-4">
 	<div class="flex justify-between items-center mb-8">
