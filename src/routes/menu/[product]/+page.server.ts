@@ -3,11 +3,17 @@ import type { PageServerLoad } from './$types';
 export const prerender = false;
 
 export const load = (async ({ locals: { supabase }, params }) => {
-	const { data: productDetails } = await supabase
-		.from('products')
-		.select('*')
-		.eq('slug', params.product)
-		.single();
+	const { data: preProducts } = await supabase.from('products').select('*').order('name');
+	const products =
+		preProducts?.map((product) => ({
+			...product,
+			image_url:
+				product.image_bucket_id && product.image_name
+					? supabase.storage.from(product.image_bucket_id).getPublicUrl(product.image_name).data
+							.publicUrl
+					: 'https://images.unsplash.com/photo-1554433607-66b5efe9d304?q=80&w=2070&auto=format&fit=crop',
+		})) ?? [];
+	const productDetails = products.find((product) => product.slug === params.product);
 
 	if (!productDetails) {
 		// Return a default product if not found
@@ -26,14 +32,7 @@ export const load = (async ({ locals: { supabase }, params }) => {
 	}
 
 	return {
-		productDetails: {
-			...productDetails,
-			image_url:
-				productDetails.image_bucket_id && productDetails.image_name
-					? supabase.storage
-							.from(productDetails.image_bucket_id)
-							.getPublicUrl(productDetails.image_name).data.publicUrl
-					: 'https://images.unsplash.com/photo-1554433607-66b5efe9d304?q=80&w=2070&auto=format&fit=crop',
-		},
+		products,
+		productDetails,
 	};
 }) satisfies PageServerLoad;

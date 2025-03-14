@@ -156,38 +156,6 @@
 
 		toast.success('Review marked as helpful');
 	};
-
-	const sortReviews = (): void => {
-		switch (sortBy) {
-			case 'newest': {
-				reviews = [...reviews].sort(
-					(a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-				);
-
-				break;
-			}
-			case 'highest': {
-				reviews = [...reviews].sort((a, b) => b.rating - a.rating);
-
-				break;
-			}
-			case 'lowest': {
-				reviews = [...reviews].sort((a, b) => a.rating - b.rating);
-
-				break;
-			}
-			case 'helpful': {
-				reviews = [...reviews].sort((a, b) => b.helpful - a.helpful);
-
-				break;
-			}
-			// No default
-		}
-	};
-
-	$effect(() => {
-		sortReviews();
-	});
 </script>
 
 <div class="review-system bg-white rounded-lg shadow-md p-6 border border-gray-200">

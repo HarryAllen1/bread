@@ -1,18 +1,20 @@
 <script lang="ts">
-	import { addToCart } from '$lib/cart';
-	import { Button } from '$lib/components/ui/button';
-	import { toast } from 'svelte-sonner';
-	import type { PageData } from './$types';
+	import { browser } from '$app/environment';
 	import { goto } from '$app/navigation';
-	import NutritionFacts from '$lib/components/NutritionFacts.svelte';
+	import { addToCart } from '$lib/cart';
 	import AllergenInfo from '$lib/components/AllergenInfo.svelte';
 	import IngredientSourcing from '$lib/components/IngredientSourcing.svelte';
+	import NutritionFacts from '$lib/components/NutritionFacts.svelte';
+	import PerfectPairings from './PerfectPairings.svelte';
 	import ReviewSystem from '$lib/components/ReviewSystem.svelte';
-	import PerfectPairings from '$lib/components/PerfectPairings.svelte';
-	import SandwichIcon from '$lib/icons/SandwichIcon.svelte';
-	import { userPreferences } from '$lib/stores/userPreferences';
-	import { browser } from '$app/environment';
+	import { Button } from '$lib/components/ui/button';
 	import * as Tabs from '$lib/components/ui/tabs';
+	import { userPreferences } from '$lib/stores/userPreferences';
+	import Heart from 'lucide-svelte/icons/heart';
+	import Shield from 'lucide-svelte/icons/shield';
+	import Sprout from 'lucide-svelte/icons/sprout';
+	import { toast } from 'svelte-sonner';
+	import type { PageData } from './$types';
 
 	interface Props {
 		data: PageData;
@@ -229,8 +231,6 @@
 							</svg>
 							Add to Cart
 						</Button>
-
-						<Button variant="outline" href="/create">Customize</Button>
 					</div>
 				</div>
 			</div>
@@ -243,52 +243,28 @@
 					<div
 						class="flex items-center gap-1 bg-primary/10 text-primary px-3 py-1 rounded-full text-sm"
 					>
-						<SandwichIcon size="sm" />
+						<Sprout class="size-4" />
 						<span>Vegetarian</span>
 					</div>
 
 					<div
 						class="flex items-center gap-1 bg-green-50 text-green-700 px-3 py-1 rounded-full text-sm"
 					>
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							class="size-4"
-							viewBox="0 0 24 24"
-							fill="none"
-							stroke="currentColor"
-							stroke-width="2"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-						>
-							<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-						</svg>
+						<Shield class="size-4" />
 						<span>Fresh Daily</span>
 					</div>
 
 					<div
 						class="flex items-center gap-1 bg-purple-50 text-purple-700 px-3 py-1 rounded-full text-sm"
 					>
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							class="size-4"
-							viewBox="0 0 24 24"
-							fill="none"
-							stroke="currentColor"
-							stroke-width="2"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-						>
-							<path
-								d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
-							></path>
-						</svg>
+						<Heart class="size-4" />
 						<span>Customer Favorite</span>
 					</div>
 				</div>
 			</div>
 
 			<div>
-				<PerfectPairings />
+				<PerfectPairings products={data.products} />
 			</div>
 		</div>
 
