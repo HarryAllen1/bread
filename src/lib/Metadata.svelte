@@ -8,9 +8,9 @@
 
 <svelte:head>
 	<title>
-		{title} - bread
+		{title} - Greenwich
 	</title>
-	<meta property="og:title" content="{title} - bread" />
+	<meta property="og:title" content="{title} - Greenwich" />
 
 	{#if description}
 		<meta name="description" content={description} />

@@ -336,7 +336,7 @@
 		</div>
 
 		<div
-			class="bg-card rounded-2xl mb-12 overflow-hidden shadow-2xl animate-in fade-in-50 slide-in-from-bottom-8 duration-1000 delay-500 animate-on-scroll"
+			class="bg-card flex justify-center items-center w-full mx-auto rounded-2xl max-w-4xl mb-12 overflow-hidden shadow-2xl animate-in fade-in-50 slide-in-from-bottom-8 duration-1000 delay-500 animate-on-scroll"
 		>
 			<SandwichCarousel />
 		</div>

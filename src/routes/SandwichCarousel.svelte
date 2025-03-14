@@ -12,9 +12,9 @@
 	<Carousel.Content>
 		<Carousel.Item>
 			<div class="relative">
-				<img
-					src="https://images.unsplash.com/photo-1554433607-66b5efe9d304?q=80&w=2070&auto=format&fit=crop"
-					alt="Artisanal vegetarian sandwich with avocado"
+				<enhanced:img
+					src="./carousel/delight.jpg"
+					alt="Mediterranean Delight sandwich"
 					class="w-full h-[400px] object-cover"
 				/>
 				<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">

@@ -27,7 +27,6 @@
 	};
 </script>
 
-
 <div class="container my-8 px-4">
 	<div class="flex justify-between items-center mb-8">
 		<h1 class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">Your Favorites</h1>

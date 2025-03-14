@@ -18,8 +18,7 @@
 			author: 'Jane Smith',
 			rating: 5,
 			date: '2024-12-15',
-			content:
-				`This ${productName.toLowerCase()} is absolutely perfect! The crust is crispy and the inside is soft and chewy. Will definitely buy again when visiting Greenwich next time.`,
+			content: `This ${productName.toLowerCase()} is absolutely perfect! The crust is crispy and the inside is soft and chewy. Will definitely buy again when visiting Greenwich next time.`,
 			verified: true,
 			helpful: 17,
 			images: [
@@ -42,12 +41,10 @@
 			author: 'Justin Williams',
 			rating: 4.5,
 			date: '2024-12-02',
-			content:
-				`Delicious ${productName.toLowerCase()} with a perfect balance of tanginess. My family loves it for breakfast. I give it a thumbs up!`,
+			content: `Delicious ${productName.toLowerCase()} with a perfect balance of tanginess. My family loves it for breakfast. I give it a thumbs up!`,
 			verified: false,
 			helpful: 3,
 			images: [
-				
 				'https://images.unsplash.com/photo-1579047917338-a6a69144fe63?q=80&w=500&auto=format&fit=crop&ixlib=rb-4.0.3',
 			],
 		},
