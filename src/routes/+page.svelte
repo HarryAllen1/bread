@@ -10,6 +10,7 @@
 	import SandwichCarousel from './SandwichCarousel.svelte';
 	import Sustainability from './Sustainability.svelte';
 	import WhyGreens from './WhyGreens.svelte';
+	import icon from '$lib/images/icon.svg';
 
 	// Register GSAP plugins
 	gsap.registerPlugin(ScrollTrigger);
@@ -41,8 +42,9 @@
 		const logoContainer = document.createElement('div');
 		logoContainer.className = 'intro-logo';
 
-		const logo = document.createElement('div');
-		logo.className = 'sandwich-icon classic';
+		const logo = document.createElement('img');
+		logo.src = icon;
+
 		logo.style.width = '200px';
 		logo.style.height = '200px';
 

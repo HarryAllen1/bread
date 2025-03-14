@@ -22,7 +22,7 @@
 	</p>
 
 	<p class="leading-7 not-first:mt-6">
-		<a href="/copyright-checklist.pdf" target="_blank">Student Copyright Checklist</a>
+		<a href="/copyright-checklist.png" target="_blank">Student Copyright Checklist</a>
 	</p>
 	<p class="leading-7 not-first:mt-6">
 		<a href="/work-log.pdf" target="_blank">Work Log</a>
@@ -127,7 +127,7 @@
 			<a
 				href="https://cdn.prod.website-files.com/6188f0130ba9a969b212cadc/6246dfc09f6a642c91399564_618125c380213194340d7ad2_Veggie%2520recipe%2520blog%2520banner-p-2000.jpeg"
 			>
-				Mediterrean Delight
+				Mediterranean Delight
 			</a>
 		</li>
 		<li>
