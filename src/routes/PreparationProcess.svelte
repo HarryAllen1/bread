@@ -70,8 +70,8 @@
 							<div>
 								<h3 class="text-xl font-bold mb-2 text-white">Artisanal Preparation</h3>
 								<p class="text-white/90">
-									Our professional culinary team works from dawn to dusk just to prepare fresh ingredients and bake artisanal
-									sandwiches for optimal quality and flavor.
+									Our professional culinary team works from dawn to dusk just to prepare fresh
+									ingredients and bake artisanal sandwiches for optimal quality and flavor.
 								</p>
 							</div>
 						</div>

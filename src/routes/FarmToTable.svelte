@@ -29,8 +29,8 @@
 							<div>
 								<h3 class="text-xl font-bold mb-2 text-white">Local Sourcing</h3>
 								<p class="text-white/90">
-									We source around 85% of our produce from farms within a 50-mile radius, ensuring maximum
-									freshness and minimizing environmental impact.
+									We source around 85% of our produce from farms within a 50-mile radius, ensuring
+									maximum freshness and minimizing environmental impact.
 								</p>
 							</div>
 						</div>

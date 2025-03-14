@@ -21,8 +21,8 @@
 		<p
 			class="text-lg text-foreground max-w-2xl mx-auto leading-relaxed bg-background/90 px-6 py-4 rounded-lg inline-block backdrop-blur-xs border-2 border-primary/70 shadow-lg font-medium"
 		>
-			Our culinary approach combines traditional and modern techniques with innovative flavor profiles to
-			create exceptional vegetarian sandwiches that satisfy discerning palates for you.
+			Our culinary approach combines traditional and modern techniques with innovative flavor
+			profiles to create exceptional vegetarian sandwiches that satisfy discerning palates for you.
 		</p>
 	</div>
 
@@ -35,8 +35,8 @@
 			</div>
 			<h3 class="text-xl font-bold mb-3">Premium Ingredients</h3>
 			<p class="text-foreground font-medium">
-				We source organic, local-grown produce daily to ensure optimal freshness and flavor in
-				every bite you take.
+				We source organic, local-grown produce daily to ensure optimal freshness and flavor in every
+				bite you take.
 			</p>
 		</div>
 		<div
@@ -47,8 +47,8 @@
 			</div>
 			<h3 class="text-xl font-bold mb-3">Plant-Forward Cuisine</h3>
 			<p class="text-foreground font-medium">
-				Our vegetarian menu features healthy, protein-rich breads and sandwiches crafted to satisfy even
-				the most discerning palates.
+				Our vegetarian menu features healthy, protein-rich breads and sandwiches crafted to satisfy
+				even the most discerning palates.
 			</p>
 		</div>
 		<div
@@ -59,8 +59,8 @@
 			</div>
 			<h3 class="text-xl font-bold mb-3">Artisanal Preparation</h3>
 			<p class="text-foreground font-medium">
-				Each sandwich is meticulously crafted to order, ensuring perfect texture, balance, flavor, and
-				presentation with every serving.
+				Each sandwich is meticulously crafted to order, ensuring perfect texture, balance, flavor,
+				and presentation with every serving.
 			</p>
 		</div>
 	</div>
