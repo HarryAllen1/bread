@@ -103,8 +103,8 @@ importers:
         specifier: ^16.0.0
         version: 16.0.0
       lucide-svelte:
-        specifier: ^0.479.0
-        version: 0.479.0(svelte@5.23.0)
+        specifier: ^0.481.0
+        version: 0.481.0(svelte@5.23.0)
       mode-watcher:
         specifier: ^0.5.0
         version: 0.5.1(svelte@5.23.0)
@@ -1907,8 +1907,8 @@ packages:
   lru-cache@10.4.3:
     resolution: {integrity: sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==}
 
-  lucide-svelte@0.479.0:
-    resolution: {integrity: sha512-epCj6WL86ykxg7oCQTmPEth5e11pwJUzIfG9ROUsWsTP+WPtb3qat+VmAjfx/r4TRW7memTFcbTPvMrZvKthqw==}
+  lucide-svelte@0.481.0:
+    resolution: {integrity: sha512-VanU/c+sfcNfYKCkS3eGQX/4y1Jlvg4A53CBEKgLJGOcB7rpt8Ux6OuSGXqgROW1cASc5qiOCBWyaBZAPUj+mA==}
     peerDependencies:
       svelte: ^3 || ^4 || ^5.0.0-next.42
 
@@ -2490,6 +2490,7 @@ packages:
   wrangler@3.114.0:
     resolution: {integrity: sha512-cY0HxgU5yuc24tE1Y4KD2n9UzYYEx+9lSL7p/Sqj18SgDfwyiMPY/FryXQAPYLuD/S+dxArRQyeEkFSokIr75Q==}
     engines: {node: '>=16.17.0'}
+    deprecated: Deployments with nodejs_compat are broken. Please downgrade to 3.112.0
     hasBin: true
     peerDependencies:
       '@cloudflare/workers-types': ^4.20250224.0
@@ -4038,7 +4039,7 @@ snapshots:
 
   lru-cache@10.4.3: {}
 
-  lucide-svelte@0.479.0(svelte@5.23.0):
+  lucide-svelte@0.481.0(svelte@5.23.0):
     dependencies:
       svelte: 5.23.0
 
