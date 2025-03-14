@@ -19,7 +19,7 @@
 			rating: 5,
 			date: '2024-12-15',
 			content:
-				'This ${productName} is absolutely perfect! The crust is crispy and the inside is soft and chewy. Will definitely buy again when visiting Greenwich next time.',
+				`This ${productName} is absolutely perfect! The crust is crispy and the inside is soft and chewy. Will definitely buy again when visiting Greenwich next time.`,
 			verified: true,
 			helpful: 17,
 			images: [
@@ -43,7 +43,7 @@
 			rating: 4.5,
 			date: '2024-12-02',
 			content:
-				'Delicious ${productName} with a perfect balance of tanginess. My family loves it for breakfast. I give it a thumbs up!',
+				`Delicious ${productName} with a perfect balance of tanginess. My family loves it for breakfast. I give it a thumbs up!`,
 			verified: false,
 			helpful: 3,
 			images: [
