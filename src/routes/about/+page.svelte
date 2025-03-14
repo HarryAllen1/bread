@@ -122,8 +122,7 @@
 					Whether it's an Italian ciabatta or a Mexican Tortilla Wrap, we craft our breads to the
 					utmost quality that perfectly compliments what you prefer. Our plant-based ingredients are
 					delicately prepared to deliver the same satisfying textures and bold flavors that you are
-					used to, but as a more healthier and nutritious alternative. Our in-house sauces are
-					crafted to enhance the nature flavors of our fresh ingredients.
+					used to, but as a more healthier and nutritious alternative.
 				</p>
 			</div>
 			<div
