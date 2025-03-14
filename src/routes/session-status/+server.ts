@@ -14,6 +14,7 @@ export const GET = (async ({ url }) => {
 		return json({
 			status: session.status,
 			customer_email: session.customer_details?.email,
+			order_number: session,
 		});
 	} catch (error_) {
 		console.error('Error retrieving session:', error_);

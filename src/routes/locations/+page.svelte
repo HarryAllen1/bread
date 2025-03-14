@@ -80,11 +80,12 @@
 					<div class="flex items-start gap-3">
 						<MapPin class="size-5 text-primary flex-shrink-0 mt-0.5" />
 						<a
-							class="text-primary font-medium underline underline-offset-4"
+							class="text-primary underline underline-offset-4"
 							href="https://maps.app.goo.gl/FYMAQcMd22QKWNL88"
 							target="_blank"
 						>
 							<b class="font-medium">160 West Putnam Avenue,</b>
+							<br />
 							Greenwich, CT 06830
 						</a>
 					</div>
@@ -137,10 +138,15 @@
 				<div class="space-y-3">
 					<div class="flex items-start gap-3">
 						<MapPin class="size-5 text-primary flex-shrink-0 mt-0.5" />
-						<div>
-							<p class="font-medium">350 Fifth Avenue</p>
-							<p>New York, NY 10118</p>
-						</div>
+						<a
+							class="text-primary underline underline-offset-4"
+							href="https://maps.app.goo.gl/9cT7X6msdw9jGVzL8"
+							target="_blank"
+						>
+							<b class="font-medium">55-57 Bugsby's Way,</b>
+							<br />
+							London SE10 0QJ, United Kingdom
+						</a>
 					</div>
 
 					<div class="flex items-start gap-3">
@@ -193,12 +199,13 @@
 					<div class="flex items-start gap-3">
 						<MapPin class="size-5 text-primary flex-shrink-0 mt-0.5" />
 						<a
-							class="text-primary font-medium underline underline-offset-4"
-							href="https://maps.app.goo.gl/9cT7X6msdw9jGVzL8"
+							class="text-primary underline underline-offset-4"
+							href="https://maps.app.goo.gl/DYK5Z4Qe4kLRtemo8"
 							target="_blank"
 						>
-							<b class="font-medium">55-57 Bugsby's Way</b>
-							London SE10 0QJ, United Kingdom
+							<b class="font-medium">12401 SE 320th St,</b>
+							<br />
+							Auburn, WA 98092
 						</a>
 					</div>
 

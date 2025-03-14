@@ -5,6 +5,7 @@
 	import { Button, buttonVariants } from '$lib/components/ui/button';
 	import * as Card from '$lib/components/ui/card';
 	import * as Collapsible from '$lib/components/ui/collapsible';
+	import * as Select from '$lib/components/ui/select';
 	import { Input } from '$lib/components/ui/input';
 	import { Label } from '$lib/components/ui/label';
 	import { loadStripe, type StripeCheckout, type StripeCheckoutSession } from '@stripe/stripe-js';
@@ -13,6 +14,7 @@
 	import defaultTheme from 'tailwindcss/defaultTheme';
 	import type { PageData } from './$types';
 	import { fancyConfirm } from '$lib/confirm';
+	import { selectedLocation } from './state.svelte';
 
 	interface Props {
 		data: PageData;
@@ -22,6 +24,23 @@
 
 	let name = $state('');
 	let email = $state('');
+
+	const locations = [
+		{
+			value: 'downtown',
+			label: 'Downtown (Greenwich, CT)',
+		},
+		{
+			value: 'midtown',
+			label: 'Midtown (Greenwich, UK)',
+		},
+	];
+
+	let locationTriggerContent = $derived(
+		locations.find((location) => location.value === selectedLocation.current)?.label ??
+			'Select a location',
+	);
+
 	let promoCode = $state('');
 	let appliedPromoCode = $state('');
 
@@ -246,6 +265,22 @@
 				<strong>bread@jhstsa.org</strong>
 			</div>
 
+			<div class="mb-4">
+				<Label>Location</Label>
+				<Select.Root type="single" bind:value={selectedLocation.current}>
+					<Select.Trigger>
+						{locationTriggerContent}
+					</Select.Trigger>
+					<Select.Content>
+						{#each locations as location}
+							<Select.Item value={location.value} label={location.label}>
+								{location.label}
+							</Select.Item>
+						{/each}
+					</Select.Content>
+				</Select.Root>
+			</div>
+
 			<div bind:this={checkoutContainer}></div>
 
 			<div>
@@ -298,6 +333,10 @@
 						if (!email) {
 							emailErrors = 'Email is required';
 							submitErrors = 'Please fix the errors above';
+							return;
+						}
+						if (!selectedLocation.current) {
+							submitErrors = 'Location is required';
 							return;
 						}
 						if (

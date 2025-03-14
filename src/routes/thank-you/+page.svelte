@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import type { PageData } from './$types';
 	import { cart } from '$lib/cart';
+	import { selectedLocation } from '../checkout/state.svelte';
 
 	interface Props {
 		data: PageData;
@@ -21,6 +22,12 @@
 		actually paid for something on this site, first off, why, and also, we'll refund you shortly
 		because you aren't getting anything.
 	</p>
+	{#if selectedLocation.current}
+		<p class="leading-7 not-first:mt-6">
+			Your order will be ready for pickup at our <b>{selectedLocation.current}</b> location in roughly
+			20 minutes.
+		</p>
+	{/if}
 	<p class="leading-7 not-first:mt-6">
 		Please note that we cannot refund the Stripe transaction fee, which is roughly $0.50.
 	</p>
