@@ -29,7 +29,7 @@
 							<div>
 								<h3 class="text-xl font-bold mb-2 text-white">Local Sourcing</h3>
 								<p class="text-white/90">
-									We source 85% of our produce from farms within a 50-mile radius, ensuring maximum
+									We source around 85% of our produce from farms within a 50-mile radius, ensuring maximum
 									freshness and minimizing environmental impact.
 								</p>
 							</div>
@@ -45,7 +45,7 @@
 								<h3 class="text-xl font-bold mb-2 text-white">Seasonal Selection</h3>
 								<p class="text-white/90">
 									Our menu evolves with the seasons to showcase regional produce at its peak flavor
-									and nutritional value.
+									and nutritional value for you to savour.
 								</p>
 							</div>
 						</div>
