@@ -36,7 +36,7 @@
 		{#each relevantPairings as pairing}
 			<div class="border h-fit rounded-lg overflow-hidden hover:shadow-md transition-shadow">
 				<div class="relative h-40">
-					<a href="/pairing/{pairing.slug}">
+					<a href="/menu/{pairing.slug}">
 						<img src={pairing.image_url} alt={pairing.name} class="w-full h-full object-cover" />
 					</a>
 					<div
@@ -56,7 +56,7 @@
 					<h4 class="font-semibold">{pairing.name}</h4>
 					<p class="text-sm text-gray-600 mt-1">{pairing.description}</p>
 				</div>
-				<div class=" m-4 mt-0">
+				<div class="m-4 mt-0">
 					<Button href="/menu/{pairing.slug}" class="w-fit">View Details</Button>
 				</div>
 			</div>

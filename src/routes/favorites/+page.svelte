@@ -37,7 +37,7 @@
 	</div>
 
 	{#if favoriteProducts.length > 0}
-		<div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+		<div class="grid grid-cols-1 mb-4 gap-8 md:grid-cols-2 lg:grid-cols-3">
 			{#each favoriteProducts as product}
 				<ProductCard {product} />
 			{/each}
