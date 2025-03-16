@@ -6,6 +6,7 @@
 	import { onMount } from 'svelte';
 	import { gsap } from 'gsap';
 	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+	import Metadata from '$lib/Metadata.svelte';
 
 	// Register GSAP plugins
 	gsap.registerPlugin(ScrollTrigger);
@@ -43,6 +44,8 @@
 		});
 	});
 </script>
+
+<Metadata title="Locations - Greenwich" />
 
 <AnimatedSandwichBackground animated={true} count={20} opacity={0.3} speed={1.5} />
 

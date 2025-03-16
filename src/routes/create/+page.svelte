@@ -4,6 +4,7 @@
 	import { Button } from '$lib/components/ui/button';
 	import * as Card from '$lib/components/ui/card';
 	import { Label } from '$lib/components/ui/label';
+	import Metadata from '$lib/Metadata.svelte';
 	import { toast } from 'svelte-sonner';
 
 	interface BaseProduct {
@@ -194,6 +195,8 @@
 		return foundItem ? array.filter((i) => i.id !== item.id) : [...array, item];
 	};
 </script>
+
+<Metadata title="Build Your Own Sandwich - Greenwich" />
 
 <div class="container my-8 px-4">
 	<h1 class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl mb-8">

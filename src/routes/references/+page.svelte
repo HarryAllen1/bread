@@ -1,6 +1,8 @@
-<svelte:head>
-	<title>References - bread</title>
-</svelte:head>
+<script lang="ts">
+	import Metadata from '$lib/Metadata.svelte';
+</script>
+
+<Metadata title="References - Greenwich" />
 
 <div class="container my-8">
 	<h1 class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">References</h1>

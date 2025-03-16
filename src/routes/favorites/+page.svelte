@@ -5,6 +5,7 @@
 	import { toast } from 'svelte-sonner';
 	import ProductCard from '../menu/ProductCard.svelte';
 	import type { PageProps } from './$types';
+	import Metadata from '$lib/Metadata.svelte';
 
 	let { data }: PageProps = $props();
 
@@ -26,6 +27,8 @@
 		toast.success('All favorites cleared');
 	};
 </script>
+
+<Metadata title="Favorites - Greenwich" />
 
 <div class="container my-8 px-4">
 	<div class="flex justify-between items-center mb-8">

@@ -5,6 +5,7 @@
 	import Fuse from 'fuse.js';
 	import type { PageData } from './$types';
 	import ProductCard from './ProductCard.svelte';
+	import Metadata from '$lib/Metadata.svelte';
 
 	interface Props {
 		data: PageData;
@@ -37,6 +38,8 @@
 		searchQuery === '' ? possibleProducts : fuse.search(searchQuery).map((r) => r.item),
 	);
 </script>
+
+<Metadata title="Menu - Greenwich" />
 
 <div class="container my-8 relative z-10 sandwich-pattern px-4">
 	<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">

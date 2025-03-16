@@ -1,5 +1,6 @@
 <script lang="ts">
 	import AnimatedSandwichBackground from '$lib/components/AnimatedSandwichBackground.svelte';
+	import Metadata from '$lib/Metadata.svelte';
 	import { gsap } from 'gsap';
 	import { ScrollTrigger } from 'gsap/ScrollTrigger';
 	import Sprout from 'lucide-svelte/icons/sprout';
@@ -60,6 +61,8 @@
 		});
 	});
 </script>
+
+<Metadata title="About - Greenwich" />
 
 <AnimatedSandwichBackground animated={true} count={20} opacity={0.3} speed={1.5} />
 

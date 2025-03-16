@@ -15,6 +15,7 @@
 	import type { PageData } from './$types';
 	import { fancyConfirm } from '$lib/confirm';
 	import { selectedLocation } from './state.svelte';
+	import Metadata from '$lib/Metadata.svelte';
 
 	interface Props {
 		data: PageData;
@@ -109,6 +110,8 @@
 		checkout.createElement('payment').mount(checkoutContainer!);
 	});
 </script>
+
+<Metadata title="Checkout - Greenwich" />
 
 <div class="container my-8">
 	<h1 class="scroll-m-20 text-4xl font-extrabold tracking-tight mb-4 lg:text-5xl">Checkout</h1>

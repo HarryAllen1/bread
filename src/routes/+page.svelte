@@ -11,6 +11,7 @@
 	import Sustainability from './Sustainability.svelte';
 	import WhyGreens from './WhyGreens.svelte';
 	import icon from '$lib/images/icon.svg';
+	import Metadata from '$lib/Metadata.svelte';
 
 	// Register GSAP plugins
 	gsap.registerPlugin(ScrollTrigger);
@@ -268,6 +269,8 @@
 		}
 	};
 </script>
+
+<Metadata title="Home - Greenwich" />
 
 <AnimatedSandwichBackground count={25} animated={true} opacity={0.3} speed={1.5} />
 

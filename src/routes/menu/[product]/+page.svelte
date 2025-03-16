@@ -15,6 +15,7 @@
 	import Sprout from 'lucide-svelte/icons/sprout';
 	import { toast } from 'svelte-sonner';
 	import type { PageData } from './$types';
+	import Metadata from '$lib/Metadata.svelte';
 
 	interface Props {
 		data: PageData;
@@ -123,16 +124,11 @@
 	};
 </script>
 
-<svelte:head>
-	<title>
-		{data.productDetails.name} - Greenwich
-	</title>
-	<meta
-		name="description"
-		content={data.productDetails.description ||
-			`Delicious ${data.productDetails.name} from our vegetarian sandwich shop.`}
-	/>
-</svelte:head>
+<Metadata
+	title="{data.productDetails.name} - Greenwich"
+	description={data.productDetails.description ||
+		`Delicious ${data.productDetails.name} from our vegetarian sandwich shop.`}
+/>
 
 <div class="container my-8">
 	{#if dietaryWarnings.length > 0}

@@ -8,6 +8,7 @@
 	import { toast } from 'svelte-sonner';
 	import ProductCard from '../menu/ProductCard.svelte';
 	import type { PageData } from './$types';
+	import Metadata from '$lib/Metadata.svelte';
 
 	interface Props {
 		data: PageData;
@@ -19,6 +20,8 @@
 		(product) => !$cart.some((cartItem) => cartItem.id === product.id),
 	);
 </script>
+
+<Metadata title="Cart - Greenwich" />
 
 <div class="container my-8">
 	<h1 class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">Cart</h1>

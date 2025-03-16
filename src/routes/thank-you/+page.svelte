@@ -3,6 +3,7 @@
 	import type { PageData } from './$types';
 	import { cart } from '$lib/cart';
 	import { selectedLocation } from '../checkout/state.svelte';
+	import Metadata from '$lib/Metadata.svelte';
 
 	interface Props {
 		data: PageData;
@@ -14,6 +15,8 @@
 		$cart = [];
 	});
 </script>
+
+<Metadata title="Thank you - Greenwich" />
 
 <div class="container my-8">
 	<h1 class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">Thank you!</h1>
