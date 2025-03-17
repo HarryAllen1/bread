@@ -6,12 +6,12 @@ import { defineConfig } from 'vite';
 export default defineConfig({
 	plugins: [tailwindcss(), enhancedImages(), sveltekit()],
 	build: {
-		target: 'es2020',
+		target: 'es2023',
 		sourcemap: true,
 	},
 	optimizeDeps: {
 		esbuildOptions: {
-			target: 'es2020',
+			target: 'es2023',
 		},
 	},
 });
