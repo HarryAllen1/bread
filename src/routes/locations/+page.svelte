@@ -115,7 +115,8 @@
 				<Button
 					variant="outline"
 					class="w-full"
-					onclick={() => window.open('https://maps.app.goo.gl/azSbbyC12TmuJwfF8', '_blank')}
+					href="https://maps.app.goo.gl/FYMAQcMd22QKWNL88"
+					target="_blank"
 				>
 					Get Directions
 				</Button>
@@ -174,7 +175,8 @@
 				<Button
 					variant="outline"
 					class="w-full"
-					onclick={() => window.open('https://maps.app.goo.gl/azSbbyC12TmuJwfF8', '_blank')}
+					href="https://maps.app.goo.gl/9cT7X6msdw9jGVzL8"
+					target="_blank"
 				>
 					Get Directions
 				</Button>
