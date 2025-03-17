@@ -7,29 +7,103 @@
 	import { gsap } from 'gsap';
 	import { ScrollTrigger } from 'gsap/ScrollTrigger';
 	import Metadata from '$lib/Metadata.svelte';
+	import { googleCore, googleMaps, googleMarker } from '$lib/google-maps';
+	import { MarkerClusterer } from '@googlemaps/markerclusterer';
 
 	// Register GSAP plugins
 	gsap.registerPlugin(ScrollTrigger);
 
+	let map = $state<HTMLDivElement | undefined>();
+
 	onMount(() => {
+		const locations: google.maps.LatLng[] = [
+			new googleCore.LatLng(41.026_673_661_938_15, -73.631_056_275_123_16),
+			new googleCore.LatLng(51.489_982_373_334_27, 0.016_107_124_373_262_994),
+			new googleCore.LatLng(47.313_134_459_109_12, -122.178_652_383_806_41),
+		];
+		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+		const googleMap = new googleMaps.Map(map!, {
+			mapId: 'b92cb68e2da8aab1',
+			center: {
+				lat: 0,
+				lng: 0,
+			},
+			zoom: 8,
+		});
+
+		const bounds = new googleCore.LatLngBounds();
+		for (const location of locations) {
+			bounds.extend(location);
+		}
+		googleMap.fitBounds(bounds);
+
+		const markers = [
+			{
+				headerContent: 'Downtown',
+				marker: new googleMarker.AdvancedMarkerElement({
+					map: googleMap,
+					position: locations[0],
+				}),
+				infoWindow: new googleMaps.InfoWindow({
+					position: locations[0],
+					content: `<a class="underline" href="https://maps.app.goo.gl/FYMAQcMd22QKWNL88" target="_blank">Get directions</a>`,
+				}),
+			},
+			{
+				headerContent: 'Midtown',
+				marker: new googleMarker.AdvancedMarkerElement({
+					map: googleMap,
+					position: locations[1],
+				}),
+				infoWindow: new googleMaps.InfoWindow({
+					position: locations[1],
+					content: `<a class="underline" href="https://maps.app.goo.gl/9cT7X6msdw9jGVzL8" target="_blank">Get directions</a>`,
+				}),
+			},
+			{
+				headerContent: 'West Coast Expansion',
+				marker: new googleMarker.AdvancedMarkerElement({
+					map: googleMap,
+					position: locations[2],
+				}),
+				infoWindow: new googleMaps.InfoWindow({
+					position: locations[2],
+					content: `<a class="underline" href="https://maps.app.goo.gl/DYK5Z4Qe4kLRtemo8" target="_blank">Get directions</a>`,
+				}),
+			},
+		];
+
+		new MarkerClusterer({
+			map: googleMap,
+			markers: markers.map((marker) => marker.marker),
+		});
+
+		for (const marker of markers) {
+			marker.marker.addListener('click', () => {
+				for (const mark of markers) {
+					if (mark.infoWindow.isOpen) {
+						mark.infoWindow.close();
+					}
+				}
+
+				const headerElement = document.createElement('h2');
+
+				headerElement.classList.add('font-medium', 'text-lg');
+				headerElement.textContent = marker.headerContent;
+
+				marker.infoWindow.setHeaderContent(headerElement);
+				marker.infoWindow.open({
+					map: googleMap,
+				});
+			});
+		}
+
 		// Initialize animations
 		gsap.from('.locations-title', {
 			opacity: 0,
 			y: 30,
 			duration: 0.8,
 			ease: 'power3.out',
-		});
-
-		// Animate location cards with staggered effect
-		gsap.from('.location-card', {
-			opacity: 0,
-			y: 30,
-			stagger: 0.2,
-			duration: 0.8,
-			scrollTrigger: {
-				trigger: '.locations-grid',
-				start: 'top 80%',
-			},
 		});
 
 		// Animate map section
@@ -144,8 +218,8 @@
 						<MapPin class="size-5 text-primary flex-shrink-0 mt-0.5" />
 						<a
 							class="text-primary underline underline-offset-4"
-							href="https://maps.app.goo.gl/9cT7X6msdw9jGVzL8"
 							target="_blank"
+							href="https://maps.app.goo.gl/9cT7X6msdw9jGVzL8"
 						>
 							<b class="font-medium">55-57 Bugsby's Way,</b>
 							<br />
@@ -229,18 +303,7 @@
 	<div class="map-section bg-white p-6 rounded-xl shadow-lg mb-12">
 		<h2 class="text-2xl font-bold mb-4 text-center text-primary">National Presence</h2>
 
-		<div class="rounded-lg overflow-hidden shadow-lg">
-			<iframe
-				src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d19875.24341831315!2d-0.01605496170142127!3d51.487427168729354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a9cea79975f3%3A0x1470a7a162e4ca6c!2sGreenwich%2C%20London%2C%20UK!5e0!3m2!1sen!2sus!4v1741939578534!5m2!1sen!2sus"
-				width="100%"
-				height="500"
-				style="border:0;"
-				allowfullscreen
-				loading="lazy"
-				referrerpolicy="no-referrer-when-downgrade"
-				title="Greenwich locations map"
-			></iframe>
-		</div>
+		<div class="rounded-lg overflow-hidden shadow-lg h-96" bind:this={map}></div>
 
 		<div class="mt-4 text-center text-sm text-gray-500">
 			<p>Interactive map showing all Greenwich locations. Click on markers for details.</p>
