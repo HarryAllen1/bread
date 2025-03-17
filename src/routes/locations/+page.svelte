@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Button } from '$lib/components/ui/button';
 	import * as Card from '$lib/components/ui/card';
-	import { MapPin, Clock, Phone } from 'lucide-svelte';
+	import { MapPin, Clock, Phone } from '@lucide/svelte';
 	import AnimatedSandwichBackground from '$lib/components/AnimatedSandwichBackground.svelte';
 	import { onMount } from 'svelte';
 	import { gsap } from 'gsap';

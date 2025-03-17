@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Leaf, MapPin, Truck } from 'lucide-svelte';
+	import { Leaf, MapPin, Truck } from '@lucide/svelte';
 </script>
 
 <div

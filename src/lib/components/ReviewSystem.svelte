@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { Button } from '$lib/components/ui/button';
-	import BadgeCheck from 'lucide-svelte/icons/badge-check';
-	import Camera from 'lucide-svelte/icons/camera';
-	import Star from 'lucide-svelte/icons/star';
-	import StarHalf from 'lucide-svelte/icons/star-half';
+	import BadgeCheck from '@lucide/svelte/icons/badge-check';
+	import Camera from '@lucide/svelte/icons/camera';
+	import Star from '@lucide/svelte/icons/star';
+	import StarHalf from '@lucide/svelte/icons/star-half';
 	import { toast } from 'svelte-sonner';
 
 	interface Props {

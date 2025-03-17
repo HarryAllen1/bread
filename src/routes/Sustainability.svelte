@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Recycle, Droplets, Leaf } from 'lucide-svelte';
+	import { Recycle, Droplets, Leaf } from '@lucide/svelte';
 	import { onMount } from 'svelte';
 
 	onMount(() => {

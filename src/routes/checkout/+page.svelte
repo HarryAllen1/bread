@@ -5,17 +5,17 @@
 	import { Button, buttonVariants } from '$lib/components/ui/button';
 	import * as Card from '$lib/components/ui/card';
 	import * as Collapsible from '$lib/components/ui/collapsible';
-	import * as Select from '$lib/components/ui/select';
 	import { Input } from '$lib/components/ui/input';
 	import { Label } from '$lib/components/ui/label';
+	import * as Select from '$lib/components/ui/select';
+	import { fancyConfirm } from '$lib/confirm';
+	import Metadata from '$lib/Metadata.svelte';
+	import ChevronsUpDown from '@lucide/svelte/icons/chevrons-up-down';
 	import { loadStripe, type StripeCheckout, type StripeCheckoutSession } from '@stripe/stripe-js';
-	import ChevronsUpDown from 'lucide-svelte/icons/chevrons-up-down';
 	import { onMount } from 'svelte';
 	import defaultTheme from 'tailwindcss/defaultTheme';
 	import type { PageData } from './$types';
-	import { fancyConfirm } from '$lib/confirm';
 	import { selectedLocation } from './state.svelte';
-	import Metadata from '$lib/Metadata.svelte';
 
 	interface Props {
 		data: PageData;

@@ -5,7 +5,7 @@
 	import { buttonVariants } from '$lib/components/ui/button';
 	import { userPreferences } from '$lib/stores/userPreferences';
 	import { cn } from '$lib/utils.js';
-	import ShoppingCart from 'lucide-svelte/icons/shopping-cart';
+	import ShoppingCart from '@lucide/svelte/icons/shopping-cart';
 	import MainNav from './MainNav.svelte';
 	import MobileNav from './MobileNav.svelte';
 

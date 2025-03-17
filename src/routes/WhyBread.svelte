@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { CakeSlice, Croissant, Wheat } from 'lucide-svelte';
+	import { CakeSlice, Croissant, Wheat } from '@lucide/svelte';
 </script>
 
 <div class="mt-32 max-w-4xl mx-auto">

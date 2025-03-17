@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Utensils, Clock, Sparkles } from 'lucide-svelte';
+	import { Utensils, Clock, Sparkles } from '@lucide/svelte';
 </script>
 
 <div

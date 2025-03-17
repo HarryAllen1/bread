@@ -10,9 +10,9 @@
 	import { Button } from '$lib/components/ui/button';
 	import * as Tabs from '$lib/components/ui/tabs';
 	import { userPreferences } from '$lib/stores/userPreferences';
-	import Heart from 'lucide-svelte/icons/heart';
-	import Shield from 'lucide-svelte/icons/shield';
-	import Sprout from 'lucide-svelte/icons/sprout';
+	import Heart from '@lucide/svelte/icons/heart';
+	import Shield from '@lucide/svelte/icons/shield';
+	import Sprout from '@lucide/svelte/icons/sprout';
 	import { toast } from 'svelte-sonner';
 	import type { PageData } from './$types';
 	import Metadata from '$lib/Metadata.svelte';

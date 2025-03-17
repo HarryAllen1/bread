@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Salad, Leaf, Utensils } from 'lucide-svelte';
+	import { Salad, Leaf, Utensils } from '@lucide/svelte';
 </script>
 
 <div class="max-w-5xl mx-auto px-4 py-12">

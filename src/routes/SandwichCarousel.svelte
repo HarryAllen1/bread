@@ -31,7 +31,7 @@
 		<Carousel.Item>
 			<div class="relative">
 				<img
-					src="https://images.unsplash.com/photo-1509722747041-616f39b57569?q=80&w=2070&auto=format&fit=crop"
+					src="https://images.pexels.com/photos/2955819/pexels-photo-2955819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
 					alt="Premium veggie wrap"
 					class="w-full h-[400px] object-cover"
 				/>

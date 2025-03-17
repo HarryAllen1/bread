@@ -2,7 +2,7 @@
 	import { Button } from '$lib/components/ui/button';
 	import * as Sheet from '$lib/components/ui/sheet';
 	import { userPreferences } from '$lib/stores/userPreferences';
-	import Settings from 'lucide-svelte/icons/settings';
+	import Settings from '@lucide/svelte/icons/settings';
 
 	let open = $state(false);
 

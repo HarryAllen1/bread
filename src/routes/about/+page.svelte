@@ -3,9 +3,9 @@
 	import Metadata from '$lib/Metadata.svelte';
 	import { gsap } from 'gsap';
 	import { ScrollTrigger } from 'gsap/ScrollTrigger';
-	import Sprout from 'lucide-svelte/icons/sprout';
-	import Star from 'lucide-svelte/icons/star';
-	import Utensils from 'lucide-svelte/icons/utensils';
+	import Sprout from '@lucide/svelte/icons/sprout';
+	import Star from '@lucide/svelte/icons/star';
+	import Utensils from '@lucide/svelte/icons/utensils';
 	import { onMount } from 'svelte';
 
 	// Register GSAP plugins

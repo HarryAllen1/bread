@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Sandwich, Salad } from 'lucide-svelte';
+	import { Sandwich, Salad } from '@lucide/svelte';
 </script>
 
 <div

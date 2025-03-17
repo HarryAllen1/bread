@@ -2,9 +2,9 @@
 	import { addToCart, cart, removeFromCart } from '$lib/cart';
 	import { Button } from '$lib/components/ui/button';
 	import { ScrollArea } from '$lib/components/ui/scroll-area';
-	import Minus from 'lucide-svelte/icons/minus';
-	import Plus from 'lucide-svelte/icons/plus';
-	import Trash from 'lucide-svelte/icons/trash';
+	import Minus from '@lucide/svelte/icons/minus';
+	import Plus from '@lucide/svelte/icons/plus';
+	import Trash from '@lucide/svelte/icons/trash';
 	import { toast } from 'svelte-sonner';
 	import ProductCard from '../menu/ProductCard.svelte';
 	import type { PageData } from './$types';
