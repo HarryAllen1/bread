@@ -95,7 +95,7 @@
 				category: 'custom',
 				description: 'Create your own sandwich with your favorite ingredients',
 				image_url:
-					'https://images.unsplash.com/photo-1554433607-66b5efe9d304?q=80&w=2070&auto=format&fit=crop',
+					'https://images.pexels.com/photos/1630309/pexels-photo-1630309.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
 				price: 0,
 				created_at: '',
 				slug: 'create',

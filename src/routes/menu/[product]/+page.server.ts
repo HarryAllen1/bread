@@ -11,7 +11,7 @@ export const load = (async ({ locals: { supabase }, params }) => {
 				product.image_bucket_id && product.image_name
 					? supabase.storage.from(product.image_bucket_id).getPublicUrl(product.image_name).data
 							.publicUrl
-					: 'https://images.unsplash.com/photo-1554433607-66b5efe9d304?q=80&w=2070&auto=format&fit=crop',
+					: 'https://images.pexels.com/photos/1630309/pexels-photo-1630309.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
 		})) ?? [];
 	const productDetails = products.find((product) => product.slug === params.product);
 
@@ -25,7 +25,7 @@ export const load = (async ({ locals: { supabase }, params }) => {
 				price: 0,
 				slug: params.product,
 				image_url:
-					'https://images.unsplash.com/photo-1554433607-66b5efe9d304?q=80&w=2070&auto=format&fit=crop',
+					'https://images.pexels.com/photos/1630309/pexels-photo-1630309.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
 				allergens: 'None',
 			},
 		};
